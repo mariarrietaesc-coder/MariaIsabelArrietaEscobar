@@ -9,7 +9,7 @@
 <meta property="og:title" content="María Isabel Arrieta Escobar — Control interno, auditoría y datos" />
 <meta property="og:description" content="Auditora de control interno. Auditoría continua, análisis de datos y desarrollo de aplicaciones a la medida." />
 <meta property="og:url" content="https://maria-isabel-arrieta-escobar.vercel.app/" />
-<meta property="og:image" content="https://maria-isabel-arrieta-escobar.vercel.app/foto.png" />
+<meta property="og:image" content="https://maria-isabel-arrieta-escobar.vercel.app/foto.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
@@ -29,8 +29,12 @@
   .kicker{font-size:.74rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px}
   header .name{font-size:2.7rem;font-weight:600;letter-spacing:-.01em;line-height:1.06}
   .rule{width:54px;height:2px;background:var(--gold);margin:22px 0}
-  header .role{font-size:1.05rem;color:#cdd7e3;font-weight:400}
+  header .lead{font-size:1.16rem;color:#eaf1f8;font-weight:500;margin-bottom:14px;max-width:560px}
+  header .role{font-size:.96rem;color:#aebccd;font-weight:400;max-width:560px}
   header .meta{margin-top:16px;font-size:.9rem;color:#9fb0c4;font-weight:500}
+  header .routes{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px 26px}
+  header .routes a{font-size:.84rem;font-weight:600;color:var(--gold-soft);border-bottom:1px solid rgba(200,169,106,.35);padding-bottom:2px;transition:.2s}
+  header .routes a:hover{color:#fff;border-color:#fff}
   header .contact{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
   header .contact a{border:1px solid rgba(255,255,255,.22);padding:9px 18px;border-radius:8px;font-size:.88rem;font-weight:600;color:#fff;transition:.2s}
   header .contact a:hover{background:rgba(255,255,255,.08);border-color:var(--gold-soft)}
@@ -55,6 +59,10 @@
   .btn:hover{background:var(--gold-soft)}
   .access{font-size:.78rem;color:var(--muted);margin-top:12px}
   .access b{color:#33414f}
+  details.access summary{cursor:pointer;font-weight:600;color:#33414f;list-style:none;display:inline-flex;align-items:center;gap:6px}
+  details.access summary::before{content:"+";color:var(--gold);font-weight:700}
+  details.access[open] summary::before{content:"–"}
+  details.access[open] summary{margin-bottom:6px}
   .edu{display:flex;flex-direction:column;gap:13px}
   .edu .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-left:18px;border-left:2px solid var(--gold)}
   .edu .row b{font-weight:700;color:var(--navy)}
@@ -104,15 +112,20 @@
       <div class="kicker">Control interno · Auditoría continua · Analítica de datos · Desarrollo</div>
       <h1 class="name serif">María Isabel Arrieta Escobar</h1>
       <div class="rule"></div>
-      <p class="role">Auditora de Control Interno con más de cinco años en auditoría basada en riesgos y evaluación de sistemas de control interno (COSO/MECI y Normas Globales del IIA). Trabajo a nivel de la función de auditoría —análisis de riesgos, plan anual y priorización del universo auditable—, no solo la ejecución de cada auditoría. La refuerzo con auditoría continua y analítica de datos, y cuando un proceso lo amerita construyo la herramienta a la medida (Power BI, Python, React y JavaScript).</p>
+      <p class="lead">Auditora de Control Interno con más de cinco años en auditoría basada en riesgos y evaluación de sistemas de control interno (COSO/MECI y Normas Globales del IIA).</p>
+      <p class="role">Trabajo a nivel de la función de auditoría —análisis de riesgos, plan anual y priorización del universo auditable—, no solo la ejecución de cada auditoría. La refuerzo con auditoría continua y analítica de datos, y cuando un proceso lo amerita construyo la herramienta a la medida (Power BI, Python, React y JavaScript).</p>
       <div class="meta">Ingeniera Industrial · MSc en Sistemas Integrados de Gestión · Candidata a Doctora en Ingeniería Industrial</div>
       <div class="contact">
         <a class="solid" href="mailto:mariarrietaesc@gmail.com">Escríbeme</a>
         <a href="https://www.linkedin.com/in/maria-isabel-arrieta-escobar-40396291" target="_blank" rel="noopener">LinkedIn</a>
       </div>
+      <div class="routes">
+        <a href="#trayectoria">Para vincularme a tu equipo · ver trayectoria →</a>
+        <a href="#servicios">Para un servicio puntual · ver servicios →</a>
+      </div>
     </div>
     <div class="hero-photo">
-      <img src="foto.png" alt="María Isabel Arrieta Escobar" />
+      <img src="foto.jpg" width="300" height="336" alt="María Isabel Arrieta Escobar" />
     </div>
   </div>
 </header>
@@ -174,7 +187,7 @@
 </section>
 
 <!-- EXPERIENCIA (completa) -->
-<section>
+<section id="trayectoria">
   <div class="wrap">
     <div class="eyebrow">Trayectoria</div>
     <h2 class="serif">Experiencia profesional</h2>
@@ -254,7 +267,7 @@
 </section>
 
 <!-- SERVICIOS -->
-<section class="alt">
+<section id="servicios" class="alt">
   <div class="wrap">
     <div class="eyebrow">Servicios</div>
     <h2 class="serif">Cómo aporto a tu organización</h2>
@@ -339,14 +352,14 @@
         <h3>Campus de Bienestar y Salud Mental Laboral</h3>
         <p>Plataforma de autoformación con módulos, evaluaciones, seguimiento de progreso y constancia. Contenido clínico validado por un profesional en psicología.</p>
         <a class="btn" href="https://salud-mental-one.vercel.app/" target="_blank" rel="noopener">Ver demo →</a>
-        <div class="access">Acceso de prueba: <b>demo@campus.com</b> · <b>demo1234</b></div>
+        <details class="access"><summary>Acceso de prueba</summary>Usuario <b>demo@campus.com</b> · Clave <b>demo1234</b></details>
       </div>
       <div class="card">
         <span class="tag">Formación · Demo en vivo</span>
         <h3>Campus de Formación en Control Interno y MIPG</h3>
         <p>Campus virtual con módulos de plataforma estratégica, MIPG, normas de auditoría y evaluaciones, diseñado para una oficina de control interno.</p>
         <a class="btn" href="https://campus-oci.vercel.app/" target="_blank" rel="noopener">Ver demo →</a>
-        <div class="access">Acceso de prueba: <b>demo@campus-oci.com</b> · <b>demo1234</b></div>
+        <details class="access"><summary>Acceso de prueba</summary>Usuario <b>demo@campus-oci.com</b> · Clave <b>demo1234</b></details>
       </div>
       <div class="card">
         <span class="tag">Diagnóstico · Demo en vivo</span>
