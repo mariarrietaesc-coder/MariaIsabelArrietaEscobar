@@ -90,6 +90,20 @@
   .cta h2{font-size:2rem}
   footer{background:var(--navy);color:#9fb0c4;padding:34px 0;text-align:center;font-size:.85rem}
   footer a{color:var(--gold-soft);font-weight:600}
+  .creds{background:#fff;border-bottom:1px solid var(--line)}
+  .creds-row{display:grid;grid-template-columns:repeat(4,1fr)}
+  .cred{padding:20px 22px;border-left:1px solid var(--line)}
+  .cred:first-child{padding-left:0;border-left:none}
+  .cred:last-child{padding-right:0}
+  .cred .ce{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .cred b{display:block;color:var(--navy);font-size:.95rem;font-weight:700;line-height:1.24}
+  .cred span{display:block;margin-top:3px;color:var(--muted);font-size:.78rem}
+  @media(max-width:760px){
+    .creds-row{grid-template-columns:1fr 1fr;gap:0}
+    .cred{padding:16px 16px;border-left:1px solid var(--line);border-top:1px solid var(--line)}
+    .cred:nth-child(odd){padding-left:0;border-left:none}
+    .cred:first-child,.cred:nth-child(2){border-top:none}
+  }
   @media(max-width:760px){
     .wrap{padding:0 18px}
     header{padding:46px 0 42px}
@@ -130,6 +144,18 @@
     </div>
   </div>
 </header>
+
+<!-- FRANJA DE CREDENCIALES -->
+<section class="creds">
+  <div class="wrap">
+    <div class="creds-row">
+      <div class="cred"><div class="ce">Certificación</div><b>Auditora ISO 9001 · ISO 14001</b><span>TÜV Rheinland</span></div>
+      <div class="cred"><div class="ce">Formación</div><b>Candidata a Doctora</b><span>Ingeniería Industrial</span></div>
+      <div class="cred"><div class="ce">Trayectoria</div><b>Más de una década</b><span>Control interno y auditoría</span></div>
+      <div class="cred"><div class="ce">Marco de trabajo</div><b>Normas Globales del IIA</b><span>COSO · MECI · MIPG</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- ÁREAS DE EXPERTISE + HERRAMIENTAS -->
 <section>
