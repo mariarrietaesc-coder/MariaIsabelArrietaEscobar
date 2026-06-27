@@ -40,7 +40,7 @@
   header .contact a:hover{background:rgba(255,255,255,.08);border-color:var(--gold-soft)}
   header .contact a.solid{background:var(--gold);border-color:var(--gold);color:#1a1404}
   .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:46px;align-items:center;position:relative;z-index:2}
-  .hero-photo img{width:100%;max-width:300px;border-radius:20px;border:2px solid rgba(200,169,106,.55);display:block;margin-left:auto;box-shadow:0 18px 44px rgba(0,0,0,.32)}
+  .hero-photo img{width:100%;max-width:300px;height:auto;aspect-ratio:25/28;object-fit:cover;border-radius:20px;border:2px solid rgba(200,169,106,.55);display:block;margin-left:auto;box-shadow:0 18px 44px rgba(0,0,0,.32)}
   section{padding:40px 0}
   section.alt{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
@@ -98,6 +98,10 @@
   .cred .ce{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
   .cred b{display:block;color:var(--navy);font-size:.95rem;font-weight:700;line-height:1.24}
   .cred span{display:block;margin-top:3px;color:var(--muted);font-size:.78rem}
+  html{overflow-x:hidden}
+  img,svg{max-width:100%}
+  .cred,.card,.item,.hero-text{min-width:0}
+  header .lead,header .role,header .meta{overflow-wrap:break-word}
   @media(max-width:760px){
     .creds-row{grid-template-columns:1fr 1fr;gap:0}
     .cred{padding:16px 16px;border-left:1px solid var(--line);border-top:1px solid var(--line)}
@@ -105,14 +109,26 @@
     .cred:first-child,.cred:nth-child(2){border-top:none}
   }
   @media(max-width:760px){
-    .wrap{padding:0 18px}
-    header{padding:46px 0 42px}
-    header .name{font-size:2rem}
-    .hero-grid{grid-template-columns:1fr;gap:24px}
+    .wrap{padding:0 20px}
+    header{padding:44px 0 38px}
+    header .name{font-size:1.95rem}
+    .hero-grid{grid-template-columns:1fr;gap:20px}
     .hero-photo{order:-1}
-    .hero-photo img{max-width:180px;margin:0 auto}
+    .hero-photo img{max-width:168px;margin:0 auto}
+    header .lead{font-size:1.22rem;line-height:1.4}
+    header .role{font-size:1rem;line-height:1.62;color:#c4d0de}
+    header .meta{font-size:.92rem}
     h2{font-size:1.5rem}
-    section{padding:32px 0}
+    section{padding:34px 0}
+    .sub{font-size:1rem;line-height:1.62}
+    .card p{font-size:.97rem;line-height:1.6}
+    .card h3{font-size:1.08rem}
+    .item .t{font-size:1.03rem}
+    .item ul{font-size:.97rem;line-height:1.55;color:#39475a}
+    .item li{margin-bottom:6px}
+    .chip{font-size:.85rem;padding:8px 13px}
+    .card{padding:20px}
+    .access{font-size:.85rem}
     .levels .cap{font-size:.66rem}
     .matgrid{grid-template-columns:1fr}
   }
