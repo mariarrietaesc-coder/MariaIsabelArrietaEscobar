@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>María Isabel Arrieta Escobar — Control interno, auditoría y análisis de datos</title>
-<meta name="description" content="Auditora de control interno y sistemas de gestión. Evaluación de nivel de madurez de la auditoría, auditoría continua, análisis de datos y desarrollo de aplicaciones a la medida." />
+<title>María Isabel Arrieta Escobar — Control interno, formación digital y análisis de datos</title>
+<meta name="description" content="Auditora de control interno y sistemas de gestión. Evaluación de nivel de madurez, formación digital, análisis de datos y desarrollo de aplicaciones a la medida." />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="María Isabel Arrieta Escobar — Control interno, auditoría y datos" />
-<meta property="og:description" content="Auditora de control interno. Auditoría continua, análisis de datos y desarrollo de aplicaciones a la medida." />
-<meta property="og:url" content="https://maria-isabel-arrieta-escobar.vercel.app/" />
-<meta property="og:image" content="https://maria-isabel-arrieta-escobar.vercel.app/foto.jpg" />
+<meta property="og:title" content="María Isabel Arrieta Escobar — Control interno, formación y datos" />
+<meta property="og:description" content="Auditora de control interno. Formación digital, análisis de datos y desarrollo de aplicaciones a la medida." />
+<meta property="og:image" content="" />
 <meta name="twitter:card" content="summary_large_image" />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
@@ -29,18 +28,14 @@
   .kicker{font-size:.74rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px}
   header .name{font-size:2.7rem;font-weight:600;letter-spacing:-.01em;line-height:1.06}
   .rule{width:54px;height:2px;background:var(--gold);margin:22px 0}
-  header .lead{font-size:1.42rem;color:#fff;font-weight:600;line-height:1.3;margin-bottom:12px;max-width:560px}
-  header .role{font-size:.96rem;color:#aebccd;font-weight:400;max-width:560px}
+  header .role{font-size:1.05rem;color:#cdd7e3;font-weight:400}
   header .meta{margin-top:16px;font-size:.9rem;color:#9fb0c4;font-weight:500}
-  header .routes{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px 26px}
-  header .routes a{font-size:.84rem;font-weight:600;color:var(--gold-soft);border-bottom:1px solid rgba(200,169,106,.35);padding-bottom:2px;transition:.2s}
-  header .routes a:hover{color:#fff;border-color:#fff}
   header .contact{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
   header .contact a{border:1px solid rgba(255,255,255,.22);padding:9px 18px;border-radius:8px;font-size:.88rem;font-weight:600;color:#fff;transition:.2s}
   header .contact a:hover{background:rgba(255,255,255,.08);border-color:var(--gold-soft)}
   header .contact a.solid{background:var(--gold);border-color:var(--gold);color:#1a1404}
   .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:46px;align-items:center;position:relative;z-index:2}
-  .hero-photo img{width:100%;max-width:300px;height:auto;aspect-ratio:25/28;object-fit:cover;border-radius:20px;border:2px solid rgba(200,169,106,.55);display:block;margin-left:auto;box-shadow:0 18px 44px rgba(0,0,0,.32)}
+  .hero-photo img{width:100%;max-width:300px;border-radius:20px;border:2px solid rgba(200,169,106,.55);display:block;margin-left:auto;box-shadow:0 18px 44px rgba(0,0,0,.32)}
   section{padding:40px 0}
   section.alt{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
@@ -59,10 +54,6 @@
   .btn:hover{background:var(--gold-soft)}
   .access{font-size:.78rem;color:var(--muted);margin-top:12px}
   .access b{color:#33414f}
-  details.access summary{cursor:pointer;font-weight:600;color:#33414f;list-style:none;display:inline-flex;align-items:center;gap:6px}
-  details.access summary::before{content:"+";color:var(--gold);font-weight:700}
-  details.access[open] summary::before{content:"–"}
-  details.access[open] summary{margin-bottom:6px}
   .edu{display:flex;flex-direction:column;gap:13px}
   .edu .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-left:18px;border-left:2px solid var(--gold)}
   .edu .row b{font-weight:700;color:var(--navy)}
@@ -90,44 +81,15 @@
   .cta h2{font-size:2rem}
   footer{background:var(--navy);color:#9fb0c4;padding:34px 0;text-align:center;font-size:.85rem}
   footer a{color:var(--gold-soft);font-weight:600}
-  .creds{background:#fff;border-bottom:1px solid var(--line)}
-  .creds-row{display:grid;grid-template-columns:1fr 1fr}
-  .cred{padding:20px 22px;border-left:1px solid var(--line)}
-  .cred:first-child{padding-left:0;border-left:none}
-  .cred:last-child{padding-right:0}
-  .cred .ce{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-  .cred b{display:block;color:var(--navy);font-size:.95rem;font-weight:700;line-height:1.24}
-  .cred span{display:block;margin-top:3px;color:var(--muted);font-size:.78rem}
-  html{overflow-x:hidden}
-  img,svg{max-width:100%}
-  .cred,.card,.item,.hero-text{min-width:0}
-  header .lead,header .role,header .meta{overflow-wrap:break-word}
   @media(max-width:760px){
-    .creds-row{grid-template-columns:1fr}
-    .cred{padding:16px 0;border-left:none;border-top:1px solid var(--line)}
-    .cred:first-child{border-top:none}
-  }
-  @media(max-width:760px){
-    .wrap{padding:0 20px}
-    header{padding:44px 0 38px}
-    header .name{font-size:1.95rem}
-    .hero-grid{grid-template-columns:1fr;gap:20px}
+    .wrap{padding:0 18px}
+    header{padding:46px 0 42px}
+    header .name{font-size:2rem}
+    .hero-grid{grid-template-columns:1fr;gap:24px}
     .hero-photo{order:-1}
-    .hero-photo img{max-width:168px;margin:0 auto}
-    header .lead{font-size:1.22rem;line-height:1.4}
-    header .role{font-size:1rem;line-height:1.62;color:#c4d0de}
-    header .meta{font-size:.92rem}
+    .hero-photo img{max-width:180px;margin:0 auto}
     h2{font-size:1.5rem}
-    section{padding:34px 0}
-    .sub{font-size:1rem;line-height:1.62}
-    .card p{font-size:.97rem;line-height:1.6}
-    .card h3{font-size:1.08rem}
-    .item .t{font-size:1.03rem}
-    .item ul{font-size:.97rem;line-height:1.55;color:#39475a}
-    .item li{margin-bottom:6px}
-    .chip{font-size:.85rem;padding:8px 13px}
-    .card{padding:20px}
-    .access{font-size:.85rem}
+    section{padding:32px 0}
     .levels .cap{font-size:.66rem}
     .matgrid{grid-template-columns:1fr}
   }
@@ -138,34 +100,42 @@
 <header>
   <div class="wrap hero-grid">
     <div class="hero-text">
+      <div class="kicker">Control interno · Auditoría · Formación digital · Datos</div>
       <h1 class="name serif">María Isabel Arrieta Escobar</h1>
       <div class="rule"></div>
-      <p class="lead">Ingeniera industrial, auditora de control interno y desarrolladora de software.</p>
-      <p class="role">Documento los procesos de una organización, los audito bajo riesgos (COSO/MECI y Normas Globales del IIA) y construyo las herramientas a la medida para gestionarlos.</p>
-      <div class="meta">Candidata a Doctora en Ingeniería Industrial · MSc en Sistemas Integrados de Gestión</div>
+      <p class="role">Auditora de Control Interno con más de cinco años en auditoría basada en riesgos y evaluación de sistemas de control interno (COSO/MECI y Normas Globales del IIA). Integro el criterio del auditor con tecnología propia: analítica de datos (Power BI, Python, Excel) y una herramienta de seguimiento de auditoría que diseñé e implementé.</p>
+      <div class="meta">Ingeniera Industrial · MSc en Sistemas Integrados de Gestión · Candidata a Doctora en Ingeniería Industrial</div>
       <div class="contact">
         <a class="solid" href="mailto:mariarrietaesc@gmail.com">Escríbeme</a>
-        <a href="https://wa.me/573008017886?text=Hola%20Mar%C3%ADa%20Isabel%2C%20vi%20tu%20sitio%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener">WhatsApp</a>
         <a href="https://www.linkedin.com/in/maria-isabel-arrieta-escobar-40396291" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="CV-Maria-Isabel-Arrieta-Escobar.pdf" download>Descargar HV (PDF)</a>
-      </div>
-      <div class="routes">
-        <a href="#trayectoria">Ver trayectoria →</a>
-        <a href="#servicios">Ver servicios →</a>
       </div>
     </div>
     <div class="hero-photo">
-      <img src="foto.jpg" width="300" height="336" alt="María Isabel Arrieta Escobar" />
+      <img src="foto.png" alt="María Isabel Arrieta Escobar" />
     </div>
   </div>
 </header>
 
-<!-- FRANJA DE CREDENCIALES -->
-<section class="creds">
+<!-- ÁREAS DE EXPERTISE + HERRAMIENTAS -->
+<section>
   <div class="wrap">
-    <div class="creds-row">
-      <div class="cred"><div class="ce">Certificaciones</div><b>Auditora ISO 9001 · 14001 · OHSAS 18001 · SGE21</b><span>TÜV Rheinland</span></div>
-      <div class="cred"><div class="ce">Marco de trabajo</div><b>Normas Globales del IIA</b><span>COSO · MECI · MIPG</span></div>
+    <div class="eyebrow">Áreas de expertise</div>
+    <div class="chips">
+      <span class="chip">Auditoría interna basada en riesgos</span>
+      <span class="chip">Control interno (COSO / MECI)</span>
+      <span class="chip">Evaluación de nivel de madurez</span>
+      <span class="chip">Gestión del riesgo</span>
+      <span class="chip">Sistemas de gestión (ISO 9001 / 14001)</span>
+      <span class="chip">Formación digital / e-learning</span>
+      <span class="chip">Análisis de datos (Power BI · Python · Excel)</span>
+      <span class="chip">Desarrollo de aplicaciones a la medida</span>
+    </div>
+    <div class="eyebrow" style="margin-top:24px">Herramientas técnicas</div>
+    <div class="chips">
+      <span class="chip">Excel avanzado</span>
+      <span class="chip">Power BI</span>
+      <span class="chip">Python</span>
+      <span class="chip">Desarrollo web</span>
     </div>
   </div>
 </section>
@@ -179,45 +149,31 @@
       <div class="row"><div><b>Maestría en Sistemas Integrados de Gestión</b> — UNIR, España</div><span>2016</span></div>
       <div class="row"><div><b>Ingeniería Industrial</b> — Universidad de Córdoba</div><span>2014</span></div>
     </div>
-    <div style="margin-top:20px;background:#fbf7ee;border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 18px">
-      <div class="eyebrow" style="margin-bottom:8px">Reconocimientos</div>
-      <div style="color:var(--navy);font-weight:600;font-size:.96rem;line-height:1.5;margin-bottom:7px">Tesis de pregrado con Mención Laureada, máxima distinción — Universidad de Córdoba (Resolución 0003 del 6 de marzo de 2014)</div>
-      <div style="color:var(--navy);font-weight:600;font-size:.96rem;line-height:1.5">Becaria del Programa de Excelencia Doctoral del Bicentenario — Colciencias (2020)</div>
-    </div>
+    <p class="sub" style="margin-top:18px;margin-bottom:0"><b style="color:var(--navy)">Reconocimientos:</b> Mención Laureada a la tesis de pregrado · Becaria del Programa de Excelencia Doctoral del Bicentenario (Universidad del Norte, 2020).</p>
     <div style="margin-top:24px">
-      <div class="eyebrow">Diplomados</div>
+      <div class="eyebrow">Certificaciones</div>
       <div class="chips">
-        <span class="chip">Control Interno y Control Fiscal — Auditoría General de la República (2025)</span>
-        <span class="chip">Auditoría Forense — Politécnico de Suramérica (2025)</span>
-        <span class="chip">Contratación Estatal — Politécnico de Colombia (2019)</span>
-        <span class="chip">Servidor Público 4.0 — ESAP (2022)</span>
+        <span class="chip">Auditor ISO 9001:2015 — TÜV Rheinland</span>
+        <span class="chip">Auditor ISO 14001:2015 — TÜV Rheinland</span>
+        <span class="chip">Auditor OHSAS 18001:2007 — TÜV Rheinland</span>
+        <span class="chip">Auditor SGE21 (Responsabilidad Social) — TÜV Rheinland</span>
       </div>
     </div>
     <div style="margin-top:24px">
-      <div class="eyebrow">Seminarios y cursos</div>
+      <div class="eyebrow">Cursos y seminarios</div>
       <div class="chips">
-        <span class="chip">Construcción de un PAMC — IIA Colombia (2023)</span>
-        <span class="chip">Fundamentos de TI para Auditores Internos — IIA Colombia (2022)</span>
+        <span class="chip">Aseguramiento y mejora de la calidad — IIA Colombia (2023)</span>
+        <span class="chip">Ciencia de Datos: Fundamentos — ESAP (2022)</span>
+        <span class="chip">TI para Auditores Internos — IIA Colombia (2022)</span>
+        <span class="chip">Diplomado Servidor Público 4.0 — ESAP (2022)</span>
         <span class="chip">Auditoría Continua con Power BI — IIA Colombia (2022)</span>
-        <span class="chip">Ciencia de Datos — ESAP (2022)</span>
-      </div>
-    </div>
-    <div style="margin-top:24px">
-      <div class="eyebrow">Herramientas técnicas</div>
-      <div class="chips">
-        <span class="chip">AutoAudit</span>
-        <span class="chip">Power BI</span>
-        <span class="chip">Python</span>
-        <span class="chip">R</span>
-        <span class="chip">Excel avanzado</span>
-        <span class="chip">JavaScript</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCIA (completa) -->
-<section id="trayectoria">
+<section>
   <div class="wrap">
     <div class="eyebrow">Trayectoria</div>
     <h2 class="serif">Experiencia profesional</h2>
@@ -227,54 +183,69 @@
         <div class="t">Profesional Especializado — Control Interno</div>
         <div class="m">Ministerio de Igualdad y Equidad · 2024–2026</div>
         <ul>
-          <li>Evaluación del Sistema de Control Interno con enfoque basado en riesgos (MIPG/MECI) y ejecución del Plan Anual de Auditorías.</li>
-          <li>Documentación del proceso de auditoría interna conforme a las Normas Globales del IIA.</li>
-          <li>Desarrollo del software de seguimiento a planes de mejoramiento de la Oficina de Control Interno: hallazgos, alertas de vencimiento y tableros para la alta dirección.</li>
+          <li>Diseño e implementación de una herramienta digital de seguimiento de auditoría.</li>
+          <li>Evaluación del Sistema de Control Interno (MIPG/MECI) y plan anual basado en riesgos.</li>
         </ul>
       </div>
       <div class="item">
-        <div class="t">Profesional — Oficina de Control Interno (Dirección General)</div>
-        <div class="m">SENA · 2021–2024</div>
+        <div class="t">Asesor — Oficina de Control Interno</div>
+        <div class="m">SENA · 2023–2024</div>
         <ul>
-          <li>Ejecución y supervisión de auditorías de aseguramiento bajo el Manual de Auditoría Interna y las Normas Internacionales del IIA, con alcance nacional.</li>
-          <li>Diseño de la línea de auditoría continua y analítica de datos de la oficina, con tableros de control para la alta dirección.</li>
-          <li>Apoyo al Manual del proceso de auditoría y al Programa de Aseguramiento y Mejora de la Calidad (PAMC); seguimiento a requerimientos de la Contraloría General de la República.</li>
+          <li>Plan anual de auditoría y auditoría continua con analítica de datos.</li>
+          <li>Auditoría en los 36 departamentos del país.</li>
+          <li>Seguimiento a requerimientos de la Contraloría General de la República.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="t">Profesional de Apoyo — Control Interno</div>
+        <div class="m">SENA · 2021–2022</div>
+        <ul>
+          <li>Evaluación de los Sistemas Integrados de Gestión (SIGA).</li>
+          <li>Auditorías a Talento Humano, Recursos Financieros e Infraestructura.</li>
+          <li>Seguimiento al cierre de hallazgos y planes de mejoramiento.</li>
         </ul>
       </div>
       <div class="item">
         <div class="t">Líder SIGA — Sistemas Integrados de Gestión</div>
-        <div class="m">SENA · Regional Córdoba · 2018–2019</div>
+        <div class="m">SENA · Centro Agropecuario El Porvenir · 2018–2019</div>
         <ul>
-          <li>Implementación y mejora del Sistema Integrado de Gestión bajo ISO 9001 e ISO 14001 y MIPG.</li>
-          <li>Mapas de riesgo (operativos y de corrupción) y participación en auditorías internas y externas.</li>
+          <li>Capacitación y sensibilización en sistemas de gestión y autocontrol.</li>
+          <li>Monitoreo de riesgos operativos y de corrupción.</li>
         </ul>
       </div>
       <div class="item">
-        <div class="t">Docente — Administración de Empresas</div>
+        <div class="t">Docente Catedrático</div>
         <div class="m">Corporación Unificada Nacional (CUN) · 2017–2018</div>
         <ul>
           <li>Cátedra, material didáctico y dirección de proyectos de grado.</li>
         </ul>
       </div>
       <div class="item">
-        <div class="t">Asesora — Sistemas de Gestión de Calidad</div>
-        <div class="m">Credilibranzas de la Sabana S.A.S. · Inmover S.A. · 2017</div>
+        <div class="t">Instructor de Formación (Tutor Virtual)</div>
+        <div class="m">SENA · 2017</div>
         <ul>
-          <li>Diseño e implementación del Sistema de Gestión de Calidad bajo ISO 9001: levantamiento de procesos, política de calidad, procedimientos y capacitación al personal.</li>
+          <li>Orientación académica, diseño curricular y material de enseñanza.</li>
         </ul>
       </div>
       <div class="item">
         <div class="t">Coordinadora de Proyecto — Software Horaris</div>
         <div class="m">Universidad de Córdoba · 2014–2015</div>
         <ul>
-          <li>Dirección del equipo de desarrollo de <b style="color:var(--navy)">Horaris</b>, software de programación de horarios académicos (basado en el algoritmo de su tesis laureada; con registro de soporte lógico ante la DNDA N.º 13-44-442), implementado en la Universidad de Córdoba.</li>
+          <li>Dirección del equipo de desarrollo de <b style="color:var(--navy)">Horaris</b>, software de programación de horarios académicos (basado en el algoritmo de la tesis laureada de pregrado), implementado en la Universidad de Córdoba. Registro de soporte lógico ante la DNDA N.º 13-44-442.</li>
         </ul>
       </div>
       <div class="item">
         <div class="t">Auxiliar — Sistema de Gestión de Calidad</div>
-        <div class="m">Servienergía Ltda. · 2014–2015</div>
+        <div class="m">Servienergía Ltda · 2014</div>
         <ul>
-          <li>Documentación de procesos del sistema de gestión de calidad y apoyo a auditorías internas.</li>
+          <li>Soporte al Sistema de Gestión Integral y apoyo a auditorías internas.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="t">Auxiliar — Autoevaluación de Programa</div>
+        <div class="m">Universidad de Córdoba · 2013</div>
+        <ul>
+          <li>Estadísticos e informes de autoevaluación (lineamientos del MEN).</li>
         </ul>
       </div>
     </div>
@@ -282,17 +253,17 @@
 </section>
 
 <!-- SERVICIOS -->
-<section id="servicios" class="alt">
+<section class="alt">
   <div class="wrap">
     <div class="eyebrow">Servicios</div>
-    <h2 class="serif">Cómo aporto a tu organización</h2>
-    <p class="sub">Servicios con los que acompaño y potencio a empresas y entidades. Cuando un proceso se puede ordenar con software, también lo construyo.</p>
+    <h2 class="serif">En qué puedo ayudarte</h2>
+    <p class="sub">Estos son los servicios con los que acompaño a empresas y entidades. Cuando un proceso se puede ordenar con software, también lo construyo.</p>
     <div class="tools">
       <div class="card"><h3>Auditoría interna basada en riesgos</h3><p>Plan anual y ejecución de auditorías bajo las Normas Globales del IIA.</p><span class="out">Enfoca el esfuerzo donde más riesgo hay.</span></div>
       <div class="card"><h3>Evaluación del control interno</h3><p>Diagnóstico de la efectividad del control con COSO y MECI, alineado al MIPG.</p><span class="out">Sabes dónde estás parado y qué falta.</span></div>
       <div class="card"><h3>Gestión del riesgo</h3><p>Identificación, evaluación y mapas de riesgo, incluido el de corrupción.</p><span class="out">Anticipa los problemas en vez de reaccionar.</span></div>
-      <div class="card"><h3>Campus virtuales a la medida</h3><p>Campus de e-Learning a la medida, con módulos, evaluaciones, seguimiento de progreso y constancia.</p><span class="out">Lleva el conocimiento a todo el equipo.</span></div>
-      <div class="card"><h3>Análisis de datos y auditoría continua</h3><p>Monitoreo y tableros con Power BI, Python y Excel avanzado.</p><span class="out">Información oportuna para la toma de decisiones.</span></div>
+      <div class="card"><h3>Formación digital / campus virtual</h3><p>Programas de formación a la medida (e-learning) con módulos, evaluaciones y seguimiento.</p><span class="out">Lleva el conocimiento a todo el equipo.</span></div>
+      <div class="card"><h3>Análisis de datos y auditoría continua</h3><p>Monitoreo y tableros con Power BI, Python y Excel avanzado.</p><span class="out">Detecta a tiempo lo que se sale de lo normal.</span></div>
       <div class="card"><h3>Desarrollo de aplicaciones a la medida</h3><p>Aplicaciones web, herramientas de seguimiento y automatizaciones ajustadas a tus procesos.</p><span class="out">Le quita trabajo manual al equipo.</span></div>
     </div>
   </div>
@@ -352,7 +323,6 @@
     </div>
     <p class="access" style="margin-top:16px">Resultado ilustrativo (escala 1 a 5). Al final entrego el puntaje de cada dimensión, el nivel global y un plan de mejora por prioridades.</p>
     <p class="access" style="margin-top:8px">El diagnóstico funciona sobre <b style="color:var(--navy)">CONFORMA</b>, software propio para el aseguramiento de la calidad y la verificación de brechas de la función de auditoría interna — en proceso de registro de soporte lógico ante la DNDA (radicado 1-2026-133221).</p>
-    <a class="btn" href="https://nivel-madurez-funcion-auditoria.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Probar el autodiagnóstico interactivo →</a>
   </div>
 </section>
 
@@ -368,19 +338,19 @@
         <h3>Campus de Bienestar y Salud Mental Laboral</h3>
         <p>Plataforma de autoformación con módulos, evaluaciones, seguimiento de progreso y constancia. Contenido clínico validado por un profesional en psicología.</p>
         <a class="btn" href="https://salud-mental-one.vercel.app/" target="_blank" rel="noopener">Ver demo →</a>
-        <details class="access"><summary>Acceso de prueba</summary>Usuario <b>demo@campus.com</b> · Clave <b>demo1234</b></details>
+        <div class="access">Acceso de prueba: <b>demo@campus.com</b> · <b>demo1234</b></div>
       </div>
       <div class="card">
         <span class="tag">Formación · Demo en vivo</span>
         <h3>Campus de Formación en Control Interno y MIPG</h3>
         <p>Campus virtual con módulos de plataforma estratégica, MIPG, normas de auditoría y evaluaciones, diseñado para una oficina de control interno.</p>
         <a class="btn" href="https://campus-oci.vercel.app/" target="_blank" rel="noopener">Ver demo →</a>
-        <details class="access"><summary>Acceso de prueba</summary>Usuario <b>demo@campus-oci.com</b> · Clave <b>demo1234</b></details>
+        <div class="access">Acceso de prueba: <b>demo@campus-oci.com</b> · <b>demo1234</b></div>
       </div>
       <div class="card">
         <span class="tag">Auditoría · Herramienta propia</span>
-        <h3>Software de seguimiento a planes de mejoramiento</h3>
-        <p>Reemplaza el seguimiento manual en hojas de cálculo: cada hallazgo con su responsable y fecha, recordatorios automáticos antes del vencimiento y un tablero en vivo para la dirección. Diseñado y construido para una oficina de control interno.</p>
+        <h3>Herramienta de seguimiento de auditoría</h3>
+        <p>Centraliza hallazgos, automatiza alertas de vencimiento y genera tableros para la alta dirección. Diseñada e implementada para una oficina de control interno.</p>
         <div class="access">Demostración a solicitud.</div>
       </div>
     </div>
@@ -394,15 +364,12 @@
     <h2 class="serif">¿Conversamos sobre tu necesidad?</h2>
     <p class="sub" style="margin:0 auto 24px">Cuéntame qué necesitas y te digo cómo puedo ayudarte.</p>
     <a class="btn" href="mailto:mariarrietaesc@gmail.com?subject=Contacto%20desde%20tu%20sitio%20web">Escríbeme →</a>
-    <a class="btn" href="https://wa.me/573008017886?text=Hola%20Mar%C3%ADa%20Isabel%2C%20vi%20tu%20sitio%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener" style="margin-left:10px">WhatsApp →</a>
-    <a class="btn" href="CV-Maria-Isabel-Arrieta-Escobar.pdf" download style="margin-left:10px;background:transparent;border:1px solid var(--gold);color:var(--gold)">Descargar HV (PDF) ↓</a>
-    <p style="margin-top:22px;font-size:1.02rem"><a href="mailto:mariarrietaesc@gmail.com" style="color:var(--navy);font-weight:700;border-bottom:1px solid var(--gold-soft)">mariarrietaesc@gmail.com</a> &nbsp;·&nbsp; <a href="tel:+573008017886" style="color:var(--navy);font-weight:700;border-bottom:1px solid var(--gold-soft)">300 801 7886</a></p>
-    <p class="access" style="margin-top:12px">Referencias profesionales disponibles a solicitud.</p>
+    <p class="access" style="margin-top:18px">Referencias profesionales disponibles a solicitud.</p>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">© 2026 María Isabel Arrieta Escobar · <a href="mailto:mariarrietaesc@gmail.com">mariarrietaesc@gmail.com</a> · <a href="tel:+573008017886">300 801 7886</a></div>
+  <div class="wrap">© 2026 María Isabel Arrieta Escobar · <a href="mailto:mariarrietaesc@gmail.com">mariarrietaesc@gmail.com</a></div>
 </footer>
 
 </body>
