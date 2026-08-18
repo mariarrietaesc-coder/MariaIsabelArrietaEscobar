@@ -70,16 +70,6 @@
   .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:46px;align-items:center;position:relative;z-index:2}
   .hero-photo img{width:100%;max-width:290px;height:auto;aspect-ratio:25/28;object-fit:cover;border-radius:20px;border:2px solid rgba(200,169,106,.55);display:block;margin-left:auto;box-shadow:0 18px 44px rgba(0,0,0,.32)}
 
-  /* ---------- FRANJA DE CIFRAS ---------- */
-  .figures{background:var(--navy-2);color:#fff;border-top:1px solid rgba(200,169,106,.25)}
-  .fig-row{display:grid;grid-template-columns:repeat(4,1fr)}
-  .fig{padding:24px 20px;border-left:1px solid rgba(255,255,255,.10)}
-  .fig:first-child{border-left:none;padding-left:0}
-  .fig:last-child{padding-right:0}
-  .fig .n{font-family:'Fraunces',Georgia,serif;font-size:2.15rem;font-weight:600;color:var(--gold-soft);line-height:1}
-  .fig .l{font-size:.8rem;color:#c2cfdd;margin-top:8px;line-height:1.45}
-  .fig-note{font-size:.72rem;color:#8fa2b8;padding:0 0 18px;text-align:left}
-
   section{padding:44px 0}
   section.alt{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .eyebrow{font-size:.71rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:11px}
@@ -165,23 +155,13 @@
   .cta h2{font-size:2rem}
   footer{background:var(--navy);color:#9fb0c4;padding:32px 0;text-align:center;font-size:.85rem}
   footer a{color:var(--gold-soft);font-weight:600}
-  .cred,.card,.job,.fig,.hero-text{min-width:0}
+  .cred,.card,.job,.hero-text{min-width:0}
   header .lead,header .role,header .meta{overflow-wrap:break-word}
 
   @media(max-width:900px){
-    .fig-row{grid-template-columns:1fr 1fr}
-    .fig{border-left:none;border-top:1px solid rgba(255,255,255,.10);padding:18px 0}
-    .fig:nth-child(-n+2){border-top:none}
-    .fig:nth-child(even){padding-left:20px;border-left:1px solid rgba(255,255,255,.10)}
     .creds-row{grid-template-columns:1fr}
     .cred{padding:16px 0;border-left:none;border-top:1px solid var(--line)}
     .cred:first-child{border-top:none}
-  }
-  @media(max-width:560px){
-    .fig-row{grid-template-columns:1fr}
-    .fig,.fig:nth-child(even){padding:16px 0;border-left:none;border-top:1px solid rgba(255,255,255,.10)}
-    .fig:first-child{border-top:none}
-    .fig .l{max-width:none}
   }
   @media(max-width:760px){
     .wrap{padding:0 20px}
@@ -206,7 +186,6 @@
     .access{font-size:.85rem}
     .levels .cap{font-size:.65rem}
     .matgrid{grid-template-columns:1fr}
-    .fig .n{font-size:1.85rem}
   }
 </style>
 </head>
@@ -220,7 +199,7 @@
       <div class="rule"></div>
       <p class="lead">Coordinadora del Grupo de Evaluación y Seguimiento al Sistema de Control Interno — Ministerio de Igualdad y Equidad.</p>
       <p class="role">Doce años en control interno, auditoría interna y sistemas integrados de gestión, cinco de ellos en entidades del orden nacional. Audito bajo riesgos con las Normas Globales del IIA, evalúo el control interno con COSO, MECI y MIPG, y construyo las herramientas con las que se gestiona el aseguramiento.</p>
-      <div class="meta">Doctorado en Ingeniería Industrial (tesis sustentada, grado en septiembre de 2026) · MSc en Sistemas Integrados de Gestión · Bogotá D.C.</div>
+      <div class="meta">Ph.D.(c) en Ingeniería Industrial · MSc en Sistemas Integrados de Gestión · Bogotá D.C.</div>
       <div class="contact">
         <a class="solid" href="CV-Maria-Isabel-Arrieta-Escobar.pdf" download>Descargar hoja de vida (PDF)</a>
         <a href="mailto:mariarrietaesc@gmail.com?subject=Contacto%20desde%20tu%20sitio%20web">Escríbeme</a>
@@ -234,38 +213,13 @@
   </div>
 </header>
 
-<!-- FRANJA DE CIFRAS -->
-<section class="figures" style="padding:0">
-  <div class="wrap">
-    <div class="fig-row">
-      <div class="fig">
-        <div class="n">817</div>
-        <div class="l">actividades de planes de mejoramiento en gestión sobre la herramienta que diseñé (720 de auditorías internas y 97 de la Contraloría General)</div>
-      </div>
-      <div class="fig">
-        <div class="n">20</div>
-        <div class="l">auditorías al año en el Plan Anual de Auditorías basado en riesgos que formulo y ejecuto</div>
-      </div>
-      <div class="fig">
-        <div class="n">8</div>
-        <div class="l">direcciones territoriales bajo alcance, además del nivel central</div>
-      </div>
-      <div class="fig">
-        <div class="n">11</div>
-        <div class="l">profesionales en el grupo interno de trabajo que coordino</div>
-      </div>
-    </div>
-    <div class="fig-note">Cifras del cargo actual en el Ministerio de Igualdad y Equidad, verificables con la entidad.</div>
-  </div>
-</section>
-
 <!-- FRANJA DE CREDENCIALES -->
 <section class="creds">
   <div class="wrap">
     <div class="creds-row">
       <div class="cred"><div class="ce">Marco de trabajo</div><b>Normas Globales de Auditoría Interna del IIA</b><span>COSO · MECI · MIPG</span></div>
       <div class="cred"><div class="ce">Certificaciones</div><b>Auditora ISO 9001 · 14001 · OHSAS 18001 · SGE 21</b><span>TÜV Rheinland Ibérica (2016)</span></div>
-      <div class="cred"><div class="ce">Registro profesional</div><b>Matrícula profesional COPNIA vigente</b><span>Ingeniera industrial</span></div>
+      <div class="cred"><div class="ce">Herramientas</div><b>Power BI · Python · R · Excel avanzado</b><span>Microsoft Project · JavaScript · desarrollo a la medida</span></div>
     </div>
   </div>
 </section>
@@ -346,62 +300,10 @@
       <ul>
         <li><b>Docente — Administración de Empresas.</b> Corporación Unificada Nacional (CUN), Montería · agosto 2017 – noviembre 2018.</li>
         <li><b>Instructor de Formación — Salud Ocupacional.</b> SENA, Regional Córdoba · febrero – mayo 2017.</li>
-        <li><b>Coordinadora de Proyecto — Software Horaris.</b> Universidad de Córdoba, Montería · diciembre 2014 – diciembre 2015. Dirigí el equipo de desarrollo e implementación de Horaris, basado en el algoritmo de mi tesis laureada, con registro de soporte lógico ante la DNDA.</li>
+        <li><b>Coordinadora de Proyecto — Software Horaris.</b> Universidad de Córdoba, Montería · diciembre 2014 – diciembre 2015. Dirigí el equipo de desarrollo e implementación de Horaris, basado en el algoritmo de mi tesis laureada, con registro de soporte lógico ante la DNDA N.º 13-44-442.</li>
         <li><b>Auxiliar de Calidad — Sistema de Gestión Integral.</b> Servienergía Ltda., Cereté · marzo 2014 – diciembre 2015.</li>
         <li><b>Auxiliar — Autoevaluación de Programas Académicos.</b> Universidad de Córdoba, Montería · septiembre – noviembre 2013.</li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<!-- COMPETENCIAS -->
-<section class="alt">
-  <div class="wrap">
-    <div class="eyebrow">Competencias</div>
-    <h2 class="serif">En qué trabajo</h2>
-    <p class="sub">Marcos, prácticas y herramientas con las que ejerzo el aseguramiento.</p>
-    <div class="chips" style="margin-bottom:18px">
-      <span class="chip on">Auditoría interna basada en riesgos</span>
-      <span class="chip on">Evaluación del Sistema de Control Interno</span>
-      <span class="chip on">Normas Globales de Auditoría Interna del IIA</span>
-      <span class="chip on">Gestión integral del riesgo (ERM)</span>
-      <span class="chip on">Auditoría continua y analítica de datos</span>
-    </div>
-    <div class="chips">
-      <span class="chip">COSO</span>
-      <span class="chip">MECI</span>
-      <span class="chip">MIPG</span>
-      <span class="chip">Programa de Aseguramiento y Mejora de la Calidad (PAMC)</span>
-      <span class="chip">Mapa de aseguramiento</span>
-      <span class="chip">Planes de mejoramiento y cierre de hallazgos</span>
-      <span class="chip">Informes de ley</span>
-      <span class="chip">Atención a organismos de control (CGR)</span>
-      <span class="chip">Auditoría forense</span>
-      <span class="chip">Riesgos de corrupción</span>
-      <span class="chip">ISO 9001</span>
-      <span class="chip">ISO 14001</span>
-      <span class="chip">Cultura del autocontrol</span>
-      <span class="chip">Gestión de equipos multidisciplinarios</span>
-    </div>
-    <div style="margin-top:24px">
-      <div class="eyebrow">Herramientas</div>
-      <div class="chips">
-        <span class="chip">Power BI</span>
-        <span class="chip">Python</span>
-        <span class="chip">R</span>
-        <span class="chip">Excel avanzado</span>
-        <span class="chip">AutoAudit</span>
-        <span class="chip">Microsoft Project</span>
-        <span class="chip">JavaScript</span>
-        <span class="chip">Desarrollo de software a la medida</span>
-      </div>
-    </div>
-    <div style="margin-top:24px">
-      <div class="eyebrow">Idiomas</div>
-      <div class="chips">
-        <span class="chip">Español — nativo</span>
-        <span class="chip">Inglés — lectura y comprensión técnica</span>
-      </div>
     </div>
   </div>
 </section>
@@ -412,7 +314,7 @@
     <div class="eyebrow">Formación</div>
     <h2 class="serif">Formación académica</h2>
     <div class="edu" style="margin-top:18px">
-      <div class="row"><div><b>Doctorado en Ingeniería Industrial</b> — Universidad del Norte, Barranquilla</div><span>Tesis sustentada · grado 09/2026</span></div>
+      <div class="row"><div><b>Doctorado en Ingeniería Industrial</b> — Universidad del Norte, Barranquilla</div><span>Ph.D.(c) · grado 09/2026</span></div>
       <div class="row"><div><b>Maestría en Sistemas Integrados de Gestión</b> — UNIR, España <span style="color:var(--muted);font-weight:400;font-size:.88rem">(título convalidado ante el Ministerio de Educación Nacional)</span></div><span>2016</span></div>
       <div class="row"><div><b>Ingeniería Industrial</b> — Universidad de Córdoba, Montería</div><span>2014</span></div>
     </div>
@@ -420,15 +322,6 @@
       <div class="eyebrow" style="margin-bottom:8px">Reconocimientos</div>
       <div>Mención Laureada a la tesis de pregrado, máxima distinción — Universidad de Córdoba (Resolución 0003 del 6 de marzo de 2014)</div>
       <div>Becaria del Programa de Excelencia Doctoral del Bicentenario — Fondo de Ciencia, Tecnología e Innovación del Sistema General de Regalías (2020)</div>
-    </div>
-    <div style="margin-top:26px">
-      <div class="eyebrow">Certificación de auditor</div>
-      <div class="chips">
-        <span class="chip">ISO 9001:2015 — TÜV Rheinland Ibérica</span>
-        <span class="chip">ISO 14001:2015 — TÜV Rheinland Ibérica</span>
-        <span class="chip">OHSAS 18001:2007 — TÜV Rheinland Ibérica</span>
-        <span class="chip">SGE 21 — TÜV Rheinland Ibérica</span>
-      </div>
     </div>
     <div style="margin-top:24px">
       <div class="eyebrow">Diplomados</div>
@@ -448,6 +341,13 @@
         <span class="chip">Ciencia de Datos: Fundamentos — ESAP (2022)</span>
       </div>
     </div>
+    <div style="margin-top:24px">
+      <div class="eyebrow">Idiomas</div>
+      <div class="chips">
+        <span class="chip">Español — nativo</span>
+        <span class="chip">Inglés — lectura y comprensión técnica</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -455,8 +355,8 @@
 <section class="alt" id="software">
   <div class="wrap">
     <div class="eyebrow">Producción de software</div>
-    <h2 class="serif">Herramientas que he construido para auditoría</h2>
-    <p class="sub">Cuando un proceso de aseguramiento se puede ordenar con software, lo construyo. Estas son herramientas propias, no ejercicios de demostración.</p>
+    <h2 class="serif">Software que he diseñado y construido</h2>
+    <p class="sub">Dos herramientas para la función de auditoría —Ayataa y CONFORMA— y dos de optimización matemática, una de ellas derivada de mi tesis doctoral.</p>
     <div class="tools">
       <div class="card">
         <span class="tag">En producción</span>
@@ -473,7 +373,7 @@
       <div class="card">
         <span class="tag">Registrado ante la DNDA</span>
         <h3>Horaris</h3>
-        <p>Optimización matemática para la asignación de horarios académicos, construido sobre el algoritmo de mi tesis laureada e implementado en la Universidad de Córdoba. Con registro de soporte lógico ante la DNDA.</p>
+        <p>Optimización matemática para la asignación de horarios académicos, construido sobre el algoritmo de mi tesis laureada e implementado en la Universidad de Córdoba. Registro de soporte lógico ante la DNDA N.º 13-44-442.</p>
         <span class="out">Dirigí el equipo de desarrollo e implementación.</span>
       </div>
       <div class="card">
@@ -581,12 +481,6 @@
         <a class="btn" href="https://salud-mental-one.vercel.app/" target="_blank" rel="noopener">Ver demo →</a>
         <details class="access"><summary>Acceso de prueba</summary>Usuario <b>demo@campus.com</b> · Clave <b>demo1234</b></details>
       </div>
-      <div class="card">
-        <span class="tag">Auditoría · Herramienta propia</span>
-        <h3>Seguimiento a planes de mejoramiento</h3>
-        <p>Cada hallazgo con su responsable y su fecha, recordatorios automáticos antes del vencimiento y un tablero en vivo para la dirección. Diseñado y construido para una oficina de control interno.</p>
-        <div class="access">Demostración a solicitud.</div>
-      </div>
     </div>
   </div>
 </section>
@@ -596,7 +490,7 @@
   <div class="wrap">
     <div class="eyebrow" style="text-align:center">Contacto</div>
     <h2 class="serif">¿Conversamos?</h2>
-    <p class="sub" style="margin:0 auto 24px">Estoy abierta a posiciones de jefatura o coordinación en auditoría interna, control interno y aseguramiento, y a proyectos puntuales de consultoría.</p>
+    <p class="sub" style="margin:0 auto 24px">Cuéntame qué necesitas y te digo cómo puedo ayudarte.</p>
     <a class="btn" href="mailto:mariarrietaesc@gmail.com?subject=Contacto%20desde%20tu%20sitio%20web">Escríbeme →</a>
     <a class="btn" href="https://wa.me/573008017886?text=Hola%20Mar%C3%ADa%20Isabel%2C%20vi%20tu%20sitio%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener" style="margin-left:10px">WhatsApp →</a>
     <a class="btn ghost" href="CV-Maria-Isabel-Arrieta-Escobar.pdf" download style="margin-left:10px">Descargar hoja de vida ↓</a>
