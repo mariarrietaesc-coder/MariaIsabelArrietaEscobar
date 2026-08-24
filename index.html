@@ -52,6 +52,10 @@
   img,svg{max-width:100%}
   .wrap{max-width:1040px;margin:0 auto;padding:0 26px}
   .serif{font-family:'Fraunces',Georgia,serif}
+  /* overflow-x:hidden en html/body rompe position:sticky. clip corta igual
+     el desborde lateral pero no crea contenedor de scroll, asi que la barra
+     superior sigue fijandose. */
+  @supports (overflow-x: clip){ html,body{overflow-x:clip} }
 
   /* ---------- HERO ---------- */
   header{background:var(--navy);color:#fff;padding:58px 0 50px;position:relative;overflow:hidden}
