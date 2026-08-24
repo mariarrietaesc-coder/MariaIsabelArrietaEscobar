@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>María Isabel Arrieta Escobar — Auditoría Interna y Control Interno | Jefatura y Coordinación</title>
 <meta name="description" content="Auditoría interna y control interno, jefatura y coordinación. 12 años de trayectoria, 5 en entidades del orden nacional. Auditoría basada en riesgos (Normas Globales del IIA), COSO, MECI, MIPG, gestión del riesgo, auditoría continua y analítica de datos. Bogotá, Colombia." />
-<meta name="keywords" content="auditoría interna, control interno, jefe de control interno, director de auditoría interna, auditoría basada en riesgos, Normas Globales del IIA, COSO, MECI, MIPG, gestión del riesgo, ERM, auditoría continua, analítica de datos, Power BI, Python, PAMC, planes de mejoramiento, Contraloría General de la República, ISO 9001, ISO 14001, Bogotá" />
+<meta name="keywords" content="auditoría interna, control interno, evaluación externa de calidad, EQA, IIA Colombia, jefe de control interno, director de auditoría interna, auditoría basada en riesgos, Normas Globales del IIA, COSO, MECI, MIPG, gestión del riesgo, ERM, auditoría continua, analítica de datos, Power BI, Python, PAMC, planes de mejoramiento, Contraloría General de la República, ISO 9001, ISO 14001, Bogotá" />
 <link rel="canonical" href="https://maria-isabel-arrieta-escobar.vercel.app/" />
 <meta name="author" content="María Isabel Arrieta Escobar" />
 <meta property="og:type" content="profile" />
@@ -23,7 +23,7 @@
   "@type": "Person",
   "name": "María Isabel Arrieta Escobar",
   "jobTitle": "Coordinadora del Grupo de Evaluación y Seguimiento al Sistema de Control Interno",
-  "description": "Auditora interna y de control interno con 12 años de trayectoria, 5 de ellos en entidades del orden nacional. Auditoría basada en riesgos bajo las Normas Globales del IIA, evaluación del control interno (COSO, MECI, MIPG), auditoría continua y analítica de datos.",
+  "description": "Auditora interna y de control interno con 12 años de trayectoria, 5 de ellos en entidades del orden nacional. Integrante del equipo evaluador del IIA Colombia para Evaluaciones Externas de Calidad (EQA). Auditoría basada en riesgos bajo las Normas Globales del IIA, evaluación del control interno (COSO, MECI, MIPG), auditoría continua y analítica de datos.",
   "url": "https://maria-isabel-arrieta-escobar.vercel.app/",
   "image": "https://maria-isabel-arrieta-escobar.vercel.app/foto.jpg",
   "email": "mariarrietaesc@gmail.com",
@@ -35,7 +35,7 @@
     { "@type": "CollegeOrUniversity", "name": "Universidad Internacional de La Rioja (UNIR)" },
     { "@type": "CollegeOrUniversity", "name": "Universidad de Córdoba" }
   ],
-  "knowsAbout": ["Auditoría interna basada en riesgos","Normas Globales de Auditoría Interna del IIA","Control interno (COSO, MECI, MIPG)","Gestión del riesgo","Auditoría continua","Analítica de datos","Power BI","Python","Programa de Aseguramiento y Mejora de la Calidad (PAMC)","ISO 9001","ISO 14001"],
+  "knowsAbout": ["Auditoría interna basada en riesgos","Evaluaciones Externas de Calidad (EQA)","Normas Globales de Auditoría Interna del IIA","Control interno (COSO, MECI, MIPG)","Gestión del riesgo","Auditoría continua","Analítica de datos","Power BI","Python","Programa de Aseguramiento y Mejora de la Calidad (PAMC)","ISO 9001","ISO 14001"],
   "sameAs": ["https://www.linkedin.com/in/maria-isabel-arrieta-escobar-40396291"]
 }
 </script>
@@ -70,8 +70,25 @@
   .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:46px;align-items:center;position:relative;z-index:2}
   .hero-photo img{width:100%;max-width:290px;height:auto;aspect-ratio:25/28;object-fit:cover;border-radius:20px;border:2px solid rgba(200,169,106,.55);display:block;margin-left:auto;box-shadow:0 18px 44px rgba(0,0,0,.32)}
 
-  section{padding:44px 0}
+  /* ---------- NAVEGACIÓN POR SECCIONES ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:1px solid rgba(200,169,106,.3);box-shadow:0 2px 16px rgba(11,31,51,.22)}
+  .nav .wrap{display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+  .nav .wrap::-webkit-scrollbar{display:none}
+  .nav a{flex:0 0 auto;padding:14px 15px;font-size:.83rem;font-weight:600;color:#a9bacd;border-bottom:2px solid transparent;white-space:nowrap;transition:color .18s,border-color .18s}
+  .nav a:hover{color:#fff}
+  .nav a.on{color:#fff;border-bottom-color:var(--gold)}
+  .nav .grp{flex:0 0 auto;font-size:.6rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--gold-soft);padding-right:12px;white-space:nowrap}
+  .nav .sep{flex:0 0 auto;width:1px;height:17px;background:rgba(255,255,255,.17);margin:0 14px}
+
+  section{padding:44px 0;scroll-margin-top:60px}
   section.alt{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+  /* ---------- SEPARADOR DE BLOQUE ---------- */
+  .divider{background:var(--navy);color:#fff;padding:26px 0}
+  .divider .wrap{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .divider .de{font-size:.63rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft)}
+  .divider h2{font-size:1.5rem;color:#fff;margin:0}
+  .divider p{color:#a9bacd;font-size:.92rem;margin:0;flex:1;min-width:260px}
   .eyebrow{font-size:.71rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:11px}
   h2{font-size:1.8rem;font-weight:600;letter-spacing:-.01em;margin-bottom:8px;color:var(--navy)}
   .sub{color:var(--muted);margin-bottom:24px;max-width:730px}
@@ -186,6 +203,9 @@
     .access{font-size:.85rem}
     .levels .cap{font-size:.65rem}
     .matgrid{grid-template-columns:1fr}
+    .nav .grp,.nav .sep{display:none}
+    .nav a{padding:12px 13px;font-size:.86rem}
+    .divider h2{font-size:1.3rem}
   }
 </style>
 </head>
@@ -213,6 +233,23 @@
   </div>
 </header>
 
+<!-- NAVEGACIÓN POR SECCIONES -->
+<nav class="nav" aria-label="Secciones del sitio">
+  <div class="wrap">
+    <span class="grp">Perfil</span>
+    <a href="#trayectoria">Trayectoria</a>
+    <a href="#formacion">Formación</a>
+    <span class="sep"></span>
+    <span class="grp">Lo que ofrezco</span>
+    <a href="#software">Software</a>
+    <a href="#diagnostico">Diagnóstico de madurez</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#demos">Demos</a>
+    <span class="sep"></span>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
 <!-- FRANJA DE CREDENCIALES -->
 <section class="creds">
   <div class="wrap">
@@ -234,6 +271,14 @@
     <div class="tl">
 
       <div class="job now">
+        <div class="t">Evaluadora de Calidad de Auditoría Interna <span style="font-weight:500;color:var(--muted);font-size:.9rem">· voluntariado profesional</span><span class="badge">Actual</span></div>
+        <div class="m">IIA Colombia — Instituto de Auditores Internos de Colombia · Bogotá D.C. · agosto 2026 – actualidad</div>
+        <ul>
+          <li>Integrante del equipo evaluador designado por el IIA Colombia para Evaluaciones Externas de Calidad (EQA) de la función de auditoría interna, conforme al Manual de Evaluación de Calidad del IIA (edición 2024) y a las Normas Globales de Auditoría Interna.</li>
+        </ul>
+      </div>
+
+      <div class="job now">
         <div class="t">Coordinadora del Grupo de Evaluación y Seguimiento al Sistema de Control Interno<span class="badge">Actual</span></div>
         <div class="m">Ministerio de Igualdad y Equidad · Oficina de Control Interno · Profesional Especializado, código 2028, grado 17 · Bogotá · julio 2024 – actualidad</div>
         <ul>
@@ -250,10 +295,18 @@
         <div class="t">Especialista Senior de Auditoría y Riesgos</div>
         <div class="m">SENA, Dirección General · Oficina de Control Interno · Contrato de prestación de servicios · Bogotá · enero 2023 – julio 2024</div>
         <ul>
-          <li>Diseñé la línea de auditoría continua y analítica de datos de la Oficina de Control Interno, con tableros de control para la Alta Dirección.</li>
-          <li>Estructuré el Plan Anual de Auditoría basado en riesgos con alcance nacional, conforme a la Guía de Administración de Riesgos de entidades del Estado y a las normas internacionales de auditoría interna.</li>
-          <li>Apoyé la formulación del Programa de Aseguramiento y Mejora de la Calidad (PAMC) y del mapa de aseguramiento de la auditoría interna.</li>
-          <li>Apoyé la supervisión y ejecución de trabajos de aseguramiento y consultoría, e hice seguimiento semanal a los planes de mejoramiento próximos a vencer y a los requerimientos de la Contraloría General de la República.</li>
+          <li>Diseñé la primera línea institucional de auditoría continua y analítica de datos apoyada en Business Intelligence (Power BI), reduciendo en un 90 % los tiempos de reporte directivo.</li>
+          <li>Formulé el Plan Anual de Auditoría basado en riesgos con alcance nacional, alineando las metodologías estatales con las Normas Globales del IIA, con cobertura del 100 % de los procesos de mayor criticidad.</li>
+          <li>Contribuí a la formulación del Programa de Aseguramiento y Mejora de la Calidad (PAMC) y del mapa de aseguramiento de la auditoría interna.</li>
+          <li>Gestioné los requerimientos de la Contraloría General de la República con una tasa de respuesta conforme del 90 %, y el seguimiento semanal a los planes de mejoramiento próximos a vencer.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="t">Pasantía de Investigación Doctoral</div>
+        <div class="m">Universidad de los Andes (Chile) · Facultad de Ingeniería y Ciencias Aplicadas · Santiago de Chile · septiembre – diciembre 2023</div>
+        <ul>
+          <li>Pasantía internacional con el profesor Héctor Andrés López-Ospina, Ph.D., como anfitrión. Trabajé sobre el modelo de optimización multiobjetivo de mi tesis doctoral: calibración por programación matemática positiva y análisis de compensaciones entre objetivos económicos, ambientales y de diversidad en el uso del suelo.</li>
         </ul>
       </div>
 
@@ -262,16 +315,17 @@
         <div class="m">SENA, Dirección General · Oficina de Control Interno · Contrato de prestación de servicios · Bogotá · abril 2021 – diciembre 2022</div>
         <ul>
           <li>Ejecuté auditorías internas de aseguramiento a los procesos de Gestión del Talento Humano, Gestión de Recursos Financieros e Infraestructura y Logística, conforme al Plan Anual de Auditoría.</li>
-          <li>Verifiqué y seguí los planes de mejoramiento de auditorías internas y externas hasta el cierre efectivo de los hallazgos, y elaboré los informes de ley a cargo de la Oficina.</li>
+          <li>Verifiqué e hice seguimiento integral a los planes de mejoramiento internos y externos, logrando el cierre efectivo del 60 % de las observaciones detectadas, y elaboré los informes de ley a cargo de la Oficina.</li>
           <li>Apoyé la evaluación del Sistema Integrado de Gestión y Autocontrol (SIGA) y la estrategia de medición de impacto de los planes de mejoramiento.</li>
         </ul>
       </div>
 
       <div class="job">
         <div class="t">Investigadora Doctoral en Optimización y Modelos de Decisión</div>
-        <div class="m">Universidad del Norte · Becaria del Programa de Excelencia Doctoral del Bicentenario · Barranquilla · 2020 – 2021</div>
+        <div class="m">Universidad del Norte · Becaria del Programa de Excelencia Doctoral del Bicentenario · Barranquilla · febrero 2020 – marzo 2021</div>
         <ul>
-          <li>Investigación doctoral en Ingeniería Industrial (optimización y modelos de decisión), con financiación del Fondo de Ciencia, Tecnología e Innovación del Sistema General de Regalías.</li>
+          <li>Dedicación exclusiva como becaria del Programa de Excelencia Doctoral del Bicentenario, financiada por el Fondo de Ciencia, Tecnología e Innovación del Sistema General de Regalías.</li>
+          <li>Dediqué este primer año de manera exclusiva a la fase escolarizada del doctorado: 28 créditos en concentración en matemáticas, gestión de operaciones, programación lineal, procesos estocásticos, gestión integral empresarial y formación investigativa, junto con la inscripción del tema de tesis y el avance de la revisión del estado del arte.</li>
         </ul>
       </div>
 
@@ -299,6 +353,7 @@
       <div class="eh">Trayectoria anterior</div>
       <ul>
         <li><span class="rol">Docente Asistente — Administración de Empresas.</span> Corporación Unificada Nacional de Educación Superior (CUN), Montería · hora cátedra y medio tiempo · agosto 2017 – noviembre 2018.</li>
+        <li><span class="rol">Instructor de Formación — Virtualización.</span> SENA, Centro Agropecuario y de Biotecnología El Porvenir, Regional Córdoba · junio – noviembre 2017.</li>
         <li><span class="rol">Instructor de Formación — Salud Ocupacional.</span> SENA, Regional Córdoba · febrero – mayo 2017.</li>
         <li><span class="rol">Coordinadora de Proyecto — Software Horaris.</span> Universidad de Córdoba, Montería · diciembre 2014 – diciembre 2015. Dirigí el equipo de desarrollo e implementación de Horaris, basado en el algoritmo de mi tesis de pregrado laureada, con registro de soporte lógico ante la DNDA N.º 13-44-442.</li>
         <li><span class="rol">Auxiliar de Calidad — Sistema de Gestión Integral.</span> Servienergía Ltda., Cereté · marzo 2014 – diciembre 2015.</li>
@@ -309,7 +364,7 @@
 </section>
 
 <!-- FORMACIÓN -->
-<section>
+<section id="formacion">
   <div class="wrap">
     <div class="eyebrow">Formación</div>
     <h2 class="serif">Formación académica</h2>
@@ -351,6 +406,17 @@
   </div>
 </section>
 
+<!-- SEPARADOR: LO QUE OFREZCO -->
+<div class="divider">
+  <div class="wrap">
+    <div>
+      <div class="de">Lo que ofrezco</div>
+      <h2 class="serif">Productos y servicios</h2>
+    </div>
+    <p>Software propio en producción, un diagnóstico de madurez que puedes correr tú mismo, servicios de aseguramiento y entornos de demostración abiertos.</p>
+  </div>
+</div>
+
 <!-- SOFTWARE PROPIO -->
 <section class="alt" id="software">
   <div class="wrap">
@@ -386,7 +452,7 @@
 </section>
 
 <!-- DIAGNÓSTICO: NIVEL DE MADUREZ -->
-<section>
+<section id="diagnostico">
   <div class="wrap">
     <div class="eyebrow">Diagnóstico</div>
     <h2 class="serif">Evaluación del nivel de madurez de la auditoría interna</h2>
@@ -460,7 +526,7 @@
 </section>
 
 <!-- MUESTRAS / DEMOS -->
-<section>
+<section id="demos">
   <div class="wrap">
     <div class="eyebrow">Muestras</div>
     <h2 class="serif">Entornos de demostración</h2>
@@ -485,7 +551,7 @@
 </section>
 
 <!-- CONTACTO -->
-<section class="cta alt">
+<section class="cta alt" id="contacto">
   <div class="wrap">
     <div class="eyebrow" style="text-align:center">Contacto</div>
     <h2 class="serif">¿Conversamos?</h2>
@@ -502,5 +568,30 @@
   <div class="wrap">© 2026 María Isabel Arrieta Escobar · <a href="mailto:mariarrietaesc@gmail.com">mariarrietaesc@gmail.com</a> · <a href="tel:+573008017886">300 801 7886</a></div>
 </footer>
 
+<script>
+/* Resalta en la barra superior la seccion que se esta viendo. */
+(function(){
+  var enlaces = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
+  if(!enlaces.length || !('IntersectionObserver' in window)) return;
+  var porId = {};
+  var secciones = [];
+  enlaces.forEach(function(a){
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if(el){ porId[el.id] = a; secciones.push(el); }
+  });
+  var visibles = {};
+  var obs = new IntersectionObserver(function(entradas){
+    entradas.forEach(function(e){ visibles[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+    var mejor = null, top = 0;
+    secciones.forEach(function(el){
+      var v = visibles[el.id] || 0;
+      if(v > top){ top = v; mejor = el.id; }
+    });
+    enlaces.forEach(function(a){ a.classList.remove('on'); });
+    if(mejor && porId[mejor]) porId[mejor].classList.add('on');
+  }, {rootMargin:'-60px 0px -55% 0px', threshold:[0,.15,.35,.6,1]});
+  secciones.forEach(function(el){ obs.observe(el); });
+})();
+</script>
 </body>
 </html>
