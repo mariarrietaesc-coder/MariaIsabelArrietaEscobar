@@ -174,26 +174,6 @@
   .note div{color:var(--navy);font-weight:600;font-size:.94rem;line-height:1.5}
   .note div + div{margin-top:7px}
 
-  /* ---------- MADUREZ ---------- */
-  .levels{display:flex;gap:8px;align-items:flex-end;margin:20px 0 26px}
-  .levels .lv{flex:1;text-align:center}
-  .levels .bar{border-radius:7px 7px 0 0;position:relative}
-  .levels .cap{font-size:.73rem;color:var(--muted);margin-top:9px}
-  .levels .cap b{color:var(--navy)}
-  .levels .flag{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:.61rem;font-weight:700;padding:3px 9px;border-radius:10px;white-space:nowrap}
-  .matgrid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-top:8px}
-  .matgrid svg{width:100%;max-width:380px;display:block;margin:0 auto;overflow:visible}
-  .dims{display:grid;gap:13px}
-  .dims .d .top{display:flex;justify-content:space-between;font-size:.89rem;color:var(--ink);margin-bottom:5px}
-  .dims .d .top b{color:var(--gold)}
-  .barbg{height:8px;background:#e7eaef;border-radius:5px;overflow:hidden}
-  .barfg{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--gold),var(--gold-soft))}
-
-  .destacado{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin-top:6px}
-  .destacado h3{font-size:1.32rem;font-weight:600;color:var(--navy);letter-spacing:-.01em;margin-bottom:8px}
-  .destacado > p.qd{color:var(--muted);max-width:730px}
-  @media(min-width:880px){ .tools .card.ancha{grid-column:span 2} }
-  .subt{font-size:.71rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:34px 0 13px}
   .cta{text-align:center}
   .cta h2{font-size:2rem}
   footer{background:var(--navy);color:#9fb0c4;padding:32px 0;text-align:center;font-size:.85rem}
@@ -228,10 +208,6 @@
     .chip{font-size:.85rem;padding:8px 13px}
     .card{padding:20px}
     .access{font-size:.85rem}
-    .levels .cap{font-size:.65rem}
-    .matgrid{grid-template-columns:1fr}
-    .destacado{padding:20px}
-    .destacado h3{font-size:1.14rem}
     .nav .grp,.nav .sep{display:none}
     .nav a{padding:12px 13px;font-size:.86rem}
     .divider h2{font-size:1.3rem}
@@ -298,7 +274,7 @@
     <div class="about">
       <p>Soy ingeniera industrial y auditora interna. Mi trayectoria combina control interno, tecnología y optimización.</p>
       <p>Empecé mi carrera del lado del auditado, diseñando e implementando sistemas de gestión, de modo que conozco la auditoría desde las dos orillas: la de quien gestiona los procesos y la de quien los evalúa. Desde 2021 me dedico por completo a la auditoría interna (auditoría basada en riesgos, auditoría continua, analítica de datos, aseguramiento de la calidad y evaluación del Sistema de Control Interno), primero en el SENA y después en el Ministerio de Igualdad y Equidad, donde coordino el grupo de once profesionales responsable de esa evaluación: veinte auditorías al año, con alcance en el nivel central y en ocho direcciones territoriales.</p>
-      <p><b>Mi diferencial está en convertir necesidades de gestión y control en soluciones concretas.</b> Mi tesis de pregrado dio origen a Horaris, un software de asignación de horarios registrado ante la DNDA. Después desarrollé Ayataa, para la gestión y el seguimiento de planes de mejoramiento, hoy en producción con 817 actividades, alertas automáticas de vencimiento y tableros para la Alta Dirección. Y CONFORMA, en trámite de registro ante la DNDA, para la autoevaluación de la función de auditoría interna en entidades públicas y privadas.</p>
+      <p>Mi diferencial está en convertir necesidades de gestión y control en soluciones concretas. Mi tesis de pregrado dio origen a Horaris, un software de asignación de horarios registrado ante la DNDA. Después desarrollé Ayataa, para la gestión y el seguimiento de planes de mejoramiento, hoy en producción con 817 actividades, alertas automáticas de vencimiento y tableros para la Alta Dirección. Y CONFORMA, en trámite de registro ante la DNDA, para la autoevaluación de la función de auditoría interna en entidades públicas y privadas.</p>
       <p>Curso además un doctorado en Ingeniería enfocado en optimización multiobjetivo aplicada a la planeación agropecuaria sostenible. De ahí salió MOASM, un modelo abierto disponible en Hugging Face. Es el mismo instrumental con el que trabajo los datos de una auditoría cuando el problema deja de caber en una hoja de cálculo.</p>
       <p>Mi perfil está en la intersección entre auditoría, optimización y tecnología. Ahí es donde aporto: mejorar la forma en que las organizaciones deciden, controlan y sustentan su gestión.</p>
     </div>
@@ -468,13 +444,13 @@
         <span class="tag">En producción</span>
         <h3>Ayataa</h3>
         <p>Plataforma institucional de gestión de planes de mejoramiento, en la que la Oficina de Control Interno hace el seguimiento como tercera línea. En producción en el Ministerio de Igualdad y Equidad: 817 actividades en gestión, hallazgos centralizados, alertas automáticas de vencimiento y tableros de avance para la Alta Dirección.</p>
-        <span class="out">Reemplaza el seguimiento manual en hojas de cálculo.</span>
+        <span class="out">La diseñé, la construí y la puse en producción.</span>
       </div>
       <div class="card">
         <span class="tag">En trámite de registro</span>
         <h3>CONFORMA</h3>
         <p>Aseguramiento de la calidad y verificación de brechas de la función de auditoría interna, sobre las Normas Globales del IIA. En trámite de registro de soporte lógico ante la DNDA (radicado 1-2026-133221).</p>
-        <span class="out">Le pone método y trazabilidad al PAMC.</span>
+        <span class="out">Lo desarrollé completo, de la metodología al código.</span>
       </div>
       <div class="card">
         <span class="tag">Registrado ante la DNDA</span>
@@ -493,71 +469,17 @@
     <h2 class="serif">Servicios</h2>
     <p class="sub">Además de mi ejercicio profesional, acompaño a empresas y entidades en frentes puntuales de aseguramiento y control.</p>
 
-    <div class="destacado">
-      <div class="eyebrow">Servicio principal</div>
-      <h3 class="serif">Diagnóstico de madurez de la función de auditoría interna</h3>
-      <p class="qd">Mido qué tan madura está una oficina de auditoría frente a las Normas Globales del IIA y a modelos de capacidad, muestro las brechas y entrego un plan de por dónde empezar. Aquí el objeto evaluado es la propia función de auditoría, no los procesos de la entidad.</p>
-      <div class="levels">
-        <div class="lv"><div class="bar" style="height:34px;background:#e7eaef"></div><div class="cap"><b>1</b> Inicial</div></div>
-        <div class="lv"><div class="bar" style="height:52px;background:#dbe0e8"></div><div class="cap"><b>2</b> Básico</div></div>
-        <div class="lv"><div class="bar" style="height:70px;background:linear-gradient(180deg,var(--gold-soft),var(--gold))"><span class="flag" style="background:var(--navy);color:var(--gold-soft)">Estado actual</span></div><div class="cap"><b>3</b> Definido</div></div>
-        <div class="lv"><div class="bar" style="height:90px;background:#dbe0e8"></div><div class="cap"><b>4</b> Gestionado</div></div>
-        <div class="lv"><div class="bar" style="height:110px;background:var(--navy)"><span class="flag" style="background:var(--gold);color:#fff">Meta</span></div><div class="cap"><b>5</b> Optimizado</div></div>
-      </div>
-    <div class="eyebrow">Dimensiones que evalúo</div>
-    <div class="matgrid">
-      <div style="text-align:center">
-        <svg viewBox="-50 0 480 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de las seis dimensiones evaluadas">
-          <g fill="none" stroke="#e2e6ec" stroke-width="1">
-            <polygon points="160,40 263.9,100 263.9,220 160,280 56.1,220 56.1,100"/>
-            <polygon points="160,88 222.35,124 222.35,196 160,232 97.65,196 97.65,124"/>
-            <polygon points="160,136 180.78,148 180.78,172 160,184 139.22,172 139.22,148"/>
-          </g>
-          <g stroke="#dce1e8" stroke-width="1">
-            <line x1="160" y1="160" x2="160" y2="40"/><line x1="160" y1="160" x2="263.9" y2="100"/>
-            <line x1="160" y1="160" x2="263.9" y2="220"/><line x1="160" y1="160" x2="160" y2="280"/>
-            <line x1="160" y1="160" x2="56.1" y2="220"/><line x1="160" y1="160" x2="56.1" y2="100"/>
-          </g>
-          <polygon points="160,88 243.14,112 222.35,196 160,208 97.65,196 118.43,136" fill="#b08d3a" fill-opacity="0.16" stroke="#b08d3a" stroke-width="2.5"/>
-          <g fill="#b08d3a">
-            <circle cx="160" cy="88" r="3.6"/><circle cx="243.14" cy="112" r="3.6"/>
-            <circle cx="222.35" cy="196" r="3.6"/><circle cx="160" cy="208" r="3.6"/>
-            <circle cx="97.65" cy="196" r="3.6"/><circle cx="118.43" cy="136" r="3.6"/>
-          </g>
-          <g fill="#5d6b7e" font-size="11.5" font-family="Inter, Arial, sans-serif">
-            <text x="160" y="30" text-anchor="middle">Gobierno y mandato</text>
-            <text x="272" y="100" text-anchor="start">Planeación</text>
-            <text x="272" y="224" text-anchor="start">Ejecución</text>
-            <text x="160" y="302" text-anchor="middle">Tecnología y analítica</text>
-            <text x="48" y="224" text-anchor="end">Talento</text>
-            <text x="48" y="100" text-anchor="end">Calidad / QAIP</text>
-          </g>
-        </svg>
-      </div>
-      <div class="dims">
-        <div class="d"><div class="top"><span>Gobierno y mandato</span><b>3/5</b></div><div class="barbg"><div class="barfg" style="width:60%"></div></div></div>
-        <div class="d"><div class="top"><span>Planeación basada en riesgos</span><b>4/5</b></div><div class="barbg"><div class="barfg" style="width:80%"></div></div></div>
-        <div class="d"><div class="top"><span>Ejecución y aseguramiento</span><b>3/5</b></div><div class="barbg"><div class="barfg" style="width:60%"></div></div></div>
-        <div class="d"><div class="top"><span>Tecnología y analítica</span><b>2/5</b></div><div class="barbg"><div class="barfg" style="width:40%"></div></div></div>
-        <div class="d"><div class="top"><span>Gestión del talento</span><b>3/5</b></div><div class="barbg"><div class="barfg" style="width:60%"></div></div></div>
-        <div class="d"><div class="top"><span>Calidad y mejora (QAIP)</span><b>2/5</b></div><div class="barbg"><div class="barfg" style="width:40%"></div></div></div>
-      </div>
-    </div>
-    <p class="access" style="margin-top:16px">Resultado ilustrativo (escala 1 a 5). Al final entrego el puntaje de cada dimensión, el nivel global y un plan de mejora por prioridades. El levantamiento lo hago con CONFORMA, mi software de aseguramiento de la calidad.</p>
-      <a class="btn" href="mailto:mariarrietaesc@gmail.com?subject=Diagn%C3%B3stico%20de%20madurez%20de%20la%20auditor%C3%ADa%20interna" style="margin-top:14px">Solicitar el diagnóstico →</a>
-    </div>
-
-    <div class="subt">Otros frentes</div>
     <div class="tools">
-      <div class="card"><h3>Auditoría interna basada en riesgos</h3><p>Plan anual y ejecución de auditorías bajo las Normas Globales del IIA.</p><span class="out">Enfoca el esfuerzo donde más riesgo hay.</span></div>
-      <div class="card"><h3>Evaluación del Sistema de Control Interno</h3><p>Qué tan efectivo es el control de la entidad frente a COSO y MECI, alineado al MIPG. Aquí lo evaluado son los procesos, no la oficina de auditoría.</p><span class="out">Sabes dónde estás parado y qué falta.</span></div>
-      <div class="card"><h3>Gestión del riesgo</h3><p>Identificación, evaluación y mapas de riesgo, incluido el de corrupción.</p><span class="out">Anticipa los problemas en vez de reaccionar.</span></div>
-      <div class="card"><h3>Análisis de datos y auditoría continua</h3><p>Monitoreo y tableros con Power BI, Python y Excel avanzado.</p><span class="out">Ves las excepciones sin esperar a la auditoría anual.</span></div>
-      <div class="card ancha">
+      <div class="card"><h3>Diagnóstico de madurez de la función de auditoría interna</h3><p>Mido qué tan madura está una oficina de auditoría frente a las Normas Globales del IIA y a modelos de capacidad, y muestro las brechas. Lo evaluado aquí es la función de auditoría, no los procesos de la entidad.</p><span class="out">Al final queda el puntaje de cada dimensión y un plan de mejora por prioridades.</span></div>
+      <div class="card"><h3>Auditoría interna basada en riesgos</h3><p>Formulación del plan anual y ejecución de las auditorías bajo las Normas Globales del IIA.</p><span class="out">Incluye el plan anual formulado y el informe de cada auditoría.</span></div>
+      <div class="card"><h3>Evaluación del Sistema de Control Interno</h3><p>Qué tan efectivo es el control de la entidad frente a COSO y MECI, alineado al MIPG. Aquí lo evaluado son los procesos, no la oficina de auditoría.</p><span class="out">Termina en un informe de efectividad del control, componente por componente.</span></div>
+      <div class="card"><h3>Gestión del riesgo</h3><p>Identificación, evaluación y mapas de riesgo, incluido el de corrupción.</p><span class="out">Los mapas quedan levantados, con sus controles y sus responsables.</span></div>
+      <div class="card"><h3>Análisis de datos y auditoría continua</h3><p>Monitoreo y tableros con Power BI, Python y Excel avanzado.</p><span class="out">El tablero queda funcionando y el equipo sabiendo mantenerlo.</span></div>
+      <div class="card">
         <span class="tag">Con demo abierta</span>
         <h3>Campus de autoformación y software a la medida</h3>
         <p>Monto el campus con el que la entidad forma a sus propios equipos: módulos, evaluaciones, seguimiento de progreso y constancia. También desarrollo aplicaciones web y automatizaciones sobre los procesos de cada organización.</p>
-        <span class="out">La entidad queda con su propio programa de formación.</span>
+        <span class="out">La entidad se queda con el campus y con sus contenidos.</span>
         <a class="btn" href="https://campus-oci.vercel.app/" target="_blank" rel="noopener">Ver el campus de control interno y MIPG →</a>
         <details class="access"><summary>Acceso de prueba</summary>Usuario <b>demo@campus-oci.com</b> · Clave <b>demo1234</b></details>
       </div>
