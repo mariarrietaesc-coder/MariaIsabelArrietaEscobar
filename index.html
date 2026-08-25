@@ -144,6 +144,12 @@
   .job .rol2{background:#fbf7ee;border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:9px 14px;margin:0 0 11px;font-size:.92rem;font-weight:600;color:var(--navy);line-height:1.45}
   .badge{display:inline-block;background:var(--gold);color:#1a1404;font-size:.63rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:3px 9px;border-radius:20px;vertical-align:middle;margin-left:8px}
   .earlier{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  /* Plegado solo en movil: en el escritorio los bloques van abiertos y sin
+     el disparador, porque ahi el largo de la pagina no molesta. */
+  details.plegable > summary{list-style:none}
+  details.plegable > summary::-webkit-details-marker{display:none}
+  .detalle > summary{display:none}
+  .earlier > summary{cursor:default}
   .earlier .eh{font-size:.71rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
   .earlier ul{margin-left:17px;font-size:.88rem;color:#41505f}
   .earlier li{margin-bottom:5px}
@@ -216,6 +222,16 @@
     .nav .grp,.nav .sep{display:none}
     .nav a{padding:12px 13px;font-size:.86rem}
     .divider h2{font-size:1.3rem}
+    .detalle > summary{display:inline-flex;align-items:center;gap:7px;margin:2px 0 0;font-size:.87rem;font-weight:600;color:var(--navy);cursor:pointer}
+    .detalle > summary::before{content:"+";color:var(--gold);font-weight:700;font-size:1.05rem;line-height:1}
+    .detalle[open] > summary::before{content:"–"}
+    .detalle[open] > summary{margin-bottom:8px}
+    .job{padding-bottom:20px}
+    .earlier > summary{cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .earlier > summary::after{content:"+";color:var(--gold);font-weight:700;font-size:1.15rem}
+    .earlier[open] > summary::after{content:"–"}
+    .earlier[open] > summary{margin-bottom:12px}
+    .nav::after{content:"";position:absolute;right:0;top:0;bottom:0;width:40px;pointer-events:none;background:linear-gradient(90deg,rgba(11,31,51,0),var(--navy))}
   }
 </style>
 </head>
@@ -299,6 +315,8 @@
         <div class="t">Profesional Especializado — Oficina de Control Interno<span class="badge">Actual</span></div>
         <div class="m">Ministerio de Igualdad y Equidad (en liquidación) · código 2028, grado 17 · Bogotá · julio 2024 – actualidad</div>
         <div class="rol2">Coordinadora del Grupo de Evaluación y Seguimiento al Sistema de Control Interno (Resolución 00393 de 2026), hasta el cese de operaciones de la entidad.</div>
+        <details class="plegable detalle" open>
+          <summary>Ver detalle</summary>
         <ul>
           <li>Dirijo el grupo interno de trabajo: 11 profesionales —4 contadores, 3 abogados, 2 ingenieros industriales, 1 ingeniero de sistemas y 1 administrador público— a cargo de la evaluación y el seguimiento del Sistema de Control Interno del Ministerio.</li>
           <li>Diseñé e implementé Ayataa, plataforma institucional de gestión de planes de mejoramiento —donde la Oficina de Control Interno hace el seguimiento como tercera línea—, hoy en producción en la entidad: gestiona 817 actividades (720 de auditorías internas y 97 de la Contraloría General de la República), centraliza los hallazgos, automatiza las alertas de vencimiento y genera los tableros de avance para la Alta Dirección.</li>
@@ -307,68 +325,87 @@
           <li>Evalúo el Sistema de Control Interno con enfoque basado en riesgos bajo MECI y MIPG; el nivel de madurez medido del sistema es de 2,7 sobre 5.</li>
           <li>Gestiono el riesgo institucional (identificación, análisis, evaluación y actualización de mapas de riesgo), proyecto los informes de auditoría y de ley para la Alta Dirección y los organismos de control, y lidero la pedagogía institucional en control interno.</li>
         </ul>
+        </details>
       </div>
 
       <div class="job">
         <div class="t">Especialista Senior de Auditoría y Riesgos</div>
         <div class="m">SENA, Dirección General · Oficina de Control Interno · Contrato de prestación de servicios · Bogotá · enero 2023 – julio 2024</div>
+        <details class="plegable detalle" open>
+          <summary>Ver detalle</summary>
         <ul>
           <li>Diseñé la primera línea institucional de auditoría continua y construí los tableros de reporte directivo en Power BI, reduciendo en un 90 % los tiempos de reporte.</li>
           <li>Formulé el Plan Anual de Auditoría basado en riesgos con alcance nacional, alineando las metodologías estatales con las Normas Globales del IIA, con cobertura del 100 % de los procesos de mayor criticidad.</li>
           <li>Contribuí a la formulación del Programa de Aseguramiento y Mejora de la Calidad (PAMC) y del mapa de aseguramiento de la auditoría interna.</li>
           <li>Gestioné los requerimientos de la Contraloría General de la República con una tasa de respuesta conforme del 90 %, y el seguimiento semanal a los planes de mejoramiento próximos a vencer.</li>
         </ul>
+        </details>
       </div>
 
       <div class="job">
         <div class="t">Pasantía de Investigación Doctoral</div>
         <div class="m">Universidad de los Andes (Chile) · Facultad de Ingeniería y Ciencias Aplicadas · Santiago de Chile · septiembre – diciembre 2023</div>
+        <details class="plegable detalle" open>
+          <summary>Ver detalle</summary>
         <ul>
           <li>Pasantía internacional con el profesor Héctor Andrés López-Ospina, Ph.D., como anfitrión. Trabajé sobre el modelo de optimización multiobjetivo de mi tesis doctoral: calibración por programación matemática positiva y análisis de compensaciones entre objetivos económicos, ambientales y de diversidad en el uso del suelo.</li>
         </ul>
+        </details>
       </div>
 
       <div class="job">
         <div class="t">Auditora de Control de Gestión</div>
         <div class="m">SENA, Dirección General · Oficina de Control Interno · Contrato de prestación de servicios · Bogotá · abril 2021 – diciembre 2022</div>
+        <details class="plegable detalle" open>
+          <summary>Ver detalle</summary>
         <ul>
           <li>Ejecuté auditorías internas de aseguramiento a los procesos de Gestión del Talento Humano, Gestión de Recursos Financieros e Infraestructura y Logística, conforme al Plan Anual de Auditoría.</li>
           <li>Verifiqué e hice seguimiento integral a los planes de mejoramiento internos y externos, logrando el cierre efectivo del 60 % de las observaciones detectadas, y elaboré los informes de ley a cargo de la Oficina.</li>
           <li>Apoyé la evaluación del Sistema Integrado de Gestión y Autocontrol (SIGA) y la estrategia de medición de impacto de los planes de mejoramiento.</li>
         </ul>
+        </details>
       </div>
 
       <div class="job">
         <div class="t">Investigadora Doctoral en Optimización y Modelos de Decisión</div>
         <div class="m">Universidad del Norte · Becaria del Programa de Excelencia Doctoral del Bicentenario · Barranquilla · febrero 2020 – marzo 2021</div>
+        <details class="plegable detalle" open>
+          <summary>Ver detalle</summary>
         <ul>
           <li>Dedicación exclusiva como becaria del Programa de Excelencia Doctoral del Bicentenario, financiada por el Fondo de Ciencia, Tecnología e Innovación del Sistema General de Regalías.</li>
           <li>Dediqué este primer año de manera exclusiva a la fase escolarizada del doctorado: 28 créditos en concentración en matemáticas, gestión de operaciones, programación lineal, procesos estocásticos, gestión integral empresarial y formación investigativa, junto con la inscripción del tema de tesis y el avance de la revisión del estado del arte.</li>
         </ul>
+        </details>
       </div>
 
       <div class="job">
         <div class="t">Líder de Sistemas Integrados de Gestión (SIGA)</div>
         <div class="m">SENA · Centro Agropecuario y de Biotecnología El Porvenir, Regional Córdoba · Contrato de prestación de servicios · Montería · febrero 2018 – diciembre 2019</div>
+        <details class="plegable detalle" open>
+          <summary>Ver detalle</summary>
         <ul>
           <li>Implementé y mejoré los cuatro subsistemas del Sistema Integrado de Gestión y Autocontrol bajo ISO 9001, ISO 14001 y MIPG: información documentada, análisis del contexto, riesgos operativos y de corrupción, salidas no conformes y planes de mejoramiento.</li>
           <li>Participé en auditorías internas y externas; programé, ejecuté y documenté las visitas de verificación a las sedes y reporté los hallazgos ante la Dirección de Planeación y el Comité Primario.</li>
           <li>Capacité a personal administrativo e instructores, y apoyé la evaluación del desempeño por dependencias y la rendición de cuentas a la ciudadanía.</li>
         </ul>
+        </details>
       </div>
 
       <div class="job">
         <div class="t">Consultora de Sistemas de Gestión de Calidad (ISO 9001) <span style="font-weight:500;color:var(--muted);font-size:.9rem">· sector privado</span></div>
         <div class="m">Credilibranzas de la Sabana S.A.S. e Inmover S.A. · Asesora · Sahagún, Córdoba · junio – diciembre 2017</div>
+        <details class="plegable detalle" open>
+          <summary>Ver detalle</summary>
         <ul>
           <li>Diseñé e implementé el Sistema de Gestión de Calidad bajo ISO 9001 en ambas compañías: levantamiento y documentación de procesos, política de calidad, procedimientos, instructivos, formatos y capacitación al personal.</li>
         </ul>
+        </details>
       </div>
 
     </div>
 
-    <div class="earlier">
-      <div class="eh">Trayectoria anterior</div>
+    <details class="earlier plegable" open>
+      <summary class="eh">Trayectoria anterior</summary>
       <ul>
         <li><span class="rol">Docente Asistente — Administración de Empresas.</span> Corporación Unificada Nacional de Educación Superior (CUN), Montería · hora cátedra y medio tiempo · agosto 2017 – noviembre 2018.</li>
         <li><span class="rol">Instructor de Formación — Virtualización.</span> SENA, Centro Agropecuario y de Biotecnología El Porvenir, Regional Córdoba · junio – noviembre 2017.</li>
@@ -377,7 +414,7 @@
         <li><span class="rol">Auxiliar de Calidad — Sistema de Gestión Integral.</span> Servienergía Ltda., Cereté · marzo 2014 – diciembre 2015.</li>
         <li><span class="rol">Auxiliar — Autoevaluación de Programas Académicos.</span> Universidad de Córdoba, Montería · septiembre – noviembre 2013.</li>
       </ul>
-    </div>
+    </details>
   </div>
 </section>
 
@@ -524,6 +561,18 @@
     if(mejor && porId[mejor]) porId[mejor].classList.add('on');
   }, {rootMargin:'-60px 0px -55% 0px', threshold:[0,.15,.35,.6,1]});
   secciones.forEach(function(el){ obs.observe(el); });
+})();
+
+/* En pantallas de celular los tramos largos de la trayectoria arrancan
+   plegados: sin esto la pagina son trece pantallas de scroll. */
+(function(){
+  var mq = window.matchMedia('(max-width:760px)');
+  var bloques = Array.prototype.slice.call(document.querySelectorAll('details.plegable'));
+  if(!bloques.length) return;
+  function ajustar(){ bloques.forEach(function(d){ d.open = !mq.matches; }); }
+  ajustar();
+  if(mq.addEventListener) mq.addEventListener('change', ajustar);
+  else if(mq.addListener) mq.addListener(ajustar);
 })();
 </script>
 </body>
