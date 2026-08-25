@@ -189,6 +189,11 @@
   .barbg{height:8px;background:#e7eaef;border-radius:5px;overflow:hidden}
   .barfg{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--gold),var(--gold-soft))}
 
+  .destacado{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin-top:6px}
+  .destacado h3{font-size:1.32rem;font-weight:600;color:var(--navy);letter-spacing:-.01em;margin-bottom:8px}
+  .destacado > p.qd{color:var(--muted);max-width:730px}
+  @media(min-width:880px){ .tools .card.ancha{grid-column:span 2} }
+  .subt{font-size:.71rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:34px 0 13px}
   .cta{text-align:center}
   .cta h2{font-size:2rem}
   footer{background:var(--navy);color:#9fb0c4;padding:32px 0;text-align:center;font-size:.85rem}
@@ -225,6 +230,8 @@
     .access{font-size:.85rem}
     .levels .cap{font-size:.65rem}
     .matgrid{grid-template-columns:1fr}
+    .destacado{padding:20px}
+    .destacado h3{font-size:1.14rem}
     .nav .grp,.nav .sep{display:none}
     .nav a{padding:12px 13px;font-size:.86rem}
     .divider h2{font-size:1.3rem}
@@ -264,10 +271,8 @@
     <a href="#formacion">Formación</a>
     <span class="sep"></span>
     <span class="grp">Lo que ofrezco</span>
-    <a href="#software">Software</a>
-    <a href="#diagnostico">Diagnóstico de madurez</a>
+    <a href="#software">Software propio</a>
     <a href="#servicios">Servicios</a>
-    <a href="#demos">Demos</a>
     <span class="sep"></span>
     <a href="#contacto">Contacto</a>
   </div>
@@ -291,11 +296,11 @@
     <h2 class="serif">Quién soy y qué hago</h2>
     <p class="claim serif">Audito, analizo y construyo: entiendo los procesos, evalúo sus riesgos y desarrollo las herramientas con las que se controlan.</p>
     <div class="about">
-      <p>Soy ingeniera industrial y auditora interna. Mi trayectoria combina tres cosas que no suelen ir juntas: <b>control interno, tecnología y optimización</b>.</p>
-      <p>Empecé mi carrera del lado del auditado, diseñando e implementando sistemas de gestión, de modo que conozco la auditoría desde las dos orillas: la de quien gestiona los procesos y la de quien los evalúa. Desde 2021 me dedico por completo a la auditoría interna —auditoría basada en riesgos, auditoría continua, analítica de datos, aseguramiento de la calidad y evaluación del Sistema de Control Interno—, primero en el SENA y después en el Ministerio de Igualdad y Equidad, donde coordino el grupo de <b>once profesionales</b> responsable de esa evaluación: <b>veinte auditorías al año</b>, con alcance en el nivel central y en <b>ocho direcciones territoriales</b>.</p>
-      <p><b>Mi diferencial está en convertir necesidades de gestión y control en soluciones concretas.</b> Mi tesis de pregrado dio origen a <b>Horaris</b>, un software de asignación de horarios registrado ante la DNDA. Después desarrollé <b>Ayataa</b>, para la gestión y el seguimiento de planes de mejoramiento, hoy en producción con 817 actividades en gestión, alertas automáticas de vencimiento y tableros para la Alta Dirección; y <b>CONFORMA</b>, en trámite de registro ante la DNDA, orientado a la autoevaluación de la función de auditoría interna en entidades públicas y privadas.</p>
-      <p>Curso además un doctorado en Ingeniería enfocado en optimización multiobjetivo aplicada a la planeación agropecuaria sostenible, del que salió <b>MOASM</b>, un modelo abierto disponible públicamente en Hugging Face. Es el mismo instrumental con el que trabajo los datos de una auditoría cuando el problema deja de caber en una hoja de cálculo.</p>
-      <p>Mi perfil está en la intersección entre auditoría, optimización y tecnología, y es ahí donde aporto: mejorar la forma en que las organizaciones deciden, controlan y sustentan su gestión.</p>
+      <p>Soy ingeniera industrial y auditora interna. Mi trayectoria combina control interno, tecnología y optimización.</p>
+      <p>Empecé mi carrera del lado del auditado, diseñando e implementando sistemas de gestión, de modo que conozco la auditoría desde las dos orillas: la de quien gestiona los procesos y la de quien los evalúa. Desde 2021 me dedico por completo a la auditoría interna (auditoría basada en riesgos, auditoría continua, analítica de datos, aseguramiento de la calidad y evaluación del Sistema de Control Interno), primero en el SENA y después en el Ministerio de Igualdad y Equidad, donde coordino el grupo de once profesionales responsable de esa evaluación: veinte auditorías al año, con alcance en el nivel central y en ocho direcciones territoriales.</p>
+      <p><b>Mi diferencial está en convertir necesidades de gestión y control en soluciones concretas.</b> Mi tesis de pregrado dio origen a Horaris, un software de asignación de horarios registrado ante la DNDA. Después desarrollé Ayataa, para la gestión y el seguimiento de planes de mejoramiento, hoy en producción con 817 actividades, alertas automáticas de vencimiento y tableros para la Alta Dirección. Y CONFORMA, en trámite de registro ante la DNDA, para la autoevaluación de la función de auditoría interna en entidades públicas y privadas.</p>
+      <p>Curso además un doctorado en Ingeniería enfocado en optimización multiobjetivo aplicada a la planeación agropecuaria sostenible. De ahí salió MOASM, un modelo abierto disponible en Hugging Face. Es el mismo instrumental con el que trabajo los datos de una auditoría cuando el problema deja de caber en una hoja de cálculo.</p>
+      <p>Mi perfil está en la intersección entre auditoría, optimización y tecnología. Ahí es donde aporto: mejorar la forma en que las organizaciones deciden, controlan y sustentan su gestión.</p>
     </div>
   </div>
 </section>
@@ -429,6 +434,10 @@
       </div>
     </div>
     <div style="margin-top:24px">
+      <div class="eyebrow">Investigación doctoral</div>
+      <p style="font-size:.95rem;color:#41505f;max-width:760px">Mi tesis desarrolla MOASM, un modelo de optimización multiobjetivo para la planeación agropecuaria sostenible. La aplicación está publicada en acceso abierto, de manera que cualquiera puede consultar el modelo y reproducir los resultados.</p>
+    </div>
+    <div style="margin-top:24px">
       <div class="eyebrow">Idiomas</div>
       <div class="chips">
         <span class="chip">Español — nativo</span>
@@ -445,7 +454,7 @@
       <div class="de">Lo que ofrezco</div>
       <h2 class="serif">Productos y servicios</h2>
     </div>
-    <p>Software propio en producción, un diagnóstico de madurez que puedes correr tú mismo, servicios de aseguramiento y entornos de demostración abiertos.</p>
+    <p>El software que he construido y los servicios con los que acompaño a empresas y entidades en aseguramiento y control.</p>
   </div>
 </div>
 
@@ -465,7 +474,7 @@
         <span class="tag">En trámite de registro</span>
         <h3>CONFORMA</h3>
         <p>Aseguramiento de la calidad y verificación de brechas de la función de auditoría interna, sobre las Normas Globales del IIA. En trámite de registro de soporte lógico ante la DNDA (radicado 1-2026-133221).</p>
-        <span class="out">Soporta el diagnóstico de madurez de esta página.</span>
+        <span class="out">Le pone método y trazabilidad al PAMC.</span>
       </div>
       <div class="card">
         <span class="tag">Registrado ante la DNDA</span>
@@ -473,29 +482,28 @@
         <p>Optimización matemática para la asignación de horarios académicos, construido sobre el algoritmo de mi tesis de pregrado laureada e implementado en la Universidad de Córdoba. Registro de soporte lógico ante la DNDA N.º 13-44-442.</p>
         <span class="out">Dirigí el equipo de desarrollo e implementación.</span>
       </div>
-      <div class="card">
-        <span class="tag">Acceso abierto</span>
-        <h3>MOASM</h3>
-        <p>Aplicación web del modelo de optimización multiobjetivo para la planeación agropecuaria sostenible, desarrollado como parte de la tesis doctoral.</p>
-        <span class="out">Publicada para consulta y reproducción.</span>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- DIAGNÓSTICO: NIVEL DE MADUREZ -->
-<section id="diagnostico">
+<!-- SERVICIOS -->
+<section id="servicios">
   <div class="wrap">
-    <div class="eyebrow">Diagnóstico</div>
-    <h2 class="serif">Evaluación del nivel de madurez de la auditoría interna</h2>
-    <p class="sub">Mido qué tan madura está una función de auditoría frente a las Normas Globales del IIA y a modelos de capacidad, muestro las brechas y entrego un plan de por dónde empezar.</p>
-    <div class="levels">
-      <div class="lv"><div class="bar" style="height:34px;background:#e7eaef"></div><div class="cap"><b>1</b> Inicial</div></div>
-      <div class="lv"><div class="bar" style="height:52px;background:#dbe0e8"></div><div class="cap"><b>2</b> Básico</div></div>
-      <div class="lv"><div class="bar" style="height:70px;background:linear-gradient(180deg,var(--gold-soft),var(--gold))"><span class="flag" style="background:var(--navy);color:var(--gold-soft)">Estado actual</span></div><div class="cap"><b>3</b> Definido</div></div>
-      <div class="lv"><div class="bar" style="height:90px;background:#dbe0e8"></div><div class="cap"><b>4</b> Gestionado</div></div>
-      <div class="lv"><div class="bar" style="height:110px;background:var(--navy)"><span class="flag" style="background:var(--gold);color:#fff">Meta</span></div><div class="cap"><b>5</b> Optimizado</div></div>
-    </div>
+    <div class="eyebrow">Consultoría</div>
+    <h2 class="serif">Servicios</h2>
+    <p class="sub">Además de mi ejercicio profesional, acompaño a empresas y entidades en frentes puntuales de aseguramiento y control.</p>
+
+    <div class="destacado">
+      <div class="eyebrow">Servicio principal</div>
+      <h3 class="serif">Diagnóstico de madurez de la función de auditoría interna</h3>
+      <p class="qd">Mido qué tan madura está una oficina de auditoría frente a las Normas Globales del IIA y a modelos de capacidad, muestro las brechas y entrego un plan de por dónde empezar. Aquí el objeto evaluado es la propia función de auditoría, no los procesos de la entidad.</p>
+      <div class="levels">
+        <div class="lv"><div class="bar" style="height:34px;background:#e7eaef"></div><div class="cap"><b>1</b> Inicial</div></div>
+        <div class="lv"><div class="bar" style="height:52px;background:#dbe0e8"></div><div class="cap"><b>2</b> Básico</div></div>
+        <div class="lv"><div class="bar" style="height:70px;background:linear-gradient(180deg,var(--gold-soft),var(--gold))"><span class="flag" style="background:var(--navy);color:var(--gold-soft)">Estado actual</span></div><div class="cap"><b>3</b> Definido</div></div>
+        <div class="lv"><div class="bar" style="height:90px;background:#dbe0e8"></div><div class="cap"><b>4</b> Gestionado</div></div>
+        <div class="lv"><div class="bar" style="height:110px;background:var(--navy)"><span class="flag" style="background:var(--gold);color:#fff">Meta</span></div><div class="cap"><b>5</b> Optimizado</div></div>
+      </div>
     <div class="eyebrow">Dimensiones que evalúo</div>
     <div class="matgrid">
       <div style="text-align:center">
@@ -535,48 +543,23 @@
         <div class="d"><div class="top"><span>Calidad y mejora (QAIP)</span><b>2/5</b></div><div class="barbg"><div class="barfg" style="width:40%"></div></div></div>
       </div>
     </div>
-    <p class="access" style="margin-top:16px">Resultado ilustrativo (escala 1 a 5). Al final entrego el puntaje de cada dimensión, el nivel global y un plan de mejora por prioridades.</p>
-    <a class="btn" href="https://nivel-madurez-funcion-auditoria.vercel.app/" target="_blank" rel="noopener" style="margin-top:14px">Probar el autodiagnóstico interactivo →</a>
-  </div>
-</section>
+    <p class="access" style="margin-top:16px">Resultado ilustrativo (escala 1 a 5). Al final entrego el puntaje de cada dimensión, el nivel global y un plan de mejora por prioridades. El levantamiento lo hago con CONFORMA, mi software de aseguramiento de la calidad.</p>
+      <a class="btn" href="mailto:mariarrietaesc@gmail.com?subject=Diagn%C3%B3stico%20de%20madurez%20de%20la%20auditor%C3%ADa%20interna" style="margin-top:14px">Solicitar el diagnóstico →</a>
+    </div>
 
-<!-- SERVICIOS -->
-<section id="servicios" class="alt">
-  <div class="wrap">
-    <div class="eyebrow">Consultoría</div>
-    <h2 class="serif">Servicios independientes</h2>
-    <p class="sub">Además de mi ejercicio profesional, acompaño a empresas y entidades en frentes puntuales de aseguramiento y control.</p>
+    <div class="subt">Otros frentes</div>
     <div class="tools">
       <div class="card"><h3>Auditoría interna basada en riesgos</h3><p>Plan anual y ejecución de auditorías bajo las Normas Globales del IIA.</p><span class="out">Enfoca el esfuerzo donde más riesgo hay.</span></div>
-      <div class="card"><h3>Evaluación del control interno</h3><p>Diagnóstico de la efectividad del control con COSO y MECI, alineado al MIPG.</p><span class="out">Sabes dónde estás parado y qué falta.</span></div>
+      <div class="card"><h3>Evaluación del Sistema de Control Interno</h3><p>Qué tan efectivo es el control de la entidad frente a COSO y MECI, alineado al MIPG. Aquí lo evaluado son los procesos, no la oficina de auditoría.</p><span class="out">Sabes dónde estás parado y qué falta.</span></div>
       <div class="card"><h3>Gestión del riesgo</h3><p>Identificación, evaluación y mapas de riesgo, incluido el de corrupción.</p><span class="out">Anticipa los problemas en vez de reaccionar.</span></div>
-      <div class="card"><h3>Análisis de datos y auditoría continua</h3><p>Monitoreo y tableros con Power BI, Python y Excel avanzado.</p><span class="out">Información oportuna para la toma de decisiones.</span></div>
-      <div class="card"><h3>Campus virtuales a la medida</h3><p>Campus de e-Learning con módulos, evaluaciones, seguimiento de progreso y constancia.</p><span class="out">Lleva el conocimiento a todo el equipo.</span></div>
-      <div class="card"><h3>Desarrollo de aplicaciones a la medida</h3><p>Aplicaciones web, herramientas de seguimiento y automatizaciones ajustadas a tus procesos.</p><span class="out">Le quita trabajo manual al equipo.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- MUESTRAS / DEMOS -->
-<section id="demos">
-  <div class="wrap">
-    <div class="eyebrow">Muestras</div>
-    <h2 class="serif">Entornos de demostración</h2>
-    <p class="sub">Puedes entrar y probarlos. La versión real se construye sobre los procesos y los datos de cada organización.</p>
-    <div class="tools">
-      <div class="card">
-        <span class="tag">Formación · Demo en vivo</span>
-        <h3>Campus de Formación en Control Interno y MIPG</h3>
-        <p>Campus virtual con módulos de plataforma estratégica, MIPG, normas de auditoría y evaluaciones, diseñado para una oficina de control interno.</p>
-        <a class="btn" href="https://campus-oci.vercel.app/" target="_blank" rel="noopener">Ver demo →</a>
+      <div class="card"><h3>Análisis de datos y auditoría continua</h3><p>Monitoreo y tableros con Power BI, Python y Excel avanzado.</p><span class="out">Ves las excepciones sin esperar a la auditoría anual.</span></div>
+      <div class="card ancha">
+        <span class="tag">Con demo abierta</span>
+        <h3>Campus de autoformación y software a la medida</h3>
+        <p>Monto el campus con el que la entidad forma a sus propios equipos: módulos, evaluaciones, seguimiento de progreso y constancia. También desarrollo aplicaciones web y automatizaciones sobre los procesos de cada organización.</p>
+        <span class="out">La entidad queda con su propio programa de formación.</span>
+        <a class="btn" href="https://campus-oci.vercel.app/" target="_blank" rel="noopener">Ver el campus de control interno y MIPG →</a>
         <details class="access"><summary>Acceso de prueba</summary>Usuario <b>demo@campus-oci.com</b> · Clave <b>demo1234</b></details>
-      </div>
-      <div class="card">
-        <span class="tag">Formación · Demo en vivo</span>
-        <h3>Campus de Bienestar y Salud Mental Laboral</h3>
-        <p>Plataforma de autoformación con módulos, evaluaciones, seguimiento de progreso y constancia. Contenido clínico validado por un profesional en psicología.</p>
-        <a class="btn" href="https://salud-mental-one.vercel.app/" target="_blank" rel="noopener">Ver demo →</a>
-        <details class="access"><summary>Acceso de prueba</summary>Usuario <b>demo@campus.com</b> · Clave <b>demo1234</b></details>
       </div>
     </div>
   </div>
