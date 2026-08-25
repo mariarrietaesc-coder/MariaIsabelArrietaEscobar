@@ -96,6 +96,12 @@
 
   header .lead .pipe{color:var(--gold-soft);font-weight:400;padding:0 2px}
   .about p{font-size:1.02rem;color:#41505f;max-width:760px}
+  /* Texto corrido justificado. Solo en bloques anchos: en las tarjetas y en
+     movil la justificacion abre rios de espacio en blanco y se lee peor. */
+  .about p, section:not(.cta) > .wrap > .sub, .job li, .earlier li{text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
+  @media(max-width:600px){
+    .about p, section:not(.cta) > .wrap > .sub, .job li, .earlier li{text-align:left;-webkit-hyphens:manual;hyphens:manual}
+  }
   .about p + p{margin-top:14px}
   .about b{color:var(--navy);font-weight:700}
   .claim{font-size:1.42rem;font-weight:600;color:var(--navy);line-height:1.32;margin:10px 0 20px;padding-left:17px;border-left:3px solid var(--gold);max-width:760px}
