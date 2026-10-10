@@ -1,10 +1,9 @@
 // Piezas reutilizadas por varias vistas.
 
 import { app, ejecutar, tipoDe, vencido, puede } from './estado.js';
-import { h, icono, iconoTipo, boton, insigniaEstado, chipArea, dialogo, campo, entrada, selector, valores, avisoError } from './ui.js';
+import { h, icono, iconoTipo, boton, insigniaEstado, chipArea, dialogo, campo, entrada, selector, valores, aviso, avisoError } from './ui.js';
 import { guardarPersona, nuevoEquipo, editarEquipo, planRecepcion, planDeshacerRecepcion, planNovedad } from './dominio.js';
 import { cuando, duracion, minutosDesde, enlaceWhatsApp, mensajeRecordatorio, fecha, normalizarCodigo } from './util.js';
-import { aviso } from './ui.js';
 
 export function encabezado(titulo, subtitulo, ...acciones) {
   return h('div', { class: 'encabezado' },

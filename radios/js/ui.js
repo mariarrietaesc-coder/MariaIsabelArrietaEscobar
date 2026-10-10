@@ -140,6 +140,7 @@ export function aviso(texto, { tipo = 'ok', accion, ms = 3500 } = {}) {
     h('span', null, texto),
     accion && h('button', { type: 'button', class: 'aviso-accion', onclick: () => { accion.fn(); cerrar(); } }, accion.texto));
   zonaAvisos.append(el);
+  while (zonaAvisos.children.length > 3) zonaAvisos.firstElementChild.remove();
   const t = setTimeout(cerrar, accion ? Math.max(ms, 6000) : ms);
   function cerrar() {
     clearTimeout(t);

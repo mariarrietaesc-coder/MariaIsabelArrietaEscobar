@@ -85,7 +85,12 @@ export async function crearAlmacen({ firebaseConfig, usarEmulador }) {
         if (!u) return cb(null);
         cortarPerfil = F.onSnapshot(
           F.doc(db, 'usuarios', u.uid),
+          { includeMetadataChanges: true },
           (s) => {
+            // Un perfil recién escrito desde este equipo (configuración
+            // inicial) solo vale cuando el servidor lo confirma; antes, las
+            // reglas todavía no lo ven y las lecturas serían rechazadas.
+            if (s.metadata.hasPendingWrites) return;
             if (s.exists()) cb({ uid: u.uid, email: u.email, ...plano(s.data()) });
             else if (!s.metadata.fromCache) cb({ uid: u.uid, email: u.email, sinPerfil: true });
           },

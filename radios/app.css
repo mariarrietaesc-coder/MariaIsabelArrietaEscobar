@@ -483,15 +483,16 @@ a.bh-fila:hover { background: var(--superficie-2); }
 }
 @media (min-width: 900px) { .avisos { bottom: 20px; } }
 .aviso {
-  pointer-events: auto; display: flex; align-items: center; gap: .6rem;
-  padding: .7rem .9rem; border-radius: 12px; background: #13202e; color: #fff; box-shadow: var(--sombra-alta);
+  /* Los toques pasan a través del aviso (para no tapar la firma); solo su botón los recibe. */
+  pointer-events: none; display: flex; align-items: center; gap: .6rem;
+  padding: .7rem .9rem; border-radius: 12px; background: #1b1e24; color: #fff; box-shadow: var(--sombra-alta);
   animation: entra .2s ease-out;
 }
 .aviso > span:not(.ico) { flex: 1; }
 .aviso-ok .ico { color: #47d39a; }
 .aviso-error { background: #5b1414; }
 .aviso-info .ico { color: #8fb7ff; }
-.aviso-accion { border: 0; background: rgb(255 255 255 / .14); color: #fff; font-weight: 700; padding: .35rem .7rem; border-radius: 8px; cursor: pointer; }
+.aviso-accion { pointer-events: auto; border: 0; background: rgb(255 255 255 / .14); color: #fff; font-weight: 700; padding: .35rem .7rem; border-radius: 8px; cursor: pointer; }
 .aviso.saliendo { opacity: 0; transform: translateY(6px); transition: .25s; }
 @keyframes entra { from { opacity: 0; transform: translateY(8px); } }
 
