@@ -2,7 +2,7 @@
 
 import * as config from '../config.js';
 import { app, emitir, puede } from './estado.js';
-import { h, vaciar, icono, boton, aviso, avisoError, mensajeError, campo, entrada, definirColoresArea, vacio } from './ui.js';
+import { h, vaciar, icono, boton, aviso, avisoError, mensajeError, campo, entrada, definirColoresArea, vacio, aplicarTema, temaActual } from './ui.js';
 import { ROLES } from './util.js';
 import vInicio from './vistas/inicio.js';
 import vEntregar from './vistas/entregar.js';
@@ -335,6 +335,20 @@ function vistaMas(raizVista) {
     h('div', { class: 'tarjeta usuario-tarjeta' },
       h('span', { class: 'avatar grande' }, (u.nombre || u.email || '?').trim()[0].toUpperCase()),
       h('div', null, h('strong', null, u.nombre || u.email), h('div', { class: 'suave' }, u.email || ''), h('span', { class: 'badge t-info' }, ROLES[u.rol]?.nombre))),
+    h('div', { class: 'tarjeta tema-tarjeta' },
+      h('strong', null, 'Tema'),
+      h('div', { class: 'segmentos', role: 'group', 'aria-label': 'Tema de la app' },
+        [['claro', 'Claro'], ['oscuro', 'Oscuro'], ['auto', 'Automático']].map(([v, t]) => h('button', {
+          type: 'button', class: temaActual() === v ? 'activo' : '', 'aria-pressed': String(temaActual() === v),
+          onclick: (ev) => {
+            aplicarTema(v);
+            for (const b of ev.currentTarget.parentElement.children) {
+              const on = b === ev.currentTarget;
+              b.classList.toggle('activo', on);
+              b.setAttribute('aria-pressed', String(on));
+            }
+          },
+        }, t)))),
     h('div', { class: 'lista tarjeta' },
       NAV.filter((i) => !enInferior.includes(i.ruta) && (!i.permiso || i.permiso()))
         .map((i) => h('a', { href: `#/${i.ruta}`, class: 'fila fila-btn' }, icono(i.ico), h('div', { class: 'fila-txt' }, h('strong', null, i.texto)), icono('flecha')))),
@@ -353,6 +367,8 @@ function vistaMas(raizVista) {
 }
 
 // ---------- Arranque ----------
+aplicarTema();
+
 async function arrancar() {
   pantallaSuelta(cargando());
   try {

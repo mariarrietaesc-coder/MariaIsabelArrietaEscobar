@@ -38,8 +38,36 @@
   --nav-alto: 64px;
 }
 
+/* Tema claro por defecto. Oscuro o automático (según el celular) se eligen en "Más". */
+:root[data-tema="oscuro"] {
+    color-scheme: dark;
+    --fondo: #0e0f12;
+    --superficie: #17191e;
+    --superficie-2: #1d2026;
+    --tinta: #e6ecf2;
+    --tinta-2: #c2ccd7;
+    --suave: #93a3b4;
+    --linea: #2a2e35;
+    --linea-2: #363b44;
+    --pri: #2fb08c;
+    --menta: #3dbf9b;
+    --pri-hover: #3cc39d;
+    --pri-tinta: #04140e;
+    --pri-suave: #11342b;
+    --nav: #0b0c0f;
+    --nav-2: #1d2026;
+    --ok: #4cc386; --ok-f: #123323;
+    --warn: #f0b04a; --warn-f: #3a2a0d;
+    --info: #7fa9ef; --info-f: #16263f;
+    --bad: #f07a7a; --bad-f: #3d1717;
+    --muted: #9aa7b5; --muted-f: #1f2a36;
+    --serie: #3987e5;
+    --whats: #2fb36a;
+    --sombra: 0 1px 2px rgb(0 0 0 / .4);
+    --sombra-alta: 0 12px 32px rgb(0 0 0 / .55);
+}
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root[data-tema="auto"] {
     color-scheme: dark;
     --fondo: #0e0f12;
     --superficie: #17191e;
@@ -428,6 +456,7 @@ textarea.input { resize: vertical; }
 .fila-kpis { margin-bottom: 14px; }
 .fila-kpis .kpi { background: var(--superficie); border: 1px solid var(--linea); box-shadow: var(--sombra); }
 .usuario-tarjeta { display: flex; gap: 1rem; align-items: center; }
+.tema-tarjeta { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
 .usuario-tarjeta .badge { margin-top: .35rem; }
 .roles { display: grid; gap: .5rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 14px; font-size: .85rem; }
 .roles div { display: flex; flex-direction: column; }

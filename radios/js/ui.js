@@ -131,6 +131,17 @@ export function selector(opciones, valor, props = {}) {
     }));
 }
 
+// ---------- Tema ----------
+// Claro por defecto; la elección se recuerda en este dispositivo.
+const CLAVE_TEMA = 'radios-tema';
+export function temaActual() {
+  try { return localStorage.getItem(CLAVE_TEMA) || 'claro'; } catch { return 'claro'; }
+}
+export function aplicarTema(tema = temaActual()) {
+  document.documentElement.dataset.tema = tema;
+  try { localStorage.setItem(CLAVE_TEMA, tema); } catch { /* sin almacenamiento */ }
+}
+
 // ---------- Avisos ----------
 let zonaAvisos;
 export function aviso(texto, { tipo = 'ok', accion, ms = 3500 } = {}) {
