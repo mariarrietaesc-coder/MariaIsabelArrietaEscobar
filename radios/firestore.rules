@@ -1,0 +1,75 @@
+rules_version = '2';
+
+// Reglas de seguridad para la app de control de radios e impermeables.
+// Cópialas en Firebase console → Firestore Database → Reglas → Publicar.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function autenticado() { return request.auth != null; }
+    function rutaPerfil() { return /databases/$(database)/documents/usuarios/$(request.auth.uid); }
+    function perfil() { return get(rutaPerfil()).data; }
+    function activo() { return autenticado() && exists(rutaPerfil()) && perfil().activo == true; }
+    function admin() { return activo() && perfil().rol == 'admin'; }
+    function operador() { return activo() && perfil().rol in ['admin', 'operador']; }
+    function soloCambia(campos) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(campos);
+    }
+
+    // Marca de instalación: la crea el primer administrador junto con su perfil.
+    match /config/setup {
+      allow read: if true;
+      allow create: if autenticado()
+        && request.resource.data.adminUid == request.auth.uid
+        && getAfter(rutaPerfil()).data.rol == 'admin';
+    }
+
+    match /usuarios/{uid} {
+      allow read: if autenticado() && (request.auth.uid == uid || admin());
+      allow create: if admin() || (
+        autenticado() && request.auth.uid == uid
+        && !exists(/databases/$(database)/documents/config/setup)
+        && existsAfter(/databases/$(database)/documents/config/setup)
+        && request.resource.data.rol == 'admin'
+        && request.resource.data.activo == true);
+      // Un administrador no puede quitarse a sí mismo el rol ni desactivarse.
+      allow update: if admin() && (uid != request.auth.uid
+        || (request.resource.data.rol == 'admin' && request.resource.data.activo == true));
+      allow delete: if false;
+    }
+
+    match /ajustes/{id} {
+      allow read: if activo();
+      allow write: if admin();
+    }
+
+    match /equipos/{id} {
+      allow read: if activo();
+      allow create, delete: if admin();
+      allow update: if admin() || (operador() && soloCambia(
+        ['estado', 'prestamo', 'usos', 'minutosUso', 'ultimoUso', 'actualizado', 'notaEstado']));
+    }
+
+    match /personas/{id} {
+      allow read: if activo();
+      allow create, update: if operador();
+      allow delete: if admin();
+    }
+
+    match /prestamos/{id} {
+      allow read: if activo();
+      allow create: if operador()
+        && request.resource.data.entregadoPor.uid == request.auth.uid
+        && request.resource.data.devuelto == false;
+      allow update: if admin() || (operador()
+        && soloCambia(['devuelto', 'fechaDevolucion', 'recibidoPor', 'estadoDevolucion', 'obsDevolucion', 'minutos'])
+        && (request.resource.data.recibidoPor == null || request.resource.data.recibidoPor.uid == request.auth.uid));
+      allow delete: if admin();
+    }
+
+    match /firmas/{id} {
+      allow read: if activo();
+      allow create: if operador() && request.resource.data.entregadoPor.uid == request.auth.uid;
+      allow delete: if admin();
+    }
+  }
+}

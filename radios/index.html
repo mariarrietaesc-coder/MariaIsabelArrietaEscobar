@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<script>
+  // Las rutas relativas necesitan la barra final (/radios → /radios/).
+  if (!location.pathname.endsWith('/') && !/\.[a-z]+$/i.test(location.pathname)) {
+    location.replace(location.pathname + '/' + location.search + location.hash);
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Radios · Su Presencia</title>
+<meta name="description" content="Entrega y devolución de radios e impermeables con código QR." />
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#17191e" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Radios" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icono.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="icono-180.png" />
+<link rel="preload" href="fuentes/montserrat-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="app.css" />
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<noscript>Esta aplicación necesita JavaScript.</noscript>
+</body>
+</html>
