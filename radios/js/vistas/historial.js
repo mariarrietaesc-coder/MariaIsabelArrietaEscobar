@@ -106,6 +106,7 @@ export default function vistaHistorial(raiz) {
       { titulo: 'Recibio', valor: (p) => p.recibidoPor?.nombre || '' },
       { titulo: 'Minutos', valor: (p) => p.minutos ?? '' },
       { titulo: 'Estado devolucion', valor: (p) => ({ ok: 'Bien', novedad: 'Con novedad', perdido: 'Perdido' }[p.estadoDevolucion] || '') },
+      { titulo: 'Novedades', valor: (p) => (p.novedades || []).join(', ') },
       { titulo: 'Observaciones', valor: (p) => [p.obsEntrega, p.obsDevolucion].filter(Boolean).join(' / ') },
     ]);
   }

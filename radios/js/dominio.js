@@ -115,6 +115,7 @@ export function planEntrega({ persona, equipos, usuario, accesorios = '', obs = 
         fechaDevolucion: null,
         recibidoPor: null,
         estadoDevolucion: null,
+        novedades: [],
         obsDevolucion: '',
         minutos: null,
         registrado: HORA_SERVIDOR,
@@ -138,9 +139,16 @@ export function planEntrega({ persona, equipos, usuario, accesorios = '', obs = 
   return { ops, entregaId, prestamoIds };
 }
 
-// estadoDevolucion: 'ok' | 'novedad'. Con mantenimiento=true el equipo queda
-// fuera de circulación hasta que un administrador lo libere.
-export function planRecepcion({ equipo, usuario, estadoDevolucion = 'ok', obs = '', mantenimiento = false, ahora = Date.now() }) {
+// Texto corto que explica por qué un equipo quedó en mantenimiento.
+export function motivo(novedades = [], obs = '') {
+  return [novedades.join(', '), obs.trim()].filter(Boolean).join(' — ') || 'Devuelto con novedad';
+}
+
+// novedades: tipos elegidos (falla de batería, antena…). Si hay alguno o hay
+// observación, la devolución queda "con novedad". Con mantenimiento=true el
+// equipo sale de circulación hasta que un administrador lo libere.
+export function planRecepcion({ equipo, usuario, novedades = [], obs = '', mantenimiento = false, ahora = Date.now() }) {
+  const estadoDevolucion = novedades.length || obs.trim() ? 'novedad' : 'ok';
   const p = equipo.prestamo;
   if (equipo.estado !== 'prestado' || !p) throw new Error(`${equipo.nombre || equipo.id} no está prestado.`);
   const minutos = Math.max(0, Math.round((ahora - p.desde) / 60000));
@@ -149,14 +157,14 @@ export function planRecepcion({ equipo, usuario, estadoDevolucion = 'ok', obs = 
       op: 'update', col: 'prestamos', id: p.id,
       data: {
         devuelto: true, fechaDevolucion: ahora, recibidoPor: quien(usuario),
-        estadoDevolucion, obsDevolucion: obs.trim(), minutos,
+        estadoDevolucion, novedades, obsDevolucion: obs.trim(), minutos,
       },
     },
     {
       op: 'update', col: 'equipos', id: equipo.id,
       data: {
         estado: mantenimiento ? 'mantenimiento' : 'disponible',
-        notaEstado: mantenimiento ? obs.trim() || 'Devuelto con novedad' : '',
+        notaEstado: mantenimiento ? motivo(novedades, obs) : '',
         prestamo: null,
         usos: INC(1),
         minutosUso: INC(minutos),
@@ -175,7 +183,7 @@ export function planDeshacerRecepcion({ equipo, prestamoAnterior, minutos, ahora
     ops: [
       {
         op: 'update', col: 'prestamos', id: prestamoAnterior.id,
-        data: { devuelto: false, fechaDevolucion: null, recibidoPor: null, estadoDevolucion: null, obsDevolucion: '', minutos: null },
+        data: { devuelto: false, fechaDevolucion: null, recibidoPor: null, estadoDevolucion: null, novedades: [], obsDevolucion: '', minutos: null },
       },
       {
         op: 'update', col: 'equipos', id: equipo.id,
@@ -189,14 +197,14 @@ export function planDeshacerRecepcion({ equipo, prestamoAnterior, minutos, ahora
 }
 
 // Novedad registrada después de recibir (por ejemplo, tras el modo rápido).
-export function planNovedad({ equipoId, prestamoId, obs, mantenimiento, ahora = Date.now() }) {
+export function planNovedad({ equipoId, prestamoId, novedades = [], obs = '', mantenimiento, ahora = Date.now() }) {
   const ops = [
-    { op: 'update', col: 'prestamos', id: prestamoId, data: { estadoDevolucion: 'novedad', obsDevolucion: obs.trim() } },
+    { op: 'update', col: 'prestamos', id: prestamoId, data: { estadoDevolucion: 'novedad', novedades, obsDevolucion: obs.trim() } },
   ];
   if (mantenimiento) {
     ops.push({
       op: 'update', col: 'equipos', id: equipoId,
-      data: { estado: 'mantenimiento', notaEstado: obs.trim() || 'Devuelto con novedad', actualizado: ahora },
+      data: { estado: 'mantenimiento', notaEstado: motivo(novedades, obs), actualizado: ahora },
     });
   }
   return { ops };

@@ -48,24 +48,24 @@ export function tarjetaPrestados(g, { recibir = puede.operar() } = {}) {
       h('a', { href: `#/p/${encodeURIComponent(g.personaId)}`, class: 'prestado-nombre' },
         h('strong', null, g.nombre), chipArea(g.area)),
       h('span', { class: `prestado-tiempo ${tarde ? 't-bad' : ''}` }, icono('reloj'), duracion(minutosDesde(g.desde)))),
-    h('div', { class: 'prestado-eqs' }, g.equipos.map((e) => chipEquipo(e))),
+    h('div', { class: 'prestado-eqs' }, g.equipos.map((e) => h('a', { href: `#/e/${encodeURIComponent(e.id)}`, title: `Ver o recibir solo ${e.nombre}` }, chipEquipo(e)))),
     h('div', { class: 'prestado-acc' },
       h('small', { class: 'suave' }, `Desde ${cuando(g.desde)}`),
       h('div', { class: 'fila-acc' },
         tarde && enlaceWhats(g),
-        recibir && boton(g.equipos.length > 1 ? `Recibir ${g.equipos.length}` : 'Recibir', {
+        recibir && boton(g.equipos.length > 1 ? `Recibir todos (${g.equipos.length})` : 'Recibir', {
           tipo: 'pri', clase: 'btn-peq', ico: 'recibir',
           onclick: () => recibirVarios(g.equipos),
         }))));
 }
 
 // Recibe equipos "en buen estado" con opción de deshacer desde el aviso.
-export async function recibirVarios(lista, { estadoDevolucion = 'ok', obs = '', mantenimiento = false } = {}) {
+export async function recibirVarios(lista, { novedades = [], obs = '', mantenimiento = false } = {}) {
   const hechos = [];
   try {
     const ops = [];
     for (const eq of lista) {
-      const r = planRecepcion({ equipo: eq, usuario: app.usuario, estadoDevolucion, obs, mantenimiento });
+      const r = planRecepcion({ equipo: eq, usuario: app.usuario, novedades, obs, mantenimiento });
       ops.push(...r.ops);
       hechos.push({ equipoId: eq.id, prestamoAnterior: r.prestamoAnterior, minutos: r.minutos });
     }
@@ -92,26 +92,73 @@ export async function deshacer(hechos) {
   }
 }
 
-export function dialogoNovedad({ equipoId, prestamoId, nombre }) {
-  const form = h('form', { class: 'form' },
-    h('p', null, `¿Qué novedad tuvo ${nombre}?`),
-    campo('Descripción', h('textarea', { class: 'input', name: 'obs', rows: 3, placeholder: 'Ej: antena floja, no enciende, falta manos libres' })),
-    h('label', { class: 'check' }, h('input', { type: 'checkbox', name: 'mantenimiento' }),
-      h('span', null, 'Enviar a mantenimiento (no se podrá prestar hasta liberarlo)')));
+// Formulario de novedad con tipos (falla de batería, antena…).
+// Devuelve {novedades, obs, mantenimiento} o null si se cancela.
+export function pedirNovedad({ nombre, titulo = 'Registrar novedad', textoBoton = 'Guardar' }) {
+  const elegidas = new Set();
+  const mant = h('input', { type: 'checkbox' });
+  let mantTocado = false;
+  mant.addEventListener('change', () => { mantTocado = true; });
+  const obs = h('textarea', { class: 'input', rows: 2, placeholder: 'Detalle (opcional): qué pasó, desde cuándo…' });
+  const tipos = app.ajustes.novedades;
+  const chips = h('div', { class: 'chips-op', role: 'group', 'aria-label': 'Tipo de novedad' }, tipos.map((n) => {
+    const b = h('button', {
+      type: 'button', class: 'chip-op', 'aria-pressed': 'false',
+      onclick: () => {
+        const on = !elegidas.has(n.nombre);
+        if (on) elegidas.add(n.nombre); else elegidas.delete(n.nombre);
+        b.setAttribute('aria-pressed', String(on));
+        if (!mantTocado) mant.checked = tipos.some((t) => t.mant && elegidas.has(t.nombre));
+      },
+    }, n.nombre);
+    return b;
+  }));
+  let datos = null;
   return dialogo({
-    titulo: 'Registrar novedad',
-    contenido: form,
+    titulo,
+    contenido: h('div', { class: 'form' },
+      h('p', null, `¿Qué novedad tiene ${nombre}? Puedes marcar varias.`),
+      chips,
+      campo('Detalle', obs),
+      h('label', { class: 'check' }, mant, h('span', null, 'Enviar a mantenimiento (no se presta hasta que un administrador lo libere)'))),
     acciones: [
       { texto: 'Cancelar' },
       {
-        texto: 'Guardar', tipo: 'pri',
-        fn: async () => {
-          const v = valores(form);
-          await ejecutar(planNovedad({ equipoId, prestamoId, obs: v.obs, mantenimiento: v.mantenimiento }).ops, { ok: 'Novedad registrada' });
+        texto: textoBoton, tipo: 'pri',
+        fn: () => {
+          if (!elegidas.size && !obs.value.trim()) {
+            aviso('Elige al menos un tipo de novedad o escribe el detalle.', { tipo: 'error' });
+            return false;
+          }
+          datos = { novedades: tipos.map((t) => t.nombre).filter((n) => elegidas.has(n)), obs: obs.value, mantenimiento: mant.checked };
         },
       },
     ],
-  }).promesa;
+  }).promesa.then(() => datos);
+}
+
+// Novedad sobre algo ya recibido (por ejemplo, después del escaneo rápido).
+export async function dialogoNovedad({ equipoId, prestamoId, nombre }) {
+  const d = await pedirNovedad({ nombre });
+  if (!d) return null;
+  try {
+    await ejecutar(planNovedad({ equipoId, prestamoId, ...d }).ops, { ok: 'Novedad registrada' });
+    return d;
+  } catch (e) {
+    avisoError(e);
+    return null;
+  }
+}
+
+// Recibe un equipo registrando de una vez la novedad.
+export async function recibirConNovedad(eq) {
+  const d = await pedirNovedad({ nombre: eq.nombre, titulo: `Recibir ${eq.nombre} con novedad`, textoBoton: 'Recibir' });
+  if (!d) return [];
+  return recibirVarios([eq], d);
+}
+
+export function textoNovedad(p) {
+  return [(p.novedades || []).join(', '), p.obsDevolucion].filter(Boolean).join(' — ') || 'Con novedad';
 }
 
 export function opcionesArea(valor) {
@@ -241,7 +288,7 @@ export function dialogoPrestamo(p) {
       p.devuelto
         ? dato('Devuelto', `${fecha(p.fechaDevolucion)} a ${p.recibidoPor?.nombre || '—'} · ${duracion(p.minutos)}`)
         : dato('Devolución', 'Pendiente'),
-      p.devuelto && p.estadoDevolucion !== 'ok' && dato('Novedad', p.obsDevolucion || p.estadoDevolucion),
+      p.devuelto && p.estadoDevolucion !== 'ok' && dato(p.estadoDevolucion === 'perdido' ? 'Perdido' : 'Novedad', textoNovedad(p)),
       h('div', { class: 'dato' }, h('span', null, 'Firma'), firma)),
     acciones: [{ texto: 'Cerrar' }],
   });

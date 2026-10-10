@@ -1,5 +1,7 @@
 // Constantes del dominio y utilidades de formato compartidas por toda la app.
 
+import * as config from '../config.js';
+
 export const ESTADOS = {
   disponible: { nombre: 'Disponible', tono: 'ok' },
   prestado: { nombre: 'Prestado', tono: 'warn' },
@@ -15,12 +17,24 @@ export const ROLES = {
 };
 
 export const AJUSTES_BASE = {
-  orgNombre: 'Logística · El Lugar de Su Presencia',
+  orgNombre: config.marca?.organizacion || 'Logística',
   urlBase: '',
   horasAlerta: 4,
   firmaObligatoria: false,
   mensajeWhatsApp:
     'Hola {nombre}, te recordamos devolver {equipos} en Logística. ¡Gracias por tu servicio!',
+  // Tipos de novedad al devolver; mant = sugiere enviar a mantenimiento.
+  novedades: [
+    { nombre: 'Falla de batería', mant: true },
+    { nombre: 'No enciende', mant: true },
+    { nombre: 'Antena dañada o floja', mant: true },
+    { nombre: 'Sin audio o no transmite', mant: true },
+    { nombre: 'Falta accesorio', mant: false },
+    { nombre: 'Golpe o daño físico', mant: true },
+    { nombre: 'Impermeable roto', mant: true },
+    { nombre: 'Mojado o sucio', mant: false },
+    { nombre: 'Otro', mant: false },
+  ],
   tipos: [
     { id: 'radio', nombre: 'Radio', plural: 'Radios', prefijo: 'R' },
     { id: 'impermeable', nombre: 'Impermeable', plural: 'Impermeables', prefijo: 'IMP' },
@@ -46,6 +60,7 @@ export function completarAjustes(a) {
   const r = { ...base, ...a };
   if (!Array.isArray(r.tipos) || !r.tipos.length) r.tipos = base.tipos;
   if (!Array.isArray(r.areas)) r.areas = base.areas;
+  if (!Array.isArray(r.novedades) || !r.novedades.length) r.novedades = base.novedades;
   // Radio e impermeable siempre existen: la app depende de ellos.
   for (const t of base.tipos) if (!r.tipos.some((x) => x.id === t.id)) r.tipos.unshift(t);
   return r;

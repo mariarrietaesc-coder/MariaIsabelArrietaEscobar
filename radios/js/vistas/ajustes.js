@@ -10,6 +10,7 @@ export default function vistaAjustes(raiz) {
   const a = structuredClone(app.ajustes);
   const zonaAreas = h('div', { class: 'lista-editable' });
   const zonaTipos = h('div', { class: 'lista-editable' });
+  const zonaNovedades = h('div', { class: 'lista-editable' });
 
   const general = h('form', { class: 'form' },
     campo('Nombre del equipo u organización', entrada({ name: 'orgNombre', value: a.orgNombre })),
@@ -54,6 +55,17 @@ export default function vistaAjustes(raiz) {
       }));
   }
 
+  function pintarNovedades() {
+    vaciar(zonaNovedades,
+      a.novedades.map((n, i) => h('div', { class: 'editable' },
+        entrada({ value: n.nombre, 'aria-label': 'Tipo de novedad', oninput: (e) => { n.nombre = e.target.value; } }),
+        h('label', { class: 'check corto-check' },
+          h('input', { type: 'checkbox', checked: n.mant, onchange: (e) => { n.mant = e.target.checked; } }),
+          h('span', null, 'Mantenimiento')),
+        boton('', { tipo: 'icono', ico: 'basura', 'aria-label': `Quitar ${n.nombre}`, onclick: () => { a.novedades.splice(i, 1); pintarNovedades(); } }))),
+      boton('Agregar tipo de novedad', { tipo: 'texto', ico: 'mas1', onclick: () => { a.novedades.push({ nombre: '', mant: false }); pintarNovedades(); } }));
+  }
+
   async function guardar() {
     const g = Object.fromEntries(new FormData(general));
     const areas = a.areas.map((x) => ({ nombre: x.nombre.trim(), color: x.color })).filter((x) => x.nombre);
@@ -71,6 +83,7 @@ export default function vistaAjustes(raiz) {
       firmaObligatoria: general.firmaObligatoria.checked,
       mensajeWhatsApp: g.mensajeWhatsApp.trim() || AJUSTES_BASE.mensajeWhatsApp,
       areas, tipos,
+      novedades: a.novedades.map((n) => ({ nombre: n.nombre.trim(), mant: Boolean(n.mant) })).filter((n) => n.nombre),
     };
     try {
       await ejecutar([{ op: 'set', col: 'ajustes', id: 'general', data: datos }], { ok: 'Ajustes guardados' });
@@ -92,6 +105,8 @@ export default function vistaAjustes(raiz) {
       h('p', { class: 'suave mini' }, 'El color identifica el área en listas y etiquetas (como los letreros del armario).'), zonaAreas),
     h('section', { class: 'tarjeta' }, h('h2', null, 'Tipos de equipo'),
       h('p', { class: 'suave mini' }, 'Radio e impermeable vienen de base. Puedes agregar otros elementos que también se presten.'), zonaTipos),
+    h('section', { class: 'tarjeta' }, h('h2', null, 'Tipos de novedad al devolver'),
+      h('p', { class: 'suave mini' }, 'Aparecen como opciones al recibir un equipo con falla. "Mantenimiento" deja marcada la opción de sacarlo de circulación.'), zonaNovedades),
     h('div', { class: 'acciones' }, boton('Guardar cambios', { tipo: 'pri', ico: 'check', onclick: guardar })),
     h('section', { class: 'tarjeta' }, h('h2', null, 'Datos'),
       h('p', { class: 'suave' }, demo
@@ -120,4 +135,5 @@ export default function vistaAjustes(raiz) {
   );
   pintarAreas();
   pintarTipos();
+  pintarNovedades();
 }

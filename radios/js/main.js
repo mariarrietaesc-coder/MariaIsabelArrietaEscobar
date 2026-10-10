@@ -68,7 +68,7 @@ function pantallaSuelta(...contenido) {
   vaciar(raiz, h('div', { class: 'suelta' },
     h('div', { class: 'suelta-tarjeta' },
       h('div', { class: 'suelta-marca' }, h('span', { class: 'logo' }, icono('radio')),
-        h('div', null, h('strong', null, 'Control de Radios'), h('small', null, 'Logística · El Lugar de Su Presencia'))),
+        h('div', null, h('strong', null, 'Control de Radios'), h('small', null, config.marca?.organizacion || 'Logística'))),
       ...contenido)));
 }
 
@@ -85,8 +85,21 @@ async function pantallaEntrada() {
     console.warn(e);
   }
   if (app.usuario) return; // la sesión llegó mientras tanto
+  if (necesita && app.almacen.modo === 'demo' && config.usuarioInicial) return arrancarDemo();
   if (necesita) return pantallaConfiguracion();
   return app.almacen.modo === 'demo' ? pantallaEntradaDemo() : pantallaLogin();
+}
+
+// Demo lista para usar: entra con el usuario de config.js y datos de ejemplo.
+async function arrancarDemo() {
+  pantallaSuelta(cargando('Preparando la demostración…'));
+  try {
+    await app.almacen.configurarAdmin({ nombre: config.usuarioInicial, email: '' });
+    if (config.demoConEjemplo !== false && app.usuario) await app.almacen.cargarEjemplo(app.usuario);
+  } catch (e) {
+    avisoError(e);
+    pantallaConfiguracion();
+  }
 }
 
 function pantallaConfiguracion() {
@@ -96,7 +109,7 @@ function pantallaConfiguracion() {
     h('p', { class: 'suave' }, demo
       ? 'Estás en modo demostración: los datos se guardan solo en este navegador. Crea tu usuario administrador para empezar.'
       : 'Crea la cuenta del administrador principal. Después podrás crear los usuarios de Logística desde la app.'),
-    campo('Tu nombre', entrada({ name: 'nombre', required: true, autocomplete: 'name' })),
+    campo('Tu nombre', entrada({ name: 'nombre', required: true, autocomplete: 'name', value: config.usuarioInicial || '' })),
     !demo && campo('Correo', entrada({ name: 'email', type: 'email', required: true, autocomplete: 'email' })),
     !demo && campo('Contraseña', entrada({ name: 'clave', type: 'password', required: true, minlength: 6, autocomplete: 'new-password' })),
     !demo && campo('Repite la contraseña', entrada({ name: 'clave2', type: 'password', required: true, minlength: 6, autocomplete: 'new-password' })),
@@ -276,7 +289,7 @@ function montarMarco() {
     h('div', { class: 'principal' },
       h('header', { class: 'cabecera' },
         h('a', { href: '#/inicio', class: 'cabecera-marca' }, h('span', { class: 'logo' }, icono('radio')),
-          h('span', null, h('strong', null, 'Radios'), h('small', null, 'Su Presencia'))),
+          h('span', null, h('strong', null, 'Radios'), h('small', null, config.marca?.corto || 'Logística'))),
         conexionEl, usuarioEl),
       app.almacen.modo === 'demo' && h('div', { class: 'banda-demo' },
         icono('alerta'), h('span', null, 'Modo demostración: los datos se guardan solo en este navegador. '),
@@ -366,7 +379,7 @@ async function arrancar() {
   app.almacen.alCambiarSesion(alCambiarSesion);
 }
 
-if ('serviceWorker' in navigator && location.protocol === 'https:') {
+if ('serviceWorker' in navigator && location.protocol === 'https:' && window.self === window.top) {
   navigator.serviceWorker.register('./sw.js').catch(() => {});
 }
 

@@ -7,7 +7,7 @@ import { normalizarCodigo } from './util.js';
 export function baseApp(ajustes) {
   const b = (ajustes?.urlBase || '').trim();
   if (b) return b.replace(/#.*$/, '').replace(/\/?$/, '/');
-  return location.origin + location.pathname.replace(/[^/]*$/, '');
+  return location.origin + location.pathname;
 }
 
 export const urlEquipo = (ajustes, codigo) => `${baseApp(ajustes)}#/e/${encodeURIComponent(codigo)}`;

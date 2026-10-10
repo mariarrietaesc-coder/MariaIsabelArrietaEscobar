@@ -3,7 +3,7 @@
 
 import { app, alCambiar, ejecutar, prestadosPorPersona, vencido } from '../estado.js';
 import { h, vaciar, icono, iconoTipo, boton, chipArea, entrada, vacio, aviso, avisoError } from '../ui.js';
-import { encabezado, dialogoNovedad, enlaceWhats } from '../componentes.js';
+import { encabezado, dialogoNovedad, pedirNovedad, enlaceWhats } from '../componentes.js';
 import { planRecepcion, planDeshacerRecepcion } from '../dominio.js';
 import { abrirEscaner } from '../escaner.js';
 import { interpretar } from '../qr.js';
@@ -22,14 +22,15 @@ export default function recibir(raiz, { query }) {
   const zonaSesion = h('section', { class: 'seccion' });
   const zonaPendientes = h('section', { class: 'seccion' });
 
-  async function recibir(eqs, { silencioso = false } = {}) {
+  async function recibir(eqs, { silencioso = false, novedad = null } = {}) {
     const ops = [], filas = [];
     for (const eq of eqs) {
-      const r = planRecepcion({ equipo: eq, usuario: app.usuario });
+      const r = planRecepcion({ equipo: eq, usuario: app.usuario, ...(novedad || {}) });
       ops.push(...r.ops);
       filas.push({
         equipoId: eq.id, nombre: eq.nombre, tipo: eq.tipo, personaNombre: eq.prestamo.personaNombre,
-        minutos: r.minutos, prestamoAnterior: r.prestamoAnterior, hora: Date.now(), estado: 'ok',
+        minutos: r.minutos, prestamoAnterior: r.prestamoAnterior, hora: Date.now(),
+        estado: novedad ? 'novedad' : 'ok', novedades: novedad?.novedades || [],
       });
     }
     await ejecutar(ops);
@@ -95,13 +96,13 @@ export default function recibir(raiz, { query }) {
         h('div', { class: 'fila-txt' },
           h('strong', null, f.nombre),
           h('small', null, `de ${f.personaNombre} · ${hora(f.hora)} · ${duracion(f.minutos)}`,
-            f.estado === 'novedad' ? h('span', { class: 'badge t-bad mini' }, 'Novedad') : null)),
+            f.estado === 'novedad' ? h('span', { class: 'badge t-bad mini' }, f.novedades?.length ? f.novedades.join(', ') : 'Novedad') : null)),
         h('div', { class: 'fila-acc' },
           f.estado === 'ok' && boton('Novedad', {
             tipo: 'texto', clase: 'btn-peq',
             onclick: async () => {
               const r = await dialogoNovedad({ equipoId: f.equipoId, prestamoId: f.prestamoAnterior.id, nombre: f.nombre });
-              if (r) { f.estado = 'novedad'; pintarSesion(); }
+              if (r) { f.estado = 'novedad'; f.novedades = r.novedades; pintarSesion(); }
             },
           }),
           app.equipos.get(f.equipoId)?.estado !== 'prestado' && boton('', {
@@ -127,13 +128,22 @@ export default function recibir(raiz, { query }) {
               h('div', { class: 'prestado-cab' },
                 h('a', { href: `#/p/${encodeURIComponent(g.personaId)}`, class: 'prestado-nombre' }, h('strong', null, g.nombre), chipArea(g.area)),
                 h('span', { class: `prestado-tiempo ${tarde ? 't-bad' : ''}` }, icono('reloj'), duracion(minutosDesde(g.desde)))),
+              g.equipos.length > 1 ? h('p', { class: 'suave mini' }, `Tiene ${g.equipos.length} equipos. Puede devolverlos uno por uno o todos juntos.`) : null,
               h('div', { class: 'lista' }, g.equipos.map((e) => h('div', { class: 'fila compacta' },
                 iconoTipo(e.tipo),
                 h('div', { class: 'fila-txt' }, h('strong', null, e.nombre), h('small', null, `${cuando(e.prestamo.desde)}${e.prestamo.accesorios ? ` · ${e.prestamo.accesorios}` : ''}`)),
-                boton('Recibir', { tipo: 'sec', clase: 'btn-peq', onclick: () => recibir([e]).catch(avisoError) })))),
+                h('div', { class: 'fila-acc' },
+                  boton('', {
+                    tipo: 'icono', ico: 'alerta', title: 'Recibir con novedad', 'aria-label': `Recibir ${e.nombre} con novedad`,
+                    onclick: async () => {
+                      const novedad = await pedirNovedad({ nombre: e.nombre, titulo: `Recibir ${e.nombre} con novedad`, textoBoton: 'Recibir' });
+                      if (novedad) recibir([e], { novedad }).catch(avisoError);
+                    },
+                  }),
+                  boton('Recibir', { tipo: 'sec', clase: 'btn-peq', 'aria-label': `Recibir ${e.nombre}`, onclick: () => recibir([e]).catch(avisoError) }))))),
               h('div', { class: 'prestado-acc' },
                 tarde ? enlaceWhats(g) : h('span'),
-                g.equipos.length > 1 && boton(`Recibir los ${g.equipos.length}`, {
+                g.equipos.length > 1 && boton(`Recibir todos (${g.equipos.length})`, {
                   tipo: 'pri', clase: 'btn-peq', ico: 'recibir', onclick: () => recibir(g.equipos).catch(avisoError),
                 })));
           })));

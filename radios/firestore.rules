@@ -61,7 +61,7 @@ service cloud.firestore {
         && request.resource.data.entregadoPor.uid == request.auth.uid
         && request.resource.data.devuelto == false;
       allow update: if admin() || (operador()
-        && soloCambia(['devuelto', 'fechaDevolucion', 'recibidoPor', 'estadoDevolucion', 'obsDevolucion', 'minutos'])
+        && soloCambia(['devuelto', 'fechaDevolucion', 'recibidoPor', 'estadoDevolucion', 'novedades', 'obsDevolucion', 'minutos'])
         && (request.resource.data.recibidoPor == null || request.resource.data.recibidoPor.uid == request.auth.uid));
       allow delete: if admin();
     }

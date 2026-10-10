@@ -100,7 +100,8 @@ export function datosDeEjemplo(usuario) {
       const desde = inicio + Math.floor(r() * 35) * 60000;
       const minutos = 70 + Math.floor(r() * 110);
       ocupadoHasta.set(eq.id, desde + minutos * 60000);
-      const novedad = r() < 0.05;
+      const novedad = r() < 0.06;
+      const tipoNov = ['Falla de batería', 'Antena dañada o floja', 'Falta accesorio', 'Falla de batería', 'Mojado o sucio'][Math.floor(r() * 5)];
       ops.push({
         op: 'set', col: 'prestamos', id: nuevoId(),
         data: {
@@ -109,7 +110,7 @@ export function datosDeEjemplo(usuario) {
           entregadoPor: por, fechaEntrega: desde, accesorios: r() < 0.15 ? 'Manos libres' : '', obsEntrega: '',
           conFirma: false, devuelto: true, fechaDevolucion: desde + minutos * 60000,
           recibidoPor: operadores[Math.floor(r() * operadores.length)],
-          estadoDevolucion: novedad ? 'novedad' : 'ok', obsDevolucion: novedad ? 'Antena floja' : '', minutos,
+          estadoDevolucion: novedad ? 'novedad' : 'ok', novedades: novedad ? [tipoNov] : [], obsDevolucion: '', minutos,
           registrado: desde,
         },
       });
@@ -136,7 +137,7 @@ export function datosDeEjemplo(usuario) {
         entregaId, equipoId: eq.id, equipoNombre: eq.nombre, tipo: eq.tipo, equipoArea: eq.area,
         personaId: per.id, personaNombre: per.nombre, personaArea: per.area, personaTelefono: per.telefono,
         entregadoPor: yo, fechaEntrega: desde, accesorios: '', obsEntrega: '', conFirma: false,
-        devuelto: false, fechaDevolucion: null, recibidoPor: null, estadoDevolucion: null, obsDevolucion: '', minutos: null,
+        devuelto: false, fechaDevolucion: null, recibidoPor: null, estadoDevolucion: null, novedades: [], obsDevolucion: '', minutos: null,
         registrado: desde,
       },
     });
@@ -147,7 +148,7 @@ export function datosDeEjemplo(usuario) {
     };
     per.usos += 1; per.ultimoUso = desde;
   }
-  Object.assign(indice.get('PYC-08'), { estado: 'mantenimiento', notaEstado: 'No carga la batería' });
+  Object.assign(indice.get('PYC-08'), { estado: 'mantenimiento', notaEstado: 'Falla de batería — no carga' });
   Object.assign(indice.get('IMP-20'), { estado: 'perdido', notaEstado: 'No se devolvió el 14/09' });
 
   // Los equipos y personas se reescriben con los contadores ya calculados.

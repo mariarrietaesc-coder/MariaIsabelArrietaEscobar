@@ -311,6 +311,13 @@ textarea.input { resize: vertical; }
   background: var(--superficie-2); border: 1px solid var(--linea-2); font-weight: 650; font-size: .88rem;
 }
 .chip-eq .ico { width: 16px; height: 16px; color: var(--suave); }
+.chips-op { display: flex; flex-wrap: wrap; gap: .45rem; }
+.chip-op {
+  border: 1px solid var(--linea-2); background: var(--superficie); color: var(--tinta); cursor: pointer;
+  padding: .45rem .8rem; border-radius: 999px; font-weight: 600; font-size: .88rem; min-height: 38px;
+}
+.chip-op[aria-pressed="true"] { background: var(--bad-f); border-color: var(--bad); color: var(--bad); }
+.chip-op[aria-pressed="true"]::before { content: "✓ "; }
 .chip-x { border: 0; background: none; padding: 0 0 0 .15rem; cursor: pointer; color: var(--suave); display: inline-flex; }
 .chip-x .ico { width: 18px; height: 18px; }
 .vacio { text-align: center; padding: 2rem 1rem; color: var(--suave); }
@@ -428,6 +435,7 @@ textarea.input { resize: vertical; }
 .editable { display: flex; gap: .5rem; align-items: center; }
 .editable input[type=color] { width: 44px; height: 44px; padding: 2px; border: 1px solid var(--linea-2); border-radius: 10px; background: var(--superficie); flex: none; }
 .icono-hueco { width: 40px; flex: none; }
+.corto-check { flex: none; align-items: center; font-size: .85rem; }
 .pasos-lista { padding-left: 1.2rem; margin: .4rem 0; display: flex; flex-direction: column; gap: .35rem; }
 .error-txt { white-space: pre-wrap; font-size: .8rem; background: var(--superficie-2); padding: .6rem; border-radius: 8px; }
 

@@ -35,7 +35,8 @@ export default function vistaAyuda(raiz) {
       h('h2', null, 'Recibir'),
       pasos(
         'Toca "Escanear para recibir" y pasa la cámara por cada equipo que devuelven: cada lectura queda recibida en buen estado.',
-        'Si un equipo llega con daños, toca "Novedad" en la lista de recibidos y, si hace falta, envíalo a mantenimiento.',
+        'Si llega con falla (batería, antena, no enciende, falta el manos libres…), usa el botón de alerta junto a "Recibir", o "Novedad" en la lista de recibidos, y marca el tipo. Si hace falta, se envía a mantenimiento.',
+        'Quien recibió varios equipos puede devolverlos uno por uno o todos juntos; lo que falte sigue a su nombre.',
         '¿Te equivocaste? Toca el botón de deshacer en la fila.',
         'Abajo verás quién tiene todavía equipos. Si alguien pasó el tiempo límite, puedes escribirle por WhatsApp.',
       )),

@@ -3,7 +3,7 @@
 
 import { app, alCambiar, puede, ejecutar, tipoDe } from '../estado.js';
 import { h, vaciar, icono, iconoTipo, boton, insigniaEstado, chipArea, dialogo, campo, entrada, valores, confirmar, vacio, avisoError } from '../ui.js';
-import { encabezado, dialogoEquipo, listaPrestamos, recibirVarios, dialogoNovedad, enlaceWhats } from '../componentes.js';
+import { encabezado, dialogoEquipo, listaPrestamos, recibirVarios, recibirConNovedad, enlaceWhats } from '../componentes.js';
 import { planCambioEstado } from '../dominio.js';
 import { qrSvg, urlEquipo } from '../qr.js';
 import { cuando, duracion, minutosDesde, fecha, numero, ESTADOS } from '../util.js';
@@ -47,13 +47,7 @@ export default function vistaEquipo(raiz, { params }) {
         p.accesorios && h('p', null, `Accesorios: ${p.accesorios}`),
         h('div', { class: 'fila-acc' },
           operar && boton('Recibir ahora', { tipo: 'pri', ico: 'recibir', onclick: () => recibirVarios([e]) }),
-          operar && boton('Recibir con novedad', {
-            ico: 'alerta',
-            onclick: async () => {
-              const hechos = await recibirVarios([e]);
-              if (hechos[0]) dialogoNovedad({ equipoId: e.id, prestamoId: hechos[0].prestamoAnterior.id, nombre: e.nombre });
-            },
-          }),
+          operar && boton('Recibir con novedad', { ico: 'alerta', onclick: () => recibirConNovedad(e) }),
           enlaceWhats(grupo, 'WhatsApp'))) : null,
 
       e.estado === 'disponible' && operar ? h('a', { href: `#/entregar?e=${encodeURIComponent(e.id)}`, class: 'btn btn-pri btn-grande ancho' }, icono('entregar'), h('span', null, 'Entregar este equipo')) : null,

@@ -21,5 +21,18 @@ export const firebaseConfig = {
 };
 */
 
+// Nombre que se muestra en la app.
+export const marca = {
+  corto: 'Su Presencia',
+  organizacion: 'Logística · El Lugar de Su Presencia',
+};
+
+// Usuario con el que arranca la app la primera vez. En modo demo entra directo
+// con este nombre (como administrador) y, si demoConEjemplo es true, carga
+// datos ficticios para practicar. Con Firebase solo rellena el nombre en la
+// pantalla de configuración inicial.
+export const usuarioInicial = 'María Isabel Arrieta Escobar';
+export const demoConEjemplo = true;
+
 // Solo para desarrollo con `firebase emulators:start` en este computador.
 export const usarEmulador = false;

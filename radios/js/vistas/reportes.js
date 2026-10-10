@@ -3,7 +3,7 @@
 
 import { app, alCambiar, equipos as todos, tipoDe } from '../estado.js';
 import { h, vaciar, boton, selector, vacio, chipArea } from '../ui.js';
-import { encabezado, chipEquipo } from '../componentes.js';
+import { encabezado, chipEquipo, textoNovedad } from '../componentes.js';
 import { selectorRango } from './historial.js';
 import { columnas, barrasH } from '../graficos.js';
 import { descargarCSV } from '../csv.js';
@@ -106,6 +106,14 @@ export default function vistaReportes(raiz) {
     const topPersonas = [...porPersona.values()].sort((a, b) => b.n - a.n).slice(0, 10)
       .map((x) => ({ etiqueta: x.nombre, valor: x.n, href: `#/p/${encodeURIComponent(x.id)}` }));
 
+    // Novedades por tipo (una devolución puede tener varios)
+    const porNovedad = new Map();
+    for (const p of novedades) {
+      const tipos = p.estadoDevolucion === 'perdido' ? ['Perdido'] : p.novedades?.length ? p.novedades : ['Sin tipo'];
+      for (const t of tipos) porNovedad.set(t, (porNovedad.get(t) || 0) + 1);
+    }
+    const tiposNovedad = [...porNovedad].sort((a, b) => b[1] - a[1]).map(([t, n]) => ({ etiqueta: t, valor: n }));
+
     const kpi = (valor, etiqueta, detalle) => h('div', { class: 'kpi' }, h('strong', null, valor), h('span', null, etiqueta), detalle && h('small', null, detalle));
 
     vaciar(cuerpo,
@@ -151,11 +159,16 @@ export default function vistaReportes(raiz) {
             : h('p', { class: 'suave' }, 'Todos los equipos se usaron al menos una vez.'))),
 
       novedades.length ? h('section', { class: 'tarjeta' },
+        h('h2', null, 'Novedades por tipo'),
+        h('p', { class: 'suave mini' }, 'Fallas de batería, antenas, accesorios… registradas al recibir.'),
+        barrasH(tiposNovedad)) : null,
+
+      novedades.length ? h('section', { class: 'tarjeta' },
         h('h2', null, 'Devoluciones con novedad'),
         h('div', { class: 'lista' }, novedades.slice(0, 30).map((p) => h('a', { href: `#/e/${encodeURIComponent(p.equipoId)}`, class: 'fila fila-btn' },
           h('div', { class: 'fila-txt' },
             h('strong', null, `${p.equipoNombre} · ${p.personaNombre}`),
-            h('small', null, `${fecha(p.fechaDevolucion)} · ${p.obsDevolucion || p.estadoDevolucion}`)),
+            h('small', null, `${fecha(p.fechaDevolucion)} · ${textoNovedad(p)}`)),
           chipArea(p.personaArea))))) : null,
     );
 
