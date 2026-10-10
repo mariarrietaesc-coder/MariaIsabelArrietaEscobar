@@ -1,7 +1,7 @@
 // Hoja imprimible de etiquetas QR para equipos y carnets para personas.
 
 import { app, equipos as todos, tipoDe } from '../estado.js';
-import { h, vaciar, boton, selector, colorArea } from '../ui.js';
+import { h, vaciar, boton, selector, colorArea, descargarArchivo, avisoError } from '../ui.js';
 import { encabezado, opcionesArea } from '../componentes.js';
 import { qrSvg, urlEquipo, urlPersona } from '../qr.js';
 
@@ -92,7 +92,23 @@ export default function vistaEtiquetas(raiz) {
     imprimir.disabled = !lista.length;
   }
 
-  const imprimir = boton('Imprimir', { tipo: 'pri', ico: 'imprimir', onclick: () => window.print() });
+  // Dentro de un enlace de Claude no se puede abrir el diálogo de impresión:
+  // allí se descarga la hoja como página aparte para imprimirla desde el navegador.
+  const enClaude = Boolean(window.claude?.use);
+  const imprimir = boton(enClaude ? 'Descargar hoja para imprimir' : 'Imprimir', {
+    tipo: 'pri', ico: enClaude ? 'descargar' : 'imprimir',
+    onclick: () => (enClaude ? descargarHoja() : window.print()),
+  });
+
+  async function descargarHoja() {
+    try {
+      const css = await (await fetch(new URL('../../app.css', import.meta.url))).text();
+      const doc = `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Etiquetas QR</title>
+<style>${css}\nbody{background:#fff;margin:0}.hoja{border:0}</style></head>
+<body onload="setTimeout(() => print(), 300)">${hoja.outerHTML}</body></html>`;
+      await descargarArchivo(st.tipo === 'personas' ? 'carnets-qr.html' : 'etiquetas-qr.html', doc, 'text/html');
+    } catch (e) { avisoError(e); }
+  }
 
   function pintarTodo() {
     pintarControles();

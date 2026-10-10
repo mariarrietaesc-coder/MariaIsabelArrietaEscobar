@@ -522,7 +522,8 @@ a.bh-fila:hover { background: var(--superficie-2); }
 .esc-msg.ok { color: #5fe0a8; }
 .esc-msg.mal { color: #ff9b9b; }
 .esc-fila { display: flex; gap: .5rem; }
-.esc-fila .input { background: #18232f; border-color: #2e3f51; color: #fff; }
+.esc-fila .input { flex: 1; min-width: 0; width: auto; background: #18232f; border-color: #2e3f51; color: #fff; }
+.esc-fila label.btn { cursor: pointer; }
 .esc.flash-ok .esc-marco { animation: flashOk .45s; }
 .esc.flash-mal .esc-marco { animation: flashMal .45s; }
 @keyframes flashOk { 30% { border-color: #3ce08f; box-shadow: 0 0 0 100vmax rgb(20 120 70 / .45); } }

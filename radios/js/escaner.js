@@ -40,6 +40,34 @@ async function crearDetector() {
   };
 }
 
+// Lee un QR de una foto (respaldo cuando la cámara en vivo no está disponible).
+export async function leerQRdeFoto(archivo) {
+  const imagen = await createImageBitmap(archivo);
+  try {
+    if ('BarcodeDetector' in window) {
+      try {
+        const r = await new window.BarcodeDetector({ formats: ['qr_code'] }).detect(imagen);
+        if (r[0]?.rawValue) return r[0].rawValue;
+      } catch { /* se intenta con jsQR */ }
+    }
+    const jsQR = await cargarJsQR();
+    const lienzo = document.createElement('canvas');
+    const ctx = lienzo.getContext('2d', { willReadFrequently: true });
+    for (const lado of [1000, 1600, 700, 2400]) {
+      const escala = Math.min(1, lado / Math.max(imagen.width, imagen.height));
+      lienzo.width = Math.round(imagen.width * escala);
+      lienzo.height = Math.round(imagen.height * escala);
+      ctx.drawImage(imagen, 0, 0, lienzo.width, lienzo.height);
+      const datos = ctx.getImageData(0, 0, lienzo.width, lienzo.height);
+      const r = jsQR(datos.data, lienzo.width, lienzo.height, { inversionAttempts: 'attemptBoth' });
+      if (r?.data) return r.data;
+    }
+    return null;
+  } finally {
+    imagen.close?.();
+  }
+}
+
 /**
  * Abre el lector a pantalla completa.
  * alLeer(texto) devuelve {ok, mensaje}. En modo continuo el lector sigue
@@ -65,13 +93,34 @@ export function abrirEscaner({ titulo = 'Escanear QR', ayuda = 'Apunta al códig
     }
   });
   let leidos = 0;
+  const foto = h('input', { type: 'file', accept: 'image/*', capture: 'environment', hidden: true });
+  foto.addEventListener('change', async () => {
+    const archivo = foto.files[0];
+    foto.value = '';
+    if (!archivo) return;
+    mensaje.textContent = 'Leyendo la foto…';
+    mensaje.className = 'esc-msg';
+    try {
+      const texto = await leerQRdeFoto(archivo);
+      if (texto) await procesar(texto, true);
+      else {
+        mensaje.textContent = 'No se encontró un QR en la foto. Acércate más y que salga nítido.';
+        mensaje.className = 'esc-msg mal';
+        sonar(false);
+      }
+    } catch {
+      mensaje.textContent = 'No se pudo leer la foto.';
+      mensaje.className = 'esc-msg mal';
+    }
+  });
+  const btnFoto = h('label', { class: 'btn btn-vidrio', title: 'Tomar foto del código' }, icono('qr'), h('span', null, 'Foto'), foto);
 
   const capa = h('div', { class: 'esc', role: 'dialog', 'aria-modal': 'true', 'aria-label': titulo },
     h('div', { class: 'esc-cab' },
       h('strong', null, titulo),
       boton('Listo', { tipo: 'vidrio', ico: 'check', onclick: cerrar })),
     h('div', { class: 'esc-visor' }, video, h('div', { class: 'esc-marco' }), contador),
-    h('div', { class: 'esc-pie' }, mensaje, h('div', { class: 'esc-fila' }, manual, btnLinterna)),
+    h('div', { class: 'esc-pie' }, mensaje, h('div', { class: 'esc-fila' }, manual, btnFoto, btnLinterna)),
   );
   document.body.append(capa);
   document.body.classList.add('sin-scroll');
@@ -125,7 +174,7 @@ export function abrirEscaner({ titulo = 'Escanear QR', ayuda = 'Apunta al códig
 
   (async () => {
     if (!navigator.mediaDevices?.getUserMedia) {
-      mensaje.textContent = 'Este navegador no permite usar la cámara aquí (se necesita https). Escribe el código.';
+      mensaje.textContent = 'Aquí no se puede usar la cámara en vivo. Toca "Foto" para fotografiar el código, o escríbelo.';
       manual.focus();
       return;
     }
@@ -136,8 +185,8 @@ export function abrirEscaner({ titulo = 'Escanear QR', ayuda = 'Apunta al códig
       });
     } catch (e) {
       mensaje.textContent = e.name === 'NotAllowedError'
-        ? 'No hay permiso para usar la cámara. Actívalo en el navegador o escribe el código.'
-        : 'No se pudo abrir la cámara. Escribe el código.';
+        ? 'No hay permiso para la cámara en vivo. Toca "Foto" para fotografiar el código, o escríbelo.'
+        : 'No se pudo abrir la cámara en vivo. Toca "Foto" para fotografiar el código, o escríbelo.';
       mensaje.className = 'esc-msg mal';
       manual.focus();
       return;

@@ -253,7 +253,21 @@ export function sonar(ok = true) {
   navigator.vibrate?.(ok ? 60 : [80, 60, 80]);
 }
 
-export function descargarArchivo(nombre, contenido, tipo = 'text/plain') {
+// En un enlace de prueba de Claude las descargas pasan por su capacidad
+// "downloads"; en Vercel se usa un enlace de descarga normal.
+export async function descargarArchivo(nombre, contenido, tipo = 'text/plain') {
+  if (window.claude?.use) {
+    try {
+      const d = await window.claude.use('downloads');
+      if (d) {
+        await d.save({ filename: nombre, data: contenido });
+        return;
+      }
+    } catch (e) {
+      if (e?.code === 'declined') return;
+      if (e?.code && e.code !== 'unavailable' && e.code !== 'not_granted') return avisoError(e);
+    }
+  }
   const url = URL.createObjectURL(new Blob([contenido], { type: tipo }));
   const a = h('a', { href: url, download: nombre });
   document.body.append(a);

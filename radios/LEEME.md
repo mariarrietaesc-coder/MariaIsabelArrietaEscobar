@@ -9,8 +9,10 @@ Devolución) y deja estadísticas de frecuencia de uso.
 - **Entregar**: se busca a la persona (o se escanea su carnet), se escanean los QR de los
   equipos uno tras otro, se anotan accesorios (manos libres, batería) y la persona firma
   con el dedo. Queda quién entregó, a quién, qué y a qué hora.
-- **Recibir**: modo rápido con la cámara: cada QR leído queda recibido. Si llega con daño
-  se marca "Novedad" y se puede mandar a mantenimiento. Todo se puede deshacer.
+- **Recibir**: modo rápido con la cámara: cada QR leído queda recibido. Quien tiene varios
+  equipos puede devolverlos uno por uno o todos juntos; lo que falte sigue a su nombre. Si
+  algo llega con falla se marca el tipo de novedad (falla de batería, no enciende, antena,
+  falta accesorio, impermeable roto…) y puede pasar a mantenimiento. Todo se puede deshacer.
 - **Inicio**: disponibles y prestados por tipo, quién tiene qué y desde cuándo. Pasado el
   tiempo límite (4 h por defecto) el préstamo se marca en rojo y aparece el botón para
   recordarle por WhatsApp.
@@ -32,7 +34,9 @@ Devolución) y deja estadísticas de frecuencia de uso.
 
 El QR de cada equipo es un enlace a la app: el lector de la app lo interpreta, y la cámara
 normal del celular abre la ficha del equipo con el botón de entregar o recibir. También
-sirve un lector QR USB o Bluetooth: se deja el cursor en el buscador y se escanea.
+sirve un lector QR USB o Bluetooth: se deja el cursor en el buscador y se escanea. Si la
+cámara en vivo no abre (permisos, celular antiguo), el lector tiene el botón **Foto** para
+fotografiar el código.
 
 ## Dónde vive
 
@@ -46,8 +50,11 @@ Todo está en la carpeta `radios/` y no necesita compilación (HTML, CSS y JavaS
 ## Modo demostración
 
 Mientras `firebaseConfig` sea `null` en `config.js`, la app guarda todo **solo en el
-navegador** de ese dispositivo. Sirve para probarla y para capacitar. En *Ajustes* se
-pueden cargar datos de ejemplo y borrarlos.
+navegador** de ese dispositivo. Sirve para probarla y para capacitar: entra directo con el
+usuario de `usuarioInicial` y, si `demoConEjemplo` es `true`, carga datos ficticios. En
+*Ajustes* se pueden cargar datos de ejemplo y borrarlos.
+
+En `config.js` también se cambia el nombre visible (`marca`).
 
 ## Conectarla a la nube (Firebase, gratis)
 
