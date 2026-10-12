@@ -314,6 +314,10 @@ textarea.input { resize: vertical; }
 .fila-ico.grande .ico { width: 28px; height: 28px; }
 .fila.inactivo { opacity: .55; }
 .fila.nueva strong { color: var(--pri); }
+/* Usuarios: en el celular el rol y los botones bajan a una segunda línea para no tapar el nombre. */
+.fila-usuario { flex-wrap: wrap; }
+.fila-usuario .fila-txt { flex: 1 1 12rem; }
+.fila-usuario .fila-acc { margin-left: auto; }
 .codigo { font: 600 .78rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--suave); margin-left: .45rem; letter-spacing: .02em; }
 .codigo.grande { font-size: 1.05rem; margin: 0 0 .3rem; color: var(--tinta-2); }
 .resultados:not(:empty) { border: 1px solid var(--linea); border-radius: 12px; margin-bottom: .75rem; overflow: hidden; }

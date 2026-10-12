@@ -13,7 +13,7 @@ export default function vistaUsuarios(raiz) {
     const us = [...app.usuarios].sort((a, b) => (b.activo - a.activo) || (a.nombre || '').localeCompare(b.nombre || '', 'es'));
     vaciar(lista, us.map((u) => {
       const yo = u.id === app.usuario.uid;
-      return h('div', { class: `fila ${u.activo ? '' : 'inactivo'}` },
+      return h('div', { class: `fila fila-usuario ${u.activo ? '' : 'inactivo'}` },
         h('span', { class: 'avatar' }, (u.nombre || u.email || '?')[0].toUpperCase()),
         h('div', { class: 'fila-txt' },
           h('strong', null, u.nombre || u.email, yo ? h('span', { class: 'suave' }, ' (tú)') : null),
