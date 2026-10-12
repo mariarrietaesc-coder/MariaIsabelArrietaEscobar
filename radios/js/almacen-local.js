@@ -171,11 +171,11 @@ export async function crearAlmacen() {
     async prestamosRango(desde, hasta) {
       return ordenar(lista('prestamos').filter((p) => p.fechaEntrega >= desde && p.fechaEntrega < hasta));
     },
-    async prestamosDeEquipo(id) {
-      return ordenar(lista('prestamos').filter((p) => p.equipoId === id));
+    observarPrestamosRango(desde, hasta, cb) {
+      return this.observar('prestamos', (l) => cb(ordenar(l.filter((p) => p.fechaEntrega >= desde && p.fechaEntrega < hasta))));
     },
-    async prestamosDePersona(id) {
-      return ordenar(lista('prestamos').filter((p) => p.personaId === id));
+    observarPrestamosDe(campo, valor, cb) {
+      return this.observar('prestamos', (l) => cb(ordenar(l.filter((p) => p[campo] === valor))));
     },
     async firma(entregaId) {
       return db.firmas[entregaId]?.firma || null;

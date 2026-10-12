@@ -2,7 +2,12 @@
 // usa la última copia guardada. Los datos los maneja Firebase por su cuenta.
 const CACHE = 'radios-v1';
 
-self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('install', (e) => {
+  self.skipWaiting();
+  // El lector de respaldo (el que usa el iPhone) solo se descarga al abrir la
+  // cámara; se guarda desde ya para que el primer escaneo funcione sin señal.
+  e.waitUntil(caches.open(CACHE).then((c) => c.add('vendor/jsqr.min.js')).catch(() => {}));
+});
 self.addEventListener('activate', (e) => {
   e.waitUntil((async () => {
     for (const k of await caches.keys()) if (k !== CACHE) await caches.delete(k);

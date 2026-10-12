@@ -1,6 +1,6 @@
 // Historial de movimientos: el equivalente digital del cuaderno de préstamos.
 
-import { app, alCambiar, tipoDe } from '../estado.js';
+import { app, tipoDe } from '../estado.js';
 import { h, vaciar, icono, boton, entrada, selector, vacio } from '../ui.js';
 import { encabezado, listaPrestamos } from '../componentes.js';
 import { descargarCSV } from '../csv.js';
@@ -75,15 +75,15 @@ export default function vistaHistorial(raiz) {
     vaciar(lista, l.length ? listaPrestamos(l) : vacio('No hay movimientos en este periodo.', 'historial'));
   }
 
-  async function cargar(desde, hasta, texto) {
+  // En vivo: lo que se entregue o reciba con la pantalla abierta aparece solo.
+  let cortarDatos = null;
+  function cargar(desde, hasta, texto) {
     rango = { desde, hasta, texto };
     vaciar(lista, h('p', { class: 'suave' }, 'Cargando…'));
-    try {
-      datos = await app.almacen.prestamosRango(desde, hasta);
-      pintar();
-    } catch (e) {
-      vaciar(lista, vacio(`No se pudo cargar: ${e.message}`, 'alerta'));
-    }
+    cortarDatos?.();
+    cortarDatos = app.almacen.observarPrestamosRango(desde, hasta,
+      (l) => { datos = l; pintar(); },
+      (e) => vaciar(lista, vacio(`No se pudo cargar: ${e.message}`, 'alerta')));
   }
 
   const rangoSel = selectorRango('7', cargar);
@@ -126,11 +126,5 @@ export default function vistaHistorial(raiz) {
   );
   rangoSel.emitir();
 
-  let espera;
-  const cortar = alCambiar((que) => {
-    if (que !== 'equipos' || !rango) return;
-    clearTimeout(espera);
-    espera = setTimeout(() => cargar(rango.desde, rango.hasta, rango.texto), 1500);
-  });
-  return () => { cortar(); clearTimeout(espera); };
+  return () => cortarDatos?.();
 }

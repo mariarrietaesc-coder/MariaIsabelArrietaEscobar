@@ -12,16 +12,11 @@ export default function vistaEquipo(raiz, { params }) {
   const id = params[0];
   const cuerpo = h('div');
   const historial = h('div', null, h('p', { class: 'suave' }, 'Cargando historial…'));
-  let prestamos = null;
 
-  async function cargarHistorial() {
-    try {
-      prestamos = await app.almacen.prestamosDeEquipo(id);
-      vaciar(historial, listaPrestamos(prestamos.slice(0, 50), { mostrar: 'persona' }));
-    } catch (e) {
-      vaciar(historial, h('p', { class: 'suave' }, `No se pudo cargar: ${e.message}`));
-    }
-  }
+  // En vivo y solo de este equipo: no se vuelve a leer con cada movimiento de otros.
+  const cortarHistorial = app.almacen.observarPrestamosDe('equipoId', id,
+    (l) => vaciar(historial, listaPrestamos(l.slice(0, 50), { mostrar: 'persona' })),
+    (e) => vaciar(historial, h('p', { class: 'suave' }, `No se pudo cargar: ${e.message}`)));
 
   function pintar() {
     const e = app.equipos.get(id);
@@ -120,15 +115,7 @@ export default function vistaEquipo(raiz, { params }) {
 
   raiz.append(h('a', { href: '#/equipos', class: 'volver' }, icono('atras'), 'Equipos'), cuerpo);
   pintar();
-  cargarHistorial();
-  let espera;
-  const cortar = alCambiar((que) => {
-    if (que === 'equipos' || que === 'ajustes') {
-      pintar();
-      clearTimeout(espera);
-      espera = setTimeout(cargarHistorial, 1200);
-    }
-  });
-  return () => { cortar(); clearTimeout(espera); };
+  const cortar = alCambiar((que) => { if (que === 'equipos' || que === 'ajustes') pintar(); });
+  return () => { cortar(); cortarHistorial(); };
 }
 

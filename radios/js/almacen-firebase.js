@@ -61,8 +61,10 @@ export async function crearAlmacen({ firebaseConfig, usarEmulador }) {
       }
       const envio = lote.commit();
       // Sin internet la promesa no se resuelve hasta sincronizar; los datos ya
-      // quedaron en el dispositivo, así que no se bloquea la pantalla.
-      const r = await Promise.race([envio.then(() => 'ok'), esperar(3000).then(() => 'pendiente')]);
+      // quedaron en el dispositivo, así que no se bloquea la pantalla. La
+      // espera es corta porque el lector no lee el siguiente QR hasta que
+      // termine: con mala señal, 3 s por equipo hacían fila al recibir.
+      const r = await Promise.race([envio.then(() => 'ok'), esperar(1500).then(() => 'pendiente')]);
       if (r === 'pendiente') {
         pendiente = true;
         envio.catch((e) => alError(e));
@@ -158,11 +160,23 @@ export async function crearAlmacen({ firebaseConfig, usarEmulador }) {
       );
       return docs(await F.getDocs(q));
     },
-    async prestamosDeEquipo(id) {
-      return porFechaDesc(docs(await F.getDocs(F.query(F.collection(db, 'prestamos'), F.where('equipoId', '==', id)))));
+    // Escuchas en vivo para las pantallas que se quedan abiertas (inicio,
+    // historial, fichas). Firestore cobra la carga inicial y después solo los
+    // préstamos que cambian; volver a consultar todo con cada movimiento
+    // agotaría las 50.000 lecturas diarias del plan gratuito en un domingo.
+    observarPrestamosRango(desde, hasta, cb, alFallar) {
+      const q = F.query(
+        F.collection(db, 'prestamos'),
+        F.where('fechaEntrega', '>=', desde),
+        F.where('fechaEntrega', '<', hasta),
+        F.orderBy('fechaEntrega', 'desc'),
+      );
+      return F.onSnapshot(q, (s) => cb(docs(s)), (e) => (alFallar || alError)(e));
     },
-    async prestamosDePersona(id) {
-      return porFechaDesc(docs(await F.getDocs(F.query(F.collection(db, 'prestamos'), F.where('personaId', '==', id)))));
+    // campo: 'equipoId' o 'personaId'.
+    observarPrestamosDe(campo, valor, cb, alFallar) {
+      const q = F.query(F.collection(db, 'prestamos'), F.where(campo, '==', valor));
+      return F.onSnapshot(q, (s) => cb(porFechaDesc(docs(s))), (e) => (alFallar || alError)(e));
     },
     async firma(entregaId) {
       const s = await F.getDoc(F.doc(db, 'firmas', entregaId));

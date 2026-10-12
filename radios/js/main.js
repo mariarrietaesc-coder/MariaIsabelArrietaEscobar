@@ -109,7 +109,7 @@ function pantallaConfiguracion() {
     h('p', { class: 'suave' }, demo
       ? 'Estás en modo demostración: los datos se guardan solo en este navegador. Crea tu usuario administrador para empezar.'
       : 'Crea la cuenta del administrador principal. Después podrás crear los usuarios de Logística desde la app.'),
-    campo('Tu nombre', entrada({ name: 'nombre', required: true, autocomplete: 'name', value: config.usuarioInicial || '' })),
+    campo('Tu nombre', entrada({ name: 'nombre', required: true, autocomplete: 'name', value: demo ? config.usuarioInicial || '' : '' })),
     !demo && campo('Correo', entrada({ name: 'email', type: 'email', required: true, autocomplete: 'email' })),
     !demo && campo('Contraseña', entrada({ name: 'clave', type: 'password', required: true, minlength: 6, autocomplete: 'new-password' })),
     !demo && campo('Repite la contraseña', entrada({ name: 'clave2', type: 'password', required: true, minlength: 6, autocomplete: 'new-password' })),

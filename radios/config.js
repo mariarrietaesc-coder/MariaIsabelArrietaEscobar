@@ -6,7 +6,7 @@
 // Para guardar en la nube (gratis, plan Spark de Firebase) y compartir los
 // datos entre varios celulares, pega aquí la configuración de tu proyecto:
 // Firebase console → ⚙ Configuración del proyecto → Tus apps → </> Web.
-// Los pasos completos están en radios/LEEME.md.
+// Los pasos completos están en LEEME.md, en esta misma carpeta.
 
 export const firebaseConfig = null;
 
@@ -27,11 +27,10 @@ export const marca = {
   organizacion: 'Logística · El Lugar de Su Presencia',
 };
 
-// Usuario con el que arranca la app la primera vez. En modo demo entra directo
-// con este nombre (como administrador) y, si demoConEjemplo es true, carga
-// datos ficticios para practicar. Con Firebase solo rellena el nombre en la
-// pantalla de configuración inicial.
-export const usuarioInicial = 'María Isabel Arrieta Escobar';
+// Usuario del modo demo: entra directo con este nombre (como administrador) y,
+// si demoConEjemplo es true, carga datos ficticios para practicar. Con
+// Firebase no se usa: cada quien entra con su correo y contraseña.
+export const usuarioInicial = 'Usuario de prueba';
 export const demoConEjemplo = true;
 
 // Solo para desarrollo con `firebase emulators:start` en este computador.

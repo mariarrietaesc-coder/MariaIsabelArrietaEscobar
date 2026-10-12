@@ -12,20 +12,19 @@ export default function vistaPersona(raiz, { params }) {
   const historial = h('div', null, h('p', { class: 'suave' }, 'Cargando historial…'));
   const resumen = h('div', { class: 'kpis' });
 
-  async function cargarHistorial() {
-    try {
-      const l = await app.almacen.prestamosDePersona(id);
-      const cerrados = l.filter((p) => p.devuelto && p.minutos != null);
-      const novedades = l.filter((p) => p.devuelto && p.estadoDevolucion && p.estadoDevolucion !== 'ok').length;
-      vaciar(resumen,
-        h('div', { class: 'kpi' }, h('strong', null, numero(l.length)), h('span', null, 'préstamos')),
-        h('div', { class: 'kpi' }, h('strong', null, cerrados.length ? duracion(cerrados.reduce((s, p) => s + p.minutos, 0) / cerrados.length) : '—'), h('span', null, 'tiempo promedio')),
-        h('div', { class: 'kpi' }, h('strong', null, numero(novedades)), h('span', null, 'con novedad')));
-      vaciar(historial, listaPrestamos(l.slice(0, 60), { mostrar: 'equipo' }));
-    } catch (e) {
-      vaciar(historial, h('p', { class: 'suave' }, `No se pudo cargar: ${e.message}`));
-    }
+  function pintarHistorial(l) {
+    const cerrados = l.filter((p) => p.devuelto && p.minutos != null);
+    const novedades = l.filter((p) => p.devuelto && p.estadoDevolucion && p.estadoDevolucion !== 'ok').length;
+    vaciar(resumen,
+      h('div', { class: 'kpi' }, h('strong', null, numero(l.length)), h('span', null, 'préstamos')),
+      h('div', { class: 'kpi' }, h('strong', null, cerrados.length ? duracion(cerrados.reduce((s, p) => s + p.minutos, 0) / cerrados.length) : '—'), h('span', null, 'tiempo promedio')),
+      h('div', { class: 'kpi' }, h('strong', null, numero(novedades)), h('span', null, 'con novedad')));
+    vaciar(historial, listaPrestamos(l.slice(0, 60), { mostrar: 'equipo' }));
   }
+
+  // En vivo y solo de esta persona.
+  const cortarHistorial = app.almacen.observarPrestamosDe('personaId', id, pintarHistorial,
+    (e) => vaciar(historial, h('p', { class: 'suave' }, `No se pudo cargar: ${e.message}`)));
 
   function pintar() {
     const p = app.personas.get(id);
@@ -80,14 +79,6 @@ export default function vistaPersona(raiz, { params }) {
 
   raiz.append(h('a', { href: '#/personas', class: 'volver' }, icono('atras'), 'Personas'), cuerpo);
   pintar();
-  cargarHistorial();
-  let espera;
-  const cortar = alCambiar((que) => {
-    if (que === 'equipos' || que === 'personas') {
-      pintar();
-      clearTimeout(espera);
-      espera = setTimeout(cargarHistorial, 1200);
-    }
-  });
-  return () => { cortar(); clearTimeout(espera); };
+  const cortar = alCambiar((que) => { if (que === 'equipos' || que === 'personas') pintar(); });
+  return () => { cortar(); cortarHistorial(); };
 }

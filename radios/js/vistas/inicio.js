@@ -62,27 +62,26 @@ export default function inicio(raiz) {
         : vacio('Todo está en casa: no hay equipos prestados.'));
   }
 
-  // Movimientos de hoy (se consulta aparte y se refresca con cada cambio).
-  let espera;
-  async function pintarHoy() {
-    try {
-      const lista = await app.almacen.prestamosRango(inicioDia(), Date.now() + 864e5);
+  // Movimientos de hoy, en vivo. Al pasar la medianoche se cambia de día.
+  let dia = null, cortarHoy = null;
+  function escucharHoy() {
+    const d = inicioDia();
+    if (d === dia) return;
+    dia = d;
+    cortarHoy?.();
+    cortarHoy = app.almacen.observarPrestamosRango(d, d + 864e5, (lista) => {
       const dev = lista.filter((p) => p.devuelto).length;
       hoyEl.textContent = lista.length
         ? `Hoy: ${plural(lista.length, 'entrega', 'entregas')} · ${plural(dev, 'devolución', 'devoluciones')}`
         : 'Hoy no hay movimientos todavía.';
-    } catch { hoyEl.textContent = ''; }
+    }, () => { hoyEl.textContent = ''; });
   }
 
   pintar();
-  pintarHoy();
-  const reloj = setInterval(pintar, 60000);
+  escucharHoy();
+  const reloj = setInterval(() => { pintar(); escucharHoy(); }, 60000);
   const cortar = alCambiar((que) => {
-    if (que === 'equipos' || que === 'personas' || que === 'ajustes') {
-      pintar();
-      clearTimeout(espera);
-      espera = setTimeout(pintarHoy, 1500);
-    }
+    if (que === 'equipos' || que === 'personas' || que === 'ajustes') pintar();
   });
-  return () => { cortar(); clearInterval(reloj); clearTimeout(espera); };
+  return () => { cortar(); clearInterval(reloj); cortarHoy?.(); };
 }
