@@ -30,7 +30,7 @@ export const marca = {
 // Usuario del modo demo: entra directo con este nombre (como administrador) y,
 // si demoConEjemplo es true, carga datos ficticios para practicar. Con
 // Firebase no se usa: cada quien entra con su correo y contraseña.
-export const usuarioInicial = 'Usuario de prueba';
+export const usuarioInicial = 'Coordinación Logística';
 export const demoConEjemplo = true;
 
 // Solo para desarrollo con `firebase emulators:start` en este computador.
