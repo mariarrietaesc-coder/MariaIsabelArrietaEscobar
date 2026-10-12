@@ -37,7 +37,14 @@ export function enlaceWhats(grupo, texto = 'Recordar') {
   const msg = mensajeRecordatorio(app.ajustes.mensajeWhatsApp, grupo, grupo.equipos);
   const url = enlaceWhatsApp(grupo.telefono, msg);
   if (!url) return null;
-  return h('a', { class: 'btn btn-whats btn-peq', href: url, target: '_blank', rel: 'noopener' }, icono('whatsapp'), h('span', null, texto));
+  // En la demo los celulares son inventados: no se abre WhatsApp para no escribirle a un desconocido.
+  if (app.almacen.modo === 'demo') {
+    return h('button', {
+      type: 'button', class: 'btn btn-whats btn-peq',
+      onclick: () => aviso(`En la demostración no se abre WhatsApp, porque los celulares son inventados. En la app real se abre el chat de ${grupo.nombre} con este mensaje: «${msg}»`, { tipo: 'info', ms: 9000 }),
+    }, icono('whatsapp'), h('span', null, texto));
+  }
+  return h('a',{ class: 'btn btn-whats btn-peq', href: url, target: '_blank', rel: 'noopener' }, icono('whatsapp'), h('span', null, texto));
 }
 
 // Tarjeta de una persona con los equipos que tiene en su poder.

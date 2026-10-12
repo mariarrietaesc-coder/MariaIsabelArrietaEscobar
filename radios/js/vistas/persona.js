@@ -1,7 +1,7 @@
 // Ficha de una persona: lo que tiene ahora, su carnet QR e historial.
 
 import { app, alCambiar, puede, ejecutar, ordenarEquipos } from '../estado.js';
-import { h, vaciar, icono, boton, chipArea, confirmar, vacio, avisoError } from '../ui.js';
+import { h, vaciar, icono, boton, chipArea, confirmar, vacio, aviso, avisoError } from '../ui.js';
 import { encabezado, dialogoPersona, listaPrestamos, tarjetaPrestados, enlaceWhats } from '../componentes.js';
 import { qrSvg, urlPersona } from '../qr.js';
 import { cuando, numero, duracion } from '../util.js';
@@ -48,7 +48,9 @@ export default function vistaPersona(raiz, { params }) {
             dato('Celular', p.telefono), dato('Documento', p.documento), dato('Notas', p.notas),
             dato('Último préstamo', p.ultimoUso && cuando(p.ultimoUso))),
           p.telefono && h('div', { class: 'fila-acc' },
-            h('a', { class: 'btn btn-sec btn-peq', href: `tel:${p.telefono.replace(/\s/g, '')}` }, 'Llamar'),
+            app.almacen.modo === 'demo'
+              ? h('button', { type: 'button', class: 'btn btn-sec btn-peq', onclick: () => aviso('En la demostración no se hacen llamadas, porque los celulares son inventados.', { tipo: 'info' }) }, 'Llamar')
+              : h('a', { class: 'btn btn-sec btn-peq', href: `tel:${p.telefono.replace(/\s/g, '')}` }, 'Llamar'),
             enlaceWhats({ ...p, equipos: tiene }, 'WhatsApp'))),
         h('section', { class: 'tarjeta' }, h('h2', null, 'Uso'), resumen),
         h('section', { class: 'tarjeta qr-tarjeta' },
