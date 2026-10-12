@@ -49,7 +49,7 @@ export default function vistaAjustes(raiz) {
             pintarTipos();
           },
         }))),
-      boton('Agregar tipo (botiquín, chaleco…)', {
+      boton('Agregar tipo (chaqueta, chaleco, botiquín…)', {
         tipo: 'texto', ico: 'mas1',
         onclick: () => { a.tipos.push({ id: '', nombre: '', plural: '', prefijo: '' }); pintarTipos(); },
       }));
@@ -104,7 +104,7 @@ export default function vistaAjustes(raiz) {
     h('section', { class: 'tarjeta' }, h('h2', null, 'Áreas'),
       h('p', { class: 'suave mini' }, 'El color identifica el área en listas y etiquetas (como los letreros del armario).'), zonaAreas),
     h('section', { class: 'tarjeta' }, h('h2', null, 'Tipos de equipo'),
-      h('p', { class: 'suave mini' }, 'Radio e impermeable vienen de base. Puedes agregar otros elementos que también se presten.'), zonaTipos),
+      h('p', { class: 'suave mini' }, 'Radio e impermeable vienen de base. Puedes agregar otros elementos que también se presten, como chaquetas o chalecos.'), zonaTipos),
     h('section', { class: 'tarjeta' }, h('h2', null, 'Tipos de novedad al devolver'),
       h('p', { class: 'suave mini' }, 'Aparecen como opciones al recibir un equipo con falla. "Mantenimiento" deja marcada la opción de sacarlo de circulación.'), zonaNovedades),
     h('div', { class: 'acciones' }, boton('Guardar cambios', { tipo: 'pri', ico: 'check', onclick: guardar })),

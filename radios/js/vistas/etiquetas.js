@@ -79,7 +79,7 @@ export default function vistaEtiquetas(raiz) {
             h('strong', null, p.nombre),
             p.area && h('span', null, p.area),
             p.cargo && h('span', null, p.cargo),
-            h('small', null, 'Carnet para préstamo de radios e impermeables'))))));
+            h('small', null, 'Carnet para préstamo de equipos'))))));
     } else {
       const clase = TAMANOS[st.tamano][1];
       vaciar(hoja, lista.map((e) => h('div', { class: `etiqueta ${clase}`, style: { '--c': colorArea(e.area) } },
@@ -117,7 +117,7 @@ export default function vistaEtiquetas(raiz) {
   }
 
   raiz.append(
-    h('div', { class: 'no-imprimir' }, encabezado('Etiquetas QR', 'Pega una en cada radio e impermeable', imprimir)),
+    h('div', { class: 'no-imprimir' }, encabezado('Etiquetas QR', 'Pega una en cada equipo', imprimir)),
     controles,
     seleccion,
     hoja,

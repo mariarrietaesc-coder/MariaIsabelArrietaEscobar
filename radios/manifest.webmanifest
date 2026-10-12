@@ -1,7 +1,7 @@
 {
-  "name": "Radios · El Lugar de Su Presencia",
-  "short_name": "Radios",
-  "description": "Entrega y devolución de radios e impermeables con código QR.",
+  "name": "Préstamo de Equipos · El Lugar de Su Presencia",
+  "short_name": "Préstamos",
+  "description": "Entrega y devolución de radios, impermeables y demás equipos de Logística con código QR.",
   "lang": "es",
   "start_url": "./",
   "scope": "./",

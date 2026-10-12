@@ -1,4 +1,4 @@
-// Configuración de la app de control de radios e impermeables.
+// Configuración de la app de préstamo de equipos (radios, impermeables y demás).
 //
 // Mientras firebaseConfig sea null, la app funciona en MODO DEMO: todo se
 // guarda solo en el navegador de este dispositivo (sirve para probarla).
@@ -13,9 +13,9 @@ export const firebaseConfig = null;
 /* Ejemplo (reemplaza con los datos de tu proyecto):
 export const firebaseConfig = {
   apiKey: 'AIza...',
-  authDomain: 'control-radios.firebaseapp.com',
-  projectId: 'control-radios',
-  storageBucket: 'control-radios.firebasestorage.app',
+  authDomain: 'prestamo-equipos.firebaseapp.com',
+  projectId: 'prestamo-equipos',
+  storageBucket: 'prestamo-equipos.firebasestorage.app',
   messagingSenderId: '1234567890',
   appId: '1:1234567890:web:abc123',
 };

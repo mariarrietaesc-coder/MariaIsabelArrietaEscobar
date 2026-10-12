@@ -1,6 +1,6 @@
 rules_version = '2';
 
-// Reglas de seguridad para la app de control de radios e impermeables.
+// Reglas de seguridad para la app de préstamo de equipos.
 // Cópialas en Firebase console → Firestore Database → Reglas → Publicar.
 service cloud.firestore {
   match /databases/{database}/documents {

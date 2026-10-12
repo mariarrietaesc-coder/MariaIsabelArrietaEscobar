@@ -67,8 +67,8 @@ function pantallaSuelta(...contenido) {
   cortarVista = null;
   vaciar(raiz, h('div', { class: 'suelta' },
     h('div', { class: 'suelta-tarjeta' },
-      h('div', { class: 'suelta-marca' }, h('span', { class: 'logo' }, icono('radio')),
-        h('div', null, h('strong', null, 'Control de Radios'), h('small', null, config.marca?.organizacion || 'Logística'))),
+      h('div', { class: 'suelta-marca' }, h('span', { class: 'logo' }, icono('logo')),
+        h('div', null, h('strong', null, 'Préstamo de Equipos'), h('small', null, config.marca?.organizacion || 'Logística'))),
       ...contenido)));
 }
 
@@ -282,14 +282,14 @@ function montarMarco() {
   vistaEl = h('main', { class: 'vista', id: 'vista', tabindex: '-1' });
   vaciar(raiz, h('div', { class: 'marco' },
     h('aside', { class: 'lateral' },
-      h('div', { class: 'lateral-marca' }, h('span', { class: 'logo' }, icono('radio')),
-        h('div', null, h('strong', null, 'Control de Radios'), h('small', { 'data-org': '' }, app.ajustes.orgNombre))),
+      h('div', { class: 'lateral-marca' }, h('span', { class: 'logo' }, icono('logo')),
+        h('div', null, h('strong', null, 'Préstamo de Equipos'), h('small', { 'data-org': '' }, app.ajustes.orgNombre))),
       h('nav', { class: 'nav-lat' }, navLat.map((i) => item(i, 'nav-item'))),
       boton('Salir', { tipo: 'texto', ico: 'salir', clase: 'lateral-salir', onclick: salir })),
     h('div', { class: 'principal' },
       h('header', { class: 'cabecera' },
-        h('a', { href: '#/inicio', class: 'cabecera-marca' }, h('span', { class: 'logo' }, icono('radio')),
-          h('span', null, h('strong', null, 'Radios'), h('small', null, config.marca?.corto || 'Logística'))),
+        h('a', { href: '#/inicio', class: 'cabecera-marca' }, h('span', { class: 'logo' }, icono('logo')),
+          h('span', null, h('strong', null, 'Préstamos'), h('small', null, config.marca?.corto || 'Logística'))),
         conexionEl, usuarioEl),
       app.almacen.modo === 'demo' && h('div', { class: 'banda-demo' },
         icono('alerta'), h('span', null, 'Modo demostración: los datos se guardan solo en este navegador. '),

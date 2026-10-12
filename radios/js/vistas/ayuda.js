@@ -27,7 +27,7 @@ export default function vistaAyuda(raiz) {
       h('h2', null, 'Entregar'),
       pasos(
         'Busca a la persona por nombre o celular, o escanea su carnet. Si no existe, regístrala ahí mismo.',
-        'Toca "Escanear QR de los equipos" y pasa la cámara por cada radio o impermeable. También puedes escribir el código.',
+        'Toca "Escanear QR de los equipos" y pasa la cámara por cada equipo. También puedes escribir el código.',
         'Si lleva manos libres u otro accesorio, anótalo. Pide la firma con el dedo.',
         'Confirma. Queda registrado quién entregó, a quién, qué y a qué hora.',
       )),

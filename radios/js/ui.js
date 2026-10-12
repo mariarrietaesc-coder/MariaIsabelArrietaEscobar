@@ -40,6 +40,7 @@ const P = {
   inicio: '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>',
   entregar: '<path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/>',
   recibir: '<path d="M12 15V3"/><path d="m7 8 5-5 5 5"/><path d="M5 21h14"/>',
+  logo: '<rect x="8" y="2.5" width="8" height="4" rx="1"/><path d="M16 4.5h2a2 2 0 0 1 2 2V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2h2"/><path d="m8.5 14 2.5 2.5 4.5-5"/>',
   radio: '<rect x="6" y="8" width="12" height="13" rx="2"/><path d="M9 8V2"/><path d="M9 12h6"/><circle cx="12" cy="16.5" r="2"/>',
   impermeable: '<path d="M9 3h6l1.5 3.5L20 8l-1.5 6H17v7H7v-7H5.5L4 8l3.5-1.5Z"/><path d="M12 3v18"/>',
   equipo: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V4h8v3"/>',

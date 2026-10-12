@@ -41,7 +41,7 @@ export default function vistaPersonas(raiz) {
   }
 
   raiz.append(
-    encabezado('Personas', 'Quienes reciben radios e impermeables',
+    encabezado('Personas', 'Quienes reciben equipos en préstamo',
       puede.operar() && boton('Nueva', { tipo: 'pri', ico: 'mas1', onclick: () => dialogoPersona() })),
     h('div', { class: 'buscador' }, icono('buscar'), buscar),
     h('div', { class: 'filtros' },

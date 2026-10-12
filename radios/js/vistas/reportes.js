@@ -189,7 +189,7 @@ export default function vistaReportes(raiz) {
   let exportarResumen = () => {};
 
   raiz.append(
-    encabezado('Reportes', 'Frecuencia de uso de radios e impermeables',
+    encabezado('Reportes', 'Frecuencia de uso de los equipos',
       boton('Uso por equipo (Excel)', { ico: 'descargar', onclick: () => exportarResumen() })),
     h('div', { class: 'filtros' },
       rangoSel.el,

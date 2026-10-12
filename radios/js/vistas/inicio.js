@@ -11,11 +11,11 @@ export default function inicio(raiz) {
   raiz.append(
     h('div', { class: 'encabezado' },
       h('div', null,
-        h('h1', null, 'Radios e impermeables'),
+        h('h1', null, 'Préstamo de equipos'),
         h('p', { class: 'suave' }, `${diaLargo(Date.now())} · ${app.ajustes.orgNombre}`),
         hoyEl)),
     puede.operar() && h('div', { class: 'acciones-grandes' },
-      h('a', { href: '#/entregar', class: 'accion-grande entregar' }, icono('entregar'), h('span', null, h('strong', null, 'Entregar'), h('small', null, 'Prestar radio o impermeable'))),
+      h('a', { href: '#/entregar', class: 'accion-grande entregar' }, icono('entregar'), h('span', null, h('strong', null, 'Entregar'), h('small', null, 'Prestar un equipo'))),
       h('a', { href: '#/recibir', class: 'accion-grande recibir' }, icono('recibir'), h('span', null, h('strong', null, 'Recibir'), h('small', null, 'Registrar devolución')))),
     resumen,
     prestados,

@@ -1,8 +1,8 @@
-# Control de Radios e Impermeables — Logística, El Lugar de Su Presencia
+# Préstamo de Equipos · Logística, El Lugar de Su Presencia
 
-Aplicación web para registrar la entrega y devolución de radios e impermeables con
-código QR. Reemplaza el cuaderno de préstamos (Fecha · Hora · Nombre · Omega · Firma ·
-Devolución) y deja estadísticas de frecuencia de uso.
+Aplicación web para registrar la entrega y devolución de radios, impermeables y demás
+equipos de Logística con código QR. Reemplaza el cuaderno de préstamos (Fecha · Hora ·
+Nombre · Omega · Firma · Devolución) y deja estadísticas de frecuencia de uso.
 
 Son archivos sueltos (HTML, CSS y JavaScript): no hay que instalar nada ni compilar.
 
@@ -115,6 +115,14 @@ Vercel (gratis):
 
 Netlify, GitHub Pages o Firebase Hosting también sirven.
 
+### Vista previa del enlace
+
+Al compartir el enlace por WhatsApp aparece una tarjeta con la imagen `vista-previa.jpg`
+(el ícono de la app y el logo de la iglesia). WhatsApp necesita la dirección completa de
+esa imagen, que está en `index.html`, en la línea `og:image`. Trae la de la versión de
+prueba (`https://prestamos-su-presencia.vercel.app/vista-previa.jpg`); cuando la app quede
+en su dirección definitiva, cámbiala por `https://<dirección-definitiva>/vista-previa.jpg`.
+
 ## Paso 4. Primer ingreso
 
 1. Abre la app publicada: la primera vez pide crear la **cuenta del administrador**.
@@ -123,7 +131,7 @@ Netlify, GitHub Pages o Firebase Hosting también sirven.
 2. En *Usuarios*, crea las cuentas de Logística (correo + contraseña temporal + rol).
 3. En *Ajustes*, revisa las áreas con sus colores, el tiempo de alerta y si la firma es
    obligatoria.
-4. En *Equipos → Agregar varios*, crea los radios e impermeables, y en *Etiquetas QR*
+4. En *Equipos → Agregar varios*, crea los radios, los impermeables y demás equipos, y en *Etiquetas QR*
    imprime sus códigos.
 
 Notas:
@@ -167,6 +175,7 @@ buscador funciona con el nombre o el celular.
 | `js/escaner.js`, `js/qr.js` | Lector y generador de QR |
 | `js/vistas/*` | Cada pantalla |
 | `sw.js`, `manifest.webmanifest` | Abrirla sin señal e instalarla en el celular |
+| `icono*.png`, `icono.svg`, `vista-previa.jpg` | Ícono de la app y tarjeta para compartir el enlace |
 | `vendor/` | jsQR (Apache-2.0) y qrcode-generator (MIT) |
 | `fuentes/` | Montserrat (SIL Open Font License) |
 
